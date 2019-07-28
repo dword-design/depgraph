@@ -1,0 +1,12 @@
+{
+  "name": "@dword-design/base-depgraph",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {},
+  "devDependencies": {}
+}
