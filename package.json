@@ -1,11 +1,11 @@
 {
   "name": "@dword-design/base-depgraph",
   "typeName": "server",
-  "version": "0.1.4",
-  "main": "index.js",
+  "version": "0.1.6",
+  "main": "dist/index.js",
   "files": ["dist/client/*"],
   "bin": {
-    "base-depgraph": "./dist/index.js"
+    "base-depgraph": "./dist/cli.js"
   },
   "license": "MIT",
   "dependencies": {
