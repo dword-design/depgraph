@@ -2,7 +2,7 @@ import program from 'commander'
 import depgraph from '.'
 
 program
-  .option('-t, --format <formatterName>', 'The formatter to use')
+  .option('-t, --format <name>', 'The formatter to use')
 
 program.parse(process.argv)
 

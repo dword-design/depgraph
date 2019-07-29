@@ -2,8 +2,9 @@ import express from 'express'
 import path from 'path'
 import { map, flatMap } from '@functions'
 import depcruise from './depcruise'
+import server from './server'
 
-export const prepareExpress = app => app
+export default () => server(app => app
   .use(express.static(path.resolve(__dirname, 'client')))
   .use('/graph', express.Router()
     .get('/', (req, res) => depcruise()
@@ -14,3 +15,4 @@ export const prepareExpress = app => app
       }))
     )
   )
+)
