@@ -1,16 +1,18 @@
 import express from 'express'
-import graphRoute from './routes/graph'
-import path from 'path'
 import open from 'open'
+import { getFormatter } from './formatter'
 
-export default () => {
+export default formatterName => {
+
+  const formatter = getFormatter(formatterName)
+
   const port = 4000
 
   const app = express()
     .use(express.json())
     .use(express.urlencoded({ extended: true }))
-    .use(express.static(path.resolve(__dirname, 'client')))
-    .use('/graph', graphRoute)
+
+  formatter.prepareExpress(app)
 
   app.listen(port)
   console.log(`Depgraph available at http://localhost:${port} …`)

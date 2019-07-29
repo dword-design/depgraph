@@ -1,3 +1,11 @@
-import server from '.'
+import program from 'commander'
+import depgraph from '.'
 
-server()
+program
+  .option('-t, --format <formatterName>', 'The formatter to use')
+
+program.parse(process.argv)
+
+const formatterName = program.format
+
+depgraph(formatterName)
