@@ -1,7 +1,7 @@
 {
   "name": "@dword-design/base-depgraph",
   "typeName": "server",
-  "version": "0.2.17",
+  "version": "0.2.18",
   "main": "dist/index.js",
   "files": [
     "dist/client/*",
