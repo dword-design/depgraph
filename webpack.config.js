@@ -9,6 +9,7 @@ export default {
   plugins: [
     new webpack.BannerPlugin({
       banner: '#!/usr/bin/env node',
+      raw: true,
       test: 'cli.js',
     }),
     new CopyWebpackPlugin([
