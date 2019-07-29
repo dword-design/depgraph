@@ -1,11 +1,11 @@
 {
   "name": "@dword-design/base-depgraph",
   "typeName": "server",
-  "version": "0.1.8",
+  "version": "0.1.11",
   "main": "dist/index.js",
-  "files": ["dist/client/*", "src/cli.js"],
+  "files": ["dist/client/*", "dist/cli.js"],
   "bin": {
-    "base-depgraph": "./src/cli.js"
+    "base-depgraph": "dist/cli.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@dword-design/base-type-server": "^0.1.6",
-    "copy-webpack-plugin": "^5.0.4"
+    "copy-webpack-plugin": "^5.0.4",
+    "webpack": "^4.38.0"
   }
 }

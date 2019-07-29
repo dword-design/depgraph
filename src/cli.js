@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
-const server = require('../dist').default
+import server from '.'
 
 server()
