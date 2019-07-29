@@ -1,3 +1,3 @@
-import depcruise from './depcruise'
+import dot from './dot'
 
-export default () => depcruise({ outputType: 'dot' }).then(dot => console.log(dot))
+export default () => dot().then(dot => console.log(dot))

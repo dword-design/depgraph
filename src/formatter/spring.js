@@ -1,7 +1,7 @@
 import express from 'express'
 import path from 'path'
 import { map, flatMap } from '@functions'
-import depcruise from './depcruise'
+import depcruise from '../depcruise'
 import server from './server'
 
 export default () => server(app => app

@@ -1,9 +1,9 @@
-import depcruise from './depcruise'
 import server from './server'
 import { spawn } from 'child-process-promise'
+import dot from '../dot'
 
 export default () => server(app => app
-  .get('/', (req, res) => depcruise({ outputType: 'dot' })
+  .get('/', (req, res) => dot()
     .then(dot => spawn('dot', ['-T', 'svg'], { capture: ['stdout'] })
       .progress(({ stdin }) => {
         stdin.write(dot)
