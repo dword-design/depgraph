@@ -14,6 +14,7 @@
   "dependencies": {
     "@dword-design/base": "^0.8.15",
     "@dword-design/base-depgraph-client-spring": "^0.1.4",
+    "child-process-promise": "^2.2.1",
     "commander": "^2.20.0",
     "dependency-cruiser": "^4.27.3",
     "express": "^4.17.1",

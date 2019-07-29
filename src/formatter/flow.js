@@ -1,16 +1,18 @@
-import express from 'express'
-import path from 'path'
-import { map, flatMap } from '@functions'
 import depcruise from './depcruise'
 import server from './server'
+import { spawn } from 'child-process-promise'
 
 export default () => server(app => app
-  .use(express.static(path.resolve(__dirname, 'client')))
-  .get('/graph', (req, res) => depcruise()
-    .then(modules => res.send({
-      modules: modules |> map('source'),
-      dependencies: modules
-        |> flatMap(({ source, dependencies }) => dependencies |> map(({ resolved }) => ({ source, target: resolved }))),
-    }))
+  .get('/', (req, res) => depcruise({ outputType: 'dot' })
+    .then(dot => spawn('dot', ['-T', 'svg'], { capture: ['stdout'] })
+      .progress(({ stdin }) => {
+        stdin.write(dot)
+        stdin.end()
+      })
+    )
+    .then(({ stdout: svgCode }) => {
+      res.setHeader('Content-Type', 'image/svg+xml')
+      return res.send(svgCode)
+    })
   )
 )
