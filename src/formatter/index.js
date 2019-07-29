@@ -3,7 +3,6 @@ import * as springStaticFormatter from './spring-static'
 import * as flowFormatter from './flow'
 import * as jsonFormatter from './json'
 import * as dotFormatter from './dot'
-import * as dotFlatFormatter from './dot-flat'
 import FormatterMissingError from './formatter-missing-error'
 import { find } from '@functions'
 
@@ -13,7 +12,6 @@ const formatters = [
   flowFormatter,
   jsonFormatter,
   dotFormatter,
-  dotFlatFormatter,
 ]
 
 export default formatters

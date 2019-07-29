@@ -1,8 +1,8 @@
 import { getFormatter } from './formatter'
 
-export default formatterName => {
+export default ({ formatterName, isClusters }) => {
 
   const { handler } = getFormatter(formatterName)
 
-  handler()
+  handler({ isClusters })
 }

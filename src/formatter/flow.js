@@ -3,8 +3,8 @@ import { spawn } from 'child-process-promise'
 import dot from '../dot'
 
 export const name = 'flow'
-export const handler = () => server(app => app
-  .get('/', (req, res) => dot()
+export const handler = ({ isClusters }) => server(app => app
+  .get('/', (req, res) => dot({ isClusters })
     .then(dot => spawn('dot', ['-T', 'svg'], { capture: ['stdout'] })
       .progress(({ stdin }) => {
         stdin.write(dot)
