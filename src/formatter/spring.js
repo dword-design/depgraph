@@ -2,9 +2,10 @@ import express from 'express'
 import path from 'path'
 import { map, flatMap } from '@functions'
 import depcruise from '../depcruise'
-import server from './server'
+import server from '../server'
 
-export default () => server(app => app
+export const name = 'spring'
+export const handler = () => server(app => app
   .use(express.static(path.resolve(__dirname, 'client')))
   .get('/graph', (req, res) => depcruise()
     .then(modules => res.send({

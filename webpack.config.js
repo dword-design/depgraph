@@ -5,7 +5,7 @@ import path from 'path'
 export default {
   entry: {
     cli: './src/cli.js',
-    'depcruise-sandbox': './src/formatter/depcruise-sandbox.js',
+    'depcruise-sandbox': './src/depcruise-sandbox.js',
   },
   plugins: [
     new webpack.BannerPlugin({

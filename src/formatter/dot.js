@@ -1,3 +1,4 @@
-import dot from './dot'
+import dot from '../dot'
 
-export default () => dot().then(dot => console.log(dot))
+export const name = 'dot'
+export const handler = () => dot().then(dot => console.log(dot))

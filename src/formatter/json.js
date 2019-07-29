@@ -1,3 +1,4 @@
 import depcruise from '../depcruise'
 
-export default () => depcruise().then(modules => console.log(JSON.stringify(modules, undefined, 2)))
+export const name = 'json'
+export const handler = () => depcruise().then(modules => console.log(JSON.stringify(modules, undefined, 2)))

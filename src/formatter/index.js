@@ -1,24 +1,25 @@
-import springFormatter from './spring'
-import springStaticFormatter from './spring-static'
-import flowFormatter from './flow'
-import jsonFormatter from './json'
-import dotFormatter from './dot'
-import dotFlatFormatter from './dot-flat'
+import * as springFormatter from './spring'
+import * as springStaticFormatter from './spring-static'
+import * as flowFormatter from './flow'
+import * as jsonFormatter from './json'
+import * as dotFormatter from './dot'
+import * as dotFlatFormatter from './dot-flat'
 import FormatterMissingError from './formatter-missing-error'
+import { find } from '@functions'
 
-const formatters = {
-  spring: springFormatter,
-  'spring-static': springStaticFormatter,
-  flow: flowFormatter,
-  json: jsonFormatter,
-  dot: dotFormatter,
-  'dot-flat': dotFlatFormatter,
-}
+const formatters = [
+  springFormatter,
+  springStaticFormatter,
+  flowFormatter,
+  jsonFormatter,
+  dotFormatter,
+  dotFlatFormatter,
+]
 
 export default formatters
 
 export const getFormatter = (name = 'spring') => {
-  const formatter = formatters[name]
+  const formatter = formatters |> find({ name })
   if (formatter === undefined) {
     throw new FormatterMissingError(name)
   }
