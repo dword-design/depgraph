@@ -1,12 +1,14 @@
 import springFormatter from './spring'
 import flowFormatter from './flow'
 import jsonFormatter from './json'
+import dotFormatter from './dot'
 import FormatterMissingError from './formatter-missing-error'
 
 const formatters = {
   spring: springFormatter,
   flow: flowFormatter,
   json: jsonFormatter,
+  dot: dotFormatter,
 }
 
 export default formatters

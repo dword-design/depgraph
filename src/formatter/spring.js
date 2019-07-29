@@ -8,7 +8,7 @@ export default () => server(app => app
   .use(express.static(path.resolve(__dirname, 'client')))
   .use('/graph', express.Router()
     .get('/', (req, res) => depcruise()
-      .then(({ modules }) => res.send({
+      .then(modules => res.send({
         modules: modules |> map('source'),
         dependencies: modules
           |> flatMap(({ source, dependencies }) => dependencies |> map(({ resolved }) => ({ source, target: resolved }))),
