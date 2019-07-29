@@ -17,7 +17,8 @@
     "commander": "^2.20.0",
     "dependency-cruiser": "^4.27.3",
     "express": "^4.17.1",
-    "open": "^6.4.0"
+    "open": "^6.4.0",
+    "pkg-dir": "^4.2.0"
   },
   "devDependencies": {
     "@dword-design/base-type-server": "^0.1.6",
