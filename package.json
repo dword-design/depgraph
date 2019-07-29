@@ -1,11 +1,12 @@
 {
   "name": "@dword-design/base-depgraph",
   "typeName": "server",
-  "version": "0.1.13",
+  "version": "0.1.15",
   "main": "dist/index.js",
   "files": [
     "dist/client/*",
-    "dist/cli.js"
+    "dist/cli.js",
+    "dist/depcruise-sandbox.js"
   ],
   "bin": {
     "base-depgraph": "dist/cli.js"

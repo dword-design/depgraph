@@ -5,12 +5,13 @@ import path from 'path'
 export default {
   entry: {
     cli: './src/cli.js',
+    'depcruise-sandbox': './src/formatter/depcruise-sandbox.js',
   },
   plugins: [
     new webpack.BannerPlugin({
       banner: '#!/usr/bin/env node',
       raw: true,
-      test: 'cli.js',
+      test: ['cli.js'],
     }),
     new CopyWebpackPlugin([
       {
