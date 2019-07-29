@@ -1,9 +1,12 @@
 {
   "name": "@dword-design/base-depgraph",
   "typeName": "server",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "main": "dist/index.js",
-  "files": ["dist/client/*", "dist/cli.js"],
+  "files": [
+    "dist/client/*",
+    "dist/cli.js"
+  ],
   "bin": {
     "base-depgraph": "dist/cli.js"
   },
@@ -12,7 +15,8 @@
     "@dword-design/base": "^0.8.15",
     "@dword-design/base-depgraph-client-spring": "^0.1.4",
     "dependency-cruiser": "^4.27.3",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "open": "^6.4.0"
   },
   "devDependencies": {
     "@dword-design/base-type-server": "^0.1.6",
