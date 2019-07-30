@@ -775,10 +775,10 @@
     "@dword-design/node-env" "^0.1.0"
     child-process-promise "^2.2.1"
 
-"@dword-design/base@^0.8.20":
-  version "0.8.20"
-  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-0.8.20.tgz#18821bc695f9d37b89354ac970829040e657f394"
-  integrity sha512-fnR08t00rfZxfIZrisTKMW96y4qbM0s3CXkyX404HMyKfwjX2jGz6f7EpWc9tUY6ugXMB9VzBTZYjwDP9HKlTw==
+"@dword-design/base@^0.8.23":
+  version "0.8.23"
+  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-0.8.23.tgz#a08d4804c7614af155d2536091ea0ba18c82f6d9"
+  integrity sha512-dY4ZZ4VFKN0BrTilPUbhB6dNqWpsEPHtOjC2z5rtTqKwEiIb80EYBdgG8KELis06RPAg4V5O0FLcgMsFTE8WFg==
   dependencies:
     "@babel/cli" "^7.4.4"
     "@babel/core" "^7.4.4"
@@ -790,6 +790,7 @@
     "@babel/register" "^7.4.4"
     "@dword-design/base-type-lib" "^0.1.13"
     "@dword-design/functions" "^0.3.10"
+    "@dword-design/yes-sir" "^0.1.0"
     "@epegzz/sass-vars-loader" dword-design/sass-vars-loader#fork
     babel-eslint "^10.0.1"
     babel-loader "^8.0.6"
@@ -797,18 +798,17 @@
     babel-plugin-module-resolver "^3.2.0"
     change-case "^3.1.0"
     child-process-promise "^2.2.1"
-    commander "^2.20.0"
     depcheck dword-design/depcheck#fork
     dependency-cruiser "^4.24.0"
     eslint "^5.16.0"
     eslint-import-resolver-babel-module "^5.1.0"
     eslint-import-resolver-webpack "^0.11.1"
-    eslint-loader "^2.1.2"
-    eslint-plugin-import "^2.17.2"
+    eslint-loader "^2.2.1"
+    eslint-plugin-import "^2.18.2"
     eslint-plugin-lodash-fp "^2.2.0-a1"
     eslint-plugin-prefer-arrow "^1.1.5"
-    eslint-plugin-react "^7.13.0"
-    eslint-plugin-vue "^5.2.2"
+    eslint-plugin-react "^7.14.3"
+    eslint-plugin-vue "^5.2.3"
     find-up "^4.0.0"
     fs-extra "^8.0.1"
     lint-staged "^8.1.6"
@@ -3198,7 +3198,7 @@ eslint-import-resolver-webpack@^0.11.1:
     resolve "^1.10.0"
     semver "^5.3.0"
 
-eslint-loader@^2.1.2:
+eslint-loader@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/eslint-loader/-/eslint-loader-2.2.1.tgz#28b9c12da54057af0845e2a6112701a2f6bf8337"
   integrity sha512-RLgV9hoCVsMLvOxCuNjdqOrUqIj9oJg8hF44vzJaYqsAHuY9G2YAeN3joQ9nxP0p5Th9iFSIpKo+SD8KISxXRg==
@@ -3217,7 +3217,7 @@ eslint-module-utils@^2.4.0:
     debug "^2.6.8"
     pkg-dir "^2.0.0"
 
-eslint-plugin-import@^2.17.2:
+eslint-plugin-import@^2.18.2:
   version "2.18.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.18.2.tgz#02f1180b90b077b33d447a17a2326ceb400aceb6"
   integrity sha512-5ohpsHAiUBRNaBWAF08izwUGlbrJoJJ+W9/TBwsGoR1MnlgfwMIKrFeSjWbt6moabiXW9xNvtFz+97KHRfI4HQ==
@@ -3250,7 +3250,7 @@ eslint-plugin-prefer-arrow@^1.1.5:
   resolved "https://registry.yarnpkg.com/eslint-plugin-prefer-arrow/-/eslint-plugin-prefer-arrow-1.1.5.tgz#ad2b91b126eb208547da7af9e9719b3598a5a063"
   integrity sha512-vjwd/I3R0jjMbzjMxaekzHz5/ohTLparvxtW5f/7tAXvM8h4/z/C4HR6l7qv5e0JnYRSTfyzad0OiJxlnI1bBw==
 
-eslint-plugin-react@^7.13.0:
+eslint-plugin-react@^7.14.3:
   version "7.14.3"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.14.3.tgz#911030dd7e98ba49e1b2208599571846a66bdf13"
   integrity sha512-EzdyyBWC4Uz2hPYBiEJrKCUi2Fn+BJ9B/pJQcjw5X+x/H2Nm59S4MJIvL4O5NEE0+WbnQwEBxWY03oUk+Bc3FA==
@@ -3265,7 +3265,7 @@ eslint-plugin-react@^7.13.0:
     prop-types "^15.7.2"
     resolve "^1.10.1"
 
-eslint-plugin-vue@^5.2.2:
+eslint-plugin-vue@^5.2.3:
   version "5.2.3"
   resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-5.2.3.tgz#3ee7597d823b5478804b2feba9863b1b74273961"
   integrity sha512-mGwMqbbJf0+VvpGR5Lllq0PMxvTdrZ/ZPjmhkacrCHbubJeJOt+T6E3HUzAifa2Mxi7RSdJfC9HFpOeSYVMMIw==

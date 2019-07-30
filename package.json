@@ -1,7 +1,7 @@
 {
   "name": "@dword-design/base-depgraph",
   "typeName": "server",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "main": "dist/index.js",
   "files": [
     "dist/client/*",
@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@dword-design/base": "^0.8.20",
+    "@dword-design/base": "^0.8.23",
     "@dword-design/base-depgraph-client-spring": "^0.2.4",
     "@dword-design/yes-sir": "^0.1.0",
     "child-process-promise": "^2.2.1",

@@ -12,7 +12,7 @@ export const options = [
   { name: '-c, --cluster', description: 'Use the folder structure to generate clusters' },
   { name: '-d, --draggable', description: 'Whether the graph should be draggable' },
 ]
-export const handler = ({ clusters: isClusters, draggable: isDraggable }) => isDraggable
+export const handler = ({ clusters: isClusters, draggable: isDraggable } = {}) => isDraggable
   ? server(app => app
     .use(express.static(path.resolve(__dirname, 'client')))
     .get('/graph', (req, res) => depcruise()
