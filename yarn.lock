@@ -734,10 +734,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@dword-design/base-depgraph-client-spring@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@dword-design/base-depgraph-client-spring/-/base-depgraph-client-spring-0.1.4.tgz#4f57cfbf1e703d7cfea4bc958277b5a5231c6118"
-  integrity sha512-GRg5b8lkkquJ8foolC8kkjA1saSoZ9KrPUSHbCWYzIkUo1Zo18PsSNUcTDhu+awzxPTa4GpXrMCyX2W8Qo6xzg==
+"@dword-design/base-depgraph-client-spring@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@dword-design/base-depgraph-client-spring/-/base-depgraph-client-spring-0.2.4.tgz#b77378f861d3e9f0ee2ab64759ce583719af4812"
+  integrity sha512-1ppgc+lyty4C6goZheWOP6XIxo1OjHPdymWhCZ9O8NqRXEYRwGsWjc8FS+RFy3Zn7Ibs/vDuT85GZ5VVijXk7g==
   dependencies:
     "@dword-design/linaria" "^0.1.0"
     "@dword-design/reset-sass" "^0.1.2"

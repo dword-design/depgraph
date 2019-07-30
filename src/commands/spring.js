@@ -9,9 +9,10 @@ import { map, flatMap } from '@functions'
 export const name = 'spring'
 export const description = 'Output the dependency graph using spring layout'
 export const options = [
+  { name: '-c, --cluster', description: 'Use the folder structure to generate clusters' },
   { name: '-d, --draggable', description: 'Whether the graph should be draggable' },
 ]
-export const handler = ({ draggable: isDraggable }) => isDraggable
+export const handler = ({ clusters: isClusters, draggable: isDraggable }) => isDraggable
   ? server(app => app
     .use(express.static(path.resolve(__dirname, 'client')))
     .get('/graph', (req, res) => depcruise()
@@ -19,6 +20,7 @@ export const handler = ({ draggable: isDraggable }) => isDraggable
         modules: modules |> map('source'),
         dependencies: modules
           |> flatMap(({ source, dependencies }) => dependencies |> map(({ resolved }) => ({ source, target: resolved }))),
+        isClusters,
       }))
     )
   )
