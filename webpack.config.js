@@ -15,7 +15,7 @@ export default {
     }),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(path.dirname(require.resolve('@dword-design/base-depgraph-client-spring/package.json')), 'dist'),
+        from: path.resolve(path.dirname(require.resolve('@dword-design/base-depgraph-client/package.json')), 'dist'),
         to: 'client',
       },
     ]),

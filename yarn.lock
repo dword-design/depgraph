@@ -734,14 +734,15 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@dword-design/base-depgraph-client-spring@^0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@dword-design/base-depgraph-client-spring/-/base-depgraph-client-spring-0.2.4.tgz#b77378f861d3e9f0ee2ab64759ce583719af4812"
-  integrity sha512-1ppgc+lyty4C6goZheWOP6XIxo1OjHPdymWhCZ9O8NqRXEYRwGsWjc8FS+RFy3Zn7Ibs/vDuT85GZ5VVijXk7g==
+"@dword-design/base-depgraph-client@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@dword-design/base-depgraph-client/-/base-depgraph-client-0.1.0.tgz#0a3b1706d068c2e66371b8bd9a7b9cbd382d9f17"
+  integrity sha512-Nx8EjPVw6SxFY8K+r8AqMzE3JuxVjzf4pTDsOkk592K2laPLiqFpMMD8VTytOQxMcp3rrx6z6iKAS2OKN77cSA==
   dependencies:
     "@dword-design/linaria" "^0.1.0"
-    "@dword-design/reset-sass" "^0.1.2"
+    "@dword-design/reset-sass" "^0.1.4"
     "@dword-design/vue-component" "^0.1.2"
+    "@fortawesome/fontawesome-free" "^5.10.0"
     axios "^0.19.0"
     d3 "4.4.0"
     vue "^2.6.10"
@@ -868,10 +869,10 @@
   resolved "https://registry.yarnpkg.com/@dword-design/node-env/-/node-env-0.1.0.tgz#ee8a9766fcda0d8af3124c0595977fcbd26140e6"
   integrity sha512-BzgtihW5X1WLzvMsb7j3sEcDo2vceFhea0MRe4BjQNXQlC3zi8WwnbVDf3L+NlZteMWacR6QQ7+EAkr48HBlfA==
 
-"@dword-design/reset-sass@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@dword-design/reset-sass/-/reset-sass-0.1.2.tgz#c21e136a2ddba9419e80f80b7089634f8b14f8d8"
-  integrity sha512-Lt71e9z59rII8qF4ym0hEaply9X5dhLQCSXFAmA5cVPmJHrZgdqHyYuye3VAIQTo7/mBWWadsM4xTpbBdUxkJA==
+"@dword-design/reset-sass@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@dword-design/reset-sass/-/reset-sass-0.1.4.tgz#9e768b5e6fa6a2e4d5c0980641ba9707c224f97d"
+  integrity sha512-6P4vVu9YT3OYnrsXDj+hsn3NIFQEtJoAOKpTdmplgZla62Zu24vMJoUnsXfoJFsgF7DTGqevWGBa950IKDqzCA==
   dependencies:
     reset-css "^4.0.1"
 
@@ -911,6 +912,11 @@
     loader-utils "^1.1.0"
     require-from-string "^2.0.2"
     typescript "^3.3.3"
+
+"@fortawesome/fontawesome-free@^5.10.0":
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.10.0.tgz#dbfb34093c87c9516f03ee1db3385adae3ae9461"
+  integrity sha512-XX16koDMY/tkJmec0VFfKF7RYZOze/203B1iyLnRaAySm3ZPhKaeyIpf73Yh8xhrMk3Fj4TeH3FC01qyFTyg8g==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
