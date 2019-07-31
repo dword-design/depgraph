@@ -7,7 +7,7 @@ import { spawn } from 'child-process-promise'
 export default options => Promise.all([pkgDir(), findConfig()])
   .then(([workspacePath, { depgraphIgnores }]) => {
 
-    const ignores = [...gitignore, ...aliases |> keys, ...depgraphIgnores]
+    const ignores = [...gitignore, ...aliases |> keys, ...depgraphIgnores ?? []]
 
     return spawn(
       'node',

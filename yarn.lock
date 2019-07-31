@@ -775,10 +775,10 @@
     "@dword-design/node-env" "^0.1.0"
     child-process-promise "^2.2.1"
 
-"@dword-design/base@^0.8.23":
-  version "0.8.23"
-  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-0.8.23.tgz#a08d4804c7614af155d2536091ea0ba18c82f6d9"
-  integrity sha512-dY4ZZ4VFKN0BrTilPUbhB6dNqWpsEPHtOjC2z5rtTqKwEiIb80EYBdgG8KELis06RPAg4V5O0FLcgMsFTE8WFg==
+"@dword-design/base@^0.8.24":
+  version "0.8.24"
+  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-0.8.24.tgz#48cdfd0e36b5830b1abc4ff35295f728dba4312a"
+  integrity sha512-8viQgdZ1bz8+3z3Kh4UJ7pfIwKRxMR0Imd0yG3NqaEvWg4BXhwJvZiWL3KEI41jR4iuJh6P5LqWE+FjEHWXu1Q==
   dependencies:
     "@babel/cli" "^7.4.4"
     "@babel/core" "^7.4.4"
@@ -789,7 +789,7 @@
     "@babel/preset-env" "^7.4.5"
     "@babel/register" "^7.4.4"
     "@dword-design/base-type-lib" "^0.1.13"
-    "@dword-design/functions" "^0.3.10"
+    "@dword-design/functions" "^0.3.11"
     "@dword-design/yes-sir" "^0.1.0"
     "@epegzz/sass-vars-loader" dword-design/sass-vars-loader#fork
     babel-eslint "^10.0.1"
@@ -827,10 +827,10 @@
   dependencies:
     lodash "^4.17.11"
 
-"@dword-design/functions@^0.3.10":
-  version "0.3.10"
-  resolved "https://registry.yarnpkg.com/@dword-design/functions/-/functions-0.3.10.tgz#0178a871edeca8b15ba1a78bb3ba708aa2948d72"
-  integrity sha512-aAJpLpSkMkXMfu3u9hES+3tPDIDfR0aOpAEvKU3Iau9ZjQ66B5YaSCurz2v87HARjb7iOriFHgr7QNnBZJNMeQ==
+"@dword-design/functions@^0.3.11":
+  version "0.3.11"
+  resolved "https://registry.yarnpkg.com/@dword-design/functions/-/functions-0.3.11.tgz#99de669ab492092f6728244c7193581fbb2dc5af"
+  integrity sha512-gw7155iOHkzCElIE78wKHms6ynqymRA64Puem6RLaEbav6X33xXF8sLw0Vjybx3+2d7vCbMXt55tuzatT4uy8A==
   dependencies:
     lodash "^4.17.11"
     tinycolor2 "^1.4.1"
