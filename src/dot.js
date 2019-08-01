@@ -22,7 +22,7 @@ export default ({ isClusters } = {}) => isClusters
         fontname="Helvetica-bold"
         fontsize=9
         style="rounded,bold,filled"
-        fillcolor="#ffffff"
+        bgcolor="transparent"
         compound=true
         node [shape=box style="rounded, filled" fillcolor="#ffffcc" height=0.2 fontname=Helvetica fontsize=9]
         edge [color="#00000077" penwidth=2.0 arrowhead=normal fontname=Helvetica fontsize=9]
