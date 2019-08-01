@@ -2,8 +2,7 @@ import { spawn } from 'child-process-promise'
 import dot from '../dot'
 import express from 'express'
 import path from 'path'
-import depcruise from '../depcruise'
-import { map, flatMap } from '@functions'
+import buildGraph from '../build-graph'
 import open from 'open'
 
 export const name = 'graph'
@@ -24,13 +23,7 @@ export const handler = () => {
     .use(express.json())
     .use(express.urlencoded({ extended: true }))
     .use(express.static(path.resolve(__dirname, 'client')))
-    .get('/graph', (req, res) => depcruise()
-      .then(modules => res.send({
-        modules: modules |> map('source'),
-        dependencies: modules
-          |> flatMap(({ source, dependencies }) => dependencies |> map(({ resolved }) => ({ source, target: resolved }))),
-      }))
-    )
+    .get('/graph', (req, res) => buildGraph().then(graph => res.send(graph)))
     .get('/static', (req, res) => dot({ isClusters: req.query.clusters === 'true' })
       .then(dot => spawn(
         'dot',
