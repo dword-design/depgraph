@@ -1,17 +1,35 @@
-import depcruise from './depcruise'
+import buildGraph from './build-graph'
 import endent from 'endent'
-import { map, flatMap, join } from '@functions'
+import { map, join, compact } from '@functions'
 import path from 'path'
 
 const colors = {
   '.vue': { color: '#000', backgroundColor: '#41f083' },
 }
 
-export default ({ isClusters } = {}) => isClusters
-  ? depcruise({ outputType: 'dot' })
-  : depcruise()
-    .then(modules => modules |> map(module => ({ ...module, ...colors[path.extname(module.source)] })))
-    .then(modules => endent`
+export default ({ isClusters } = {}) => buildGraph()
+  .then(({ modules, rootFolder, dependencies }) => {
+    const moduleParams = name => {
+      const { color, backgroundColor } = colors[path.extname(name)] ?? {}
+      return `[label="${isClusters ? path.basename(name) : name}"${color !== undefined ? ` fontcolor="${color}"` : ''}${backgroundColor !== undefined ? ` fillcolor="${backgroundColor}"` : ''}]`
+    }
+    const modulesTemplate = (modules = []) => modules |> map(name => `"${name}" ${moduleParams(name)}`) |> join('\r\n')
+    const clustersTemplate = ({ name = '', modules, folders }, parentPath = '') => {
+      const fullPath = [parentPath, name] |> compact |> join('/')
+      return name !== ''
+        ? endent`
+          subgraph cluster_${fullPath} {
+            label="${name}"
+            ${modulesTemplate(modules)}
+            ${folders |> map(folder => clustersTemplate(folder, fullPath)) |> join('\r\n')}
+          }
+        `
+        : endent`
+          ${modulesTemplate(modules)}
+          ${folders |> map(folder => clustersTemplate(folder, fullPath)) |> join('\r\n')}
+        `
+    }
+    return endent`
       strict digraph G {
         ordering=out
         rankdir=LR
@@ -27,8 +45,8 @@ export default ({ isClusters } = {}) => isClusters
         node [shape=box style="rounded, filled" fillcolor="#ffffcc" height=0.2 fontname=Helvetica fontsize=9]
         edge [color="#00000077" penwidth=2.0 arrowhead=normal fontname=Helvetica fontsize=9]
 
-        ${modules |> map(({ source, backgroundColor, color }) => `"${source}" [label="${source}"${color !== undefined ? ` fontcolor="${color}"` : ''}${backgroundColor !== undefined ? ` fillcolor="${backgroundColor}"` : ''}]`) |> join('\r\n')}
+        ${isClusters ? clustersTemplate(rootFolder) : modulesTemplate(modules)}
 
-        ${modules |> flatMap(({ source, dependencies }) => dependencies |> map(({ resolved }) => `"${source}" -> "${resolved}" [penwidth=2.0]`)) |> join('\r\n')}
+        ${dependencies |> map(({ source, target }) => `"${source}" -> "${target}" [penwidth=2.0]`) |> join('\r\n')}
       }`
-    )
+  })

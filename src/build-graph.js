@@ -5,21 +5,19 @@ import path from 'path'
 export default () => depcruise()
   .then(modules => ({
     modules: modules |> map('source'),
-    dependencies: modules
-      |> flatMap(({ source, dependencies }) => dependencies |> map(({ resolved }) => ({ source, target: resolved }))),
-    groups: modules |> reduce((rootGroup, { source }) => {
+    rootFolder: modules |> reduce((rootFolder, { source }) => {
 
-      const mergeGroup = (group, parts) => {
+      const mergeFolder = (folder, parts) => {
         if (parts.length == 0) {
-          group.modules = [...group.modules ?? [], source]
+          folder.modules = [...folder.modules ?? [], source]
         } else {
           const part = parts[0]
-          let subgroup = (group.groups ?? []) |> find({ name: part })
-          if (subgroup === undefined) {
-            subgroup = { name: part }
-            group.groups = [ ...group.groups ?? [], subgroup ]
+          let subfolder = (folder.folders ?? []) |> find({ name: part })
+          if (subfolder === undefined) {
+            subfolder = { name: part }
+            folder.folders = [ ...folder.folders ?? [], subfolder ]
           }
-          mergeGroup(subgroup, parts |> slice(1))
+          mergeFolder(subfolder, parts |> slice(1))
         }
       }
 
@@ -27,8 +25,11 @@ export default () => depcruise()
       if (parts.length == 1 && parts[0] === '.') {
         parts = []
       }
-      mergeGroup(rootGroup, parts)
 
-      return rootGroup
+      mergeFolder(rootFolder, parts)
+
+      return rootFolder
     }, {}),
+    dependencies: modules
+      |> flatMap(({ source, dependencies }) => dependencies |> map(({ resolved }) => ({ source, target: resolved }))),
   }))
