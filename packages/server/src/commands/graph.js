@@ -3,7 +3,6 @@ import dot from '../dot'
 import express from 'express'
 import path from 'path'
 import buildGraph from '../build-graph'
-import open from 'open'
 
 export const name = 'graph'
 export const description = 'Output the dependency graph in the browser'
@@ -43,5 +42,4 @@ export const handler = () => {
 
   app.listen(port)
   console.log(`Depgraph available at http://localhost:${port} …`)
-  open(`http://localhost:${port}`)
 }

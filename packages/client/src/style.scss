@@ -1,0 +1,28 @@
+@import '~@dword-design/reset-sass/src/index.scss';
+
+.link {
+  stroke: #000;
+  stroke-width: 2px;
+  stroke-opacity: .5;
+  marker-end: url(#end-arrow);
+}
+
+.label {
+    fill: #000;
+    font-family: Verdana;
+    font-size: 10px;
+    text-anchor: middle;
+    cursor: move;
+}
+
+.group-label {
+    fill: #000;
+    font-family: Verdana;
+    font-size: 10px;
+    text-anchor: middle;
+    cursor: move;
+}
+
+.icon path {
+  fill: currentColor !important;
+}
