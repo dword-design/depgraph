@@ -1,7 +1,7 @@
 {
   "name": "@dword-design/base-depgraph",
   "typeName": "server",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "main": "dist/index.js",
   "files": [
     "dist/client/*",
@@ -16,7 +16,7 @@
     "prepare": "(cd ../client && base build) && base build"
   },
   "dependencies": {
-    "@dword-design/base": "^0.8.29",
+    "@dword-design/base": "^0.8.37",
     "@dword-design/yes-sir": "^0.1.0",
     "child-process-promise": "^2.2.1",
     "dependency-cruiser": "^4.27.3",
