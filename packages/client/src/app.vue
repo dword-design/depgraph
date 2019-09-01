@@ -3,7 +3,7 @@ import component from '@dword-design/vue-component'
 import Toolbar from './toolbar.vue'
 import Static from './static.vue'
 import Simulation from './simulation.vue'
-import { css } from '@dword-design/linaria'
+import { css } from '@linaria'
 
 export default component({
   data: () => ({

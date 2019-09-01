@@ -4,7 +4,7 @@ import * as d3 from 'd3'
 import * as cola from 'webcola'
 import { map, filter, findIndex, forIn } from '@functions'
 import path from 'path'
-import { css } from '@dword-design/linaria'
+import { css } from '@linaria'
 import { rasterSize, nodeVerticalPadding, nodeHorizontalPadding, nodeSpacing, groupSpacing, scriptBackground, componentBackground } from '@variables'
 import axios from 'axios'
 

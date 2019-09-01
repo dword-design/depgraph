@@ -1,6 +1,6 @@
 <script>
 import component from '@dword-design/vue-component'
-import { css } from '@dword-design/linaria'
+import { css } from '@linaria'
 import axios from 'axios'
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import { colorPrimary } from '@variables'

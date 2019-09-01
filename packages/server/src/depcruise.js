@@ -1,13 +1,14 @@
-import { findConfig, gitignore, aliases } from '@dword-design/base'
+import { getBaseConfig, gitignore, getAliases } from '@dword-design/base'
 import { keys } from '@functions'
 import pkgDir from 'pkg-dir'
 import path from 'path'
 import { spawn } from 'child-process-promise'
 
-export default options => Promise.all([pkgDir(), findConfig()])
-  .then(([workspacePath, { depgraphIgnores }]) => {
+export default options => pkgDir()
+  .then(workspacePath => {
 
-    const ignores = [...gitignore, ...aliases |> keys, ...depgraphIgnores ?? []]
+    const { depgraphIgnores } = getBaseConfig()
+    const ignores = [...gitignore, ...getAliases() |> keys, ...depgraphIgnores ?? []]
 
     return spawn(
       'node',

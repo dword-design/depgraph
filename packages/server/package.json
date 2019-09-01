@@ -1,7 +1,7 @@
 {
   "name": "@dword-design/base-depgraph",
   "typeName": "server",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "main": "dist/index.js",
   "files": [
     "dist/client/*",
@@ -13,11 +13,11 @@
   },
   "license": "MIT",
   "scripts": {
-    "prepare": "(cd ../client && base build) && base build"
+    "prepare": "(cd ../client && yarn prepare) && base build"
   },
   "dependencies": {
-    "@dword-design/base": "^0.8.37",
-    "@dword-design/yes-sir": "^0.1.0",
+    "@dword-design/base": "^0.10.3",
+    "@dword-design/yes-sir": "^0.1.1",
     "child-process-promise": "^2.2.1",
     "dependency-cruiser": "^4.27.3",
     "endent": "^1.3.0",
@@ -25,8 +25,8 @@
     "pkg-dir": "^4.2.0"
   },
   "devDependencies": {
-    "@dword-design/base-type-server": "^0.2.5",
+    "@dword-design/base-type-server": "^0.3.0",
     "copy-webpack-plugin": "^5.0.4",
-    "webpack": "^4.39.0"
+    "webpack": "^4.39.3"
   }
 }

@@ -1,6 +1,6 @@
 <script>
 import component from '@dword-design/vue-component'
-import { css } from '@dword-design/linaria'
+import { css } from '@linaria'
 import CheckBox from './checkbox.vue'
 import { colorPrimary } from '@variables'
 
