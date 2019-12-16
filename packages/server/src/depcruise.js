@@ -1,5 +1,4 @@
-import { getBaseConfig, gitignore, getAliases } from '@dword-design/base'
-import { keys } from '@functions'
+import { keys } from '@dword-design/functions'
 import pkgDir from 'pkg-dir'
 import path from 'path'
 import { spawn } from 'child-process-promise'

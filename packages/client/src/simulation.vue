@@ -2,7 +2,7 @@
 import component from '@dword-design/vue-component'
 import * as d3 from 'd3'
 import * as cola from 'webcola'
-import { map, filter, findIndex, forIn } from '@functions'
+import { map, filter, findIndex, forIn } from '@dword-design/functions'
 import path from 'path'
 import { css } from '@linaria'
 import { rasterSize, nodeVerticalPadding, nodeHorizontalPadding, nodeSpacing, groupSpacing, scriptBackground, componentBackground } from '@variables'

@@ -1,5 +1,5 @@
 import depcruise from './depcruise'
-import { flatMap, map, reduce, slice, find } from '@functions'
+import { flatMap, map, reduce, slice, find } from '@dword-design/functions'
 import path from 'path'
 
 export default () => depcruise()

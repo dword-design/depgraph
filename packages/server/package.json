@@ -1,32 +1,31 @@
 {
-  "name": "@dword-design/base-depgraph",
-  "typeName": "server",
-  "version": "0.5.3",
+  "name": "@dword-design/depgraph",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "files": [
-    "dist/client/*",
-    "dist/cli.js",
-    "dist/depcruise-sandbox.js"
+    "dist"
   ],
   "bin": {
     "base-depgraph": "dist/cli.js"
   },
   "license": "MIT",
   "scripts": {
-    "prepare": "(cd ../client && yarn prepare) && base build"
+    "prepublishOnly": "base build",
+    "start": "base start",
+    "test": "base test"
   },
   "dependencies": {
-    "@dword-design/base": "^0.10.3",
-    "@dword-design/yes-sir": "^0.1.1",
+    "@dword-design/functions": "^2.2.4",
     "child-process-promise": "^2.2.1",
     "dependency-cruiser": "^4.27.3",
-    "endent": "^1.3.0",
     "express": "^4.17.1",
     "pkg-dir": "^4.2.0"
   },
   "devDependencies": {
-    "@dword-design/base-type-server": "^0.3.0",
-    "copy-webpack-plugin": "^5.0.4",
-    "webpack": "^4.39.3"
-  }
+    "@dword-design/base": "^3.5.0",
+    "@dword-design/base-config-server": "^1.1.2"
+  },
+  "author": "",
+  "maintainers": [],
+  "contributors": []
 }

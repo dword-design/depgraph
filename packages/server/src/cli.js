@@ -1,4 +1,4 @@
-import yesSir from '@dword-design/yes-sir'
+import makeCli from 'make-cli'
 import commands from '.'
 
-yesSir({ commands, defaultCommandName: 'graph' })
+makeCli({ commands, defaultCommandName: 'graph' })

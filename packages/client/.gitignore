@@ -1,4 +1,5 @@
 .DS_Store
+.linaria-cache
 /.editorconfig
 /.nyc_output
 /.vscode

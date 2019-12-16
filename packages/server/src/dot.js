@@ -1,6 +1,6 @@
 import buildGraph from './build-graph'
 import endent from 'endent'
-import { map, join, compact } from '@functions'
+import { map, join, compact } from '@dword-design/functions'
 import path from 'path'
 
 const colors = {
