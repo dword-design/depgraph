@@ -1,8 +1,13 @@
 import dot from '../dot'
 
-export const name = 'dot'
-export const description = 'Generate a DOT file that can be processed by GraphViz'
-export const options = [
-  { name: '-c, --clusters', description: 'Use the folder structure to generate clusters' },
-]
-export const handler = ({ clusters: isClusters } = {}) => dot({ isClusters }).then(dot => console.log(dot))
+export default {
+  name: 'dot',
+  description: 'Generate a DOT file that can be processed by GraphViz',
+  options: [
+    { name: '-c, --clusters', description: 'Use the folder structure to generate clusters' },
+  ],
+  handler: async ({ clusters: isClusters } = {}) => {
+    const dotText = await dot({ isClusters })
+    console.log(dotText)
+  },
+}

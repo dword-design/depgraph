@@ -2,8 +2,9 @@ import depcruise from './depcruise'
 import { flatMap, map, reduce, slice, find } from '@dword-design/functions'
 import path from 'path'
 
-export default () => depcruise()
-  .then(modules => ({
+export default async () => {
+  const modules = await depcruise()
+  return {
     modules: modules |> map('source'),
     rootFolder: modules |> reduce((rootFolder, { source }) => {
 
@@ -32,4 +33,5 @@ export default () => depcruise()
     }, {}),
     dependencies: modules
       |> flatMap(({ source, dependencies }) => dependencies |> map(({ resolved }) => ({ source, target: resolved }))),
-  }))
+  }
+}

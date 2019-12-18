@@ -1,5 +1,10 @@
 import depcruise from '../depcruise'
 
-export const name = 'json'
-export const description = 'Output the dependency structure in JSON format'
-export const handler = () => depcruise().then(modules => console.log(JSON.stringify(modules, undefined, 2)))
+export default {
+  name: 'json',
+  description: 'Output the dependency structure in JSON format',
+  handler: async () => {
+    const modules = await depcruise()
+    console.log(JSON.stringify(modules, undefined, 2))
+  },
+}
