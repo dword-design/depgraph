@@ -12,7 +12,7 @@
     "test": "base test"
   },
   "dependencies": {
-    "@dword-design/reset-sass": "^0.1.4",
+    "@dword-design/reset-sass": "^1.0.0",
     "@dword-design/vue-component": "^0.1.2",
     "@fortawesome/fontawesome-free": "^5.10.2",
     "axios": "^0.19.0",
