@@ -1,6 +1,6 @@
 <script>
 import component from '@dword-design/vue-component'
-import { css } from '@linaria'
+import { css } from 'linaria'
 import SquareIcon from '@fortawesome/fontawesome-free/svgs/regular/square.svg'
 import CheckSquareIcon from '@fortawesome/fontawesome-free/svgs/regular/check-square.svg'
 

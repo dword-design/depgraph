@@ -1,8 +1,8 @@
 <script>
 import component from '@dword-design/vue-component'
-import { css } from '@linaria'
+import { css } from 'linaria'
 import CheckBox from './checkbox.vue'
-import { colorPrimary } from '@variables'
+import { colorPrimary } from '@dword-design/depgraph-variables'
 
 export default component({
   props: {

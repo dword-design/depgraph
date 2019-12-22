@@ -20,23 +20,24 @@ export default {
       .use(express.json())
       .use(express.urlencoded({ extended: true }))
       .use(express.static(path.resolve(__dirname, 'client')))
-      .get('/graph', (req, res) => buildGraph().then(graph => res.send(graph)))
-      .get('/static', (req, res) => dot({ isClusters: req.query.clusters === 'true' })
-        .then(dot => spawn(
+      .get('/graph', async (req, res) => {
+        const graph = await buildGraph()
+        res.send(graph)
+      })
+      .get('/static', async (req, res) => {
+        const dotCode = await dot({ isClusters: req.query.clusters === 'true' })
+        const { stdout: svgCode } = await spawn(
           'dot',
           ['-T', 'svg', ...req.query.flow !== 'true' ? ['-K', 'neato'] : []],
           { capture: ['stdout'] },
         )
           .progress(({ stdin }) => {
-            stdin.write(dot)
+            stdin.write(dotCode)
             stdin.end()
           })
-        )
-        .then(({ stdout: svgCode }) => {
-          res.setHeader('Content-Type', 'image/svg+xml')
-          return res.send(svgCode)
-        })
-      )
+        res.setHeader('Content-Type', 'image/svg+xml')
+        res.send(svgCode)
+      })
 
     app.listen(port)
     console.log(`Depgraph available at http://localhost:${port} …`)
