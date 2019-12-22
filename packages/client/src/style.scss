@@ -1,5 +1,14 @@
 @import '~@dword-design/reset-sass';
 
+html {
+  font-size: 14px;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
 .link {
   stroke: #000;
   stroke-width: 2px;
