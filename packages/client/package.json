@@ -17,6 +17,7 @@
     "test": "base test"
   },
   "dependencies": {
+    "@dword-design/base": "^3.5.0",
     "@dword-design/depgraph-variables": "^1.0.0",
     "@dword-design/functions": "^2.2.4",
     "@dword-design/reset-sass": "^1.0.2",
@@ -31,7 +32,7 @@
   },
   "devDependencies": {
     "@dword-design/base": "^3.5.0",
-    "@dword-design/base-config-vue": "^1.0.1"
+    "@dword-design/base-config-vue-app": "^1.0.0"
   },
   "contributors": [
     "dword-design (http://www.dword-design.de)",
