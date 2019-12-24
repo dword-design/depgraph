@@ -33,6 +33,9 @@
     "@dword-design/base": "^3.5.0",
     "@dword-design/base-config-vue": "^1.0.1"
   },
-  "contributors": [],
+  "contributors": [
+    "dword-design (http://www.dword-design.de)",
+    "Renovate Bot (http://renovatebot.com)"
+  ],
   "maintainers": []
 }

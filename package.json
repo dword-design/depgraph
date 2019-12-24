@@ -23,6 +23,9 @@
   "devDependencies": {
     "@dword-design/base": "^3.5.0"
   },
-  "contributors": [],
+  "contributors": [
+    "Renovate Bot (http://renovatebot.com)",
+    "dword-design (http://www.dword-design.de)"
+  ],
   "maintainers": []
 }

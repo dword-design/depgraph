@@ -27,7 +27,10 @@
     "@dword-design/base": "^3.5.0",
     "@dword-design/base-config-server": "^1.1.2"
   },
-  "contributors": [],
+  "contributors": [
+    "dword-design (http://www.dword-design.de)",
+    "Renovate Bot (http://renovatebot.com)"
+  ],
   "maintainers": [],
   "bugs": {
     "url": "https://github.com/dword-design/depgraph/issues"
