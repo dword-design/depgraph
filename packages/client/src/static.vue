@@ -3,7 +3,7 @@ import component from '@dword-design/vue-component'
 import { css } from 'linaria'
 import axios from 'axios'
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
-import { colorPrimary } from '@dword-design/depgraph-variables'
+import { colorPrimary } from './variables'
 
 export default component({
   props: {

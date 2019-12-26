@@ -18,10 +18,9 @@
   },
   "dependencies": {
     "@dword-design/base": "^3.5.0",
-    "@dword-design/depgraph-variables": "^1.0.0",
     "@dword-design/functions": "^2.2.4",
     "@dword-design/reset-sass": "^1.0.2",
-    "@dword-design/vue-component": "^0.1.2",
+    "@dword-design/vue-component": "^1.0.0",
     "@fortawesome/fontawesome-free": "^5.10.2",
     "axios": "^0.19.0",
     "d3": "4.4.0",
