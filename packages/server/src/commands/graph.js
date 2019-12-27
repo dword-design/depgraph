@@ -1,7 +1,7 @@
 import { spawn } from 'child-process-promise'
 import dot from '../dot'
 import express from 'express'
-import path from 'path'
+import P from 'path'
 import buildGraph from '../build-graph'
 
 export default {
@@ -9,6 +9,7 @@ export default {
   description: 'Output the dependency graph in the browser',
   handler: () => {
     const port = 4000
+    const clientPath = P.dirname(require.resolve('@dword-design/depgraph-client'))
     const app = express()
       .use((req, res, next) => {
         res.header('Access-Control-Allow-Origin', 'http://localhost:8080')
@@ -19,7 +20,7 @@ export default {
       })
       .use(express.json())
       .use(express.urlencoded({ extended: true }))
-      .use(express.static(path.resolve(__dirname, 'client')))
+      .use(express.static(clientPath))
       .get('/graph', async (req, res) => {
         const graph = await buildGraph()
         res.send(graph)

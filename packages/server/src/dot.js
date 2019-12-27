@@ -1,10 +1,7 @@
 import buildGraph from './build-graph'
 import { map, join, compact, endent } from '@dword-design/functions'
 import path from 'path'
-
-const colors = {
-  '.vue': { color: '#000', backgroundColor: '#41f083' },
-}
+import colors from './colors'
 
 export default ({ isClusters } = {}) => buildGraph()
   .then(({ modules, rootFolder, dependencies }) => {

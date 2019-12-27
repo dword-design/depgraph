@@ -1,4 +1,8 @@
 import makeCli from 'make-cli'
 import commands from '.'
+import { mapValues, values } from '@dword-design/functions'
 
-makeCli({ commands, defaultCommandName: 'graph' })
+makeCli({
+  commands: commands |> mapValues((command, name) => ({ name, ...command })) |> values,
+  defaultCommandName: 'graph',
+})
