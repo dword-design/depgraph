@@ -1,6 +1,6 @@
 .DS_Store
-.linaria-cache
 /.editorconfig
+/.eslintrc.json
 /.nyc_output
 /.vscode
 /coverage
