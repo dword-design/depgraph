@@ -30,5 +30,6 @@
   "devDependencies": {
     "@dword-design/base": "^4.0.0",
     "@dword-design/base-config-vue-app": "^1.0.0"
-  }
+  },
+  "baseConfig": "vue-app"
 }
