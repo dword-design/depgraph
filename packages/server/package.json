@@ -1,6 +1,7 @@
 {
   "name": "@dword-design/depgraph",
   "version": "1.0.2",
+  "description": "",
   "repository": "dword-design/depgraph",
   "license": "MIT",
   "author": "Sebastian Landwehr <info@dword-design.de>",
@@ -25,15 +26,8 @@
     "make-cli": "^1.0.13"
   },
   "devDependencies": {
-    "@dword-design/base": "^3.5.0",
+    "@dword-design/base": "^4.0.0",
     "@dword-design/base-config-server": "^1.1.2"
   },
-  "contributors": [
-    "dword-design (http://www.dword-design.de)",
-    "Renovate Bot (http://renovatebot.com)"
-  ],
-  "maintainers": [],
-  "bugs": {
-    "url": "https://github.com/dword-design/depgraph/issues"
-  }
+  "baseConfig": "server"
 }
