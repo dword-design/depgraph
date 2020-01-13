@@ -144,7 +144,7 @@ export default component({
               &.node-component {
                 fill: ${componentBackground};
               }
-            `
+            `,
           )
           .call(this.simulation.drag)
 
