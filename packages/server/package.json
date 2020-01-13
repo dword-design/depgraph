@@ -23,6 +23,7 @@
     "child-process-promise": "^2.2.1",
     "dependency-cruiser": "^4.27.3",
     "express": "^4.17.1",
+    "get-workspaces": "^0.5.2",
     "make-cli": "^1.0.13"
   },
   "devDependencies": {
