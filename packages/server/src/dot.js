@@ -14,7 +14,7 @@ export default ({ isClusters } = {}) => buildGraph()
       const fullPath = [parentPath, name] |> compact |> join('/')
       return name !== ''
         ? endent`
-          subgraph cluster_${fullPath} {
+          subgraph "cluster_${fullPath}" {
             label="${name}"
             ${modulesTemplate(modules)}
             ${folders |> map(folder => clustersTemplate(folder, fullPath)) |> join('\r\n')}
