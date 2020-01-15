@@ -14,6 +14,7 @@ const neg = v => ({ x: -v.x, y: -v.y })
 export default component({
   props: {
     layoutName: {},
+    isDuplicated: {},
     isClusters: {},
   },
   data: () => ({
@@ -24,6 +25,7 @@ export default component({
     allData() {
       return {
         layoutName: this.layoutName,
+        isDuplicated: this.isDuplicated,
         isClusters: this.isClusters,
         graph: this.graph,
       }

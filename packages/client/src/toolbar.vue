@@ -11,9 +11,10 @@ export default component({
   props: {
     engineName: {},
     layoutName: {},
+    isDuplicated: {},
     isClusters: {},
   },
-  render: ({ engineName, layoutName, isClusters, $listeners }) =>
+  render: ({ engineName, layoutName, isDuplicated, isClusters, $listeners }) =>
     <form
       class={ css`
         display: flex;
@@ -55,6 +56,13 @@ export default component({
           { layoutNames |> map(name => <option value={ name }>{ name }</option>) }
         </select>
       </label>
+      <CheckBox
+        class={ css`margin-right: 1rem` }
+        value={ isDuplicated }
+        on-input={ value => $listeners['is-duplicated-change']?.(value) }
+      >
+        Duplicated
+      </CheckBox>
       <CheckBox
         value={ isClusters }
         on-input={ value => $listeners['is-clusters-change']?.(value) }

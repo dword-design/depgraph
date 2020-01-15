@@ -10,9 +10,10 @@ export default component({
     dependencies: [],
     engineName: undefined,
     layoutName: undefined,
+    isDuplicated: false,
     isClusters: false,
   }),
-  render({ engineName = 'dot', layoutName = 'directed', isClusters }) {
+  render({ engineName = 'dot', layoutName = 'directed', isDuplicated, isClusters }) {
     const Engine = engines[engineName]
     return <div
       class={ css`
@@ -27,14 +28,17 @@ export default component({
         class={ css`flex-shrink: 0; z-index: 1` }
         engine-name={ engineName }
         layout-name={ layoutName }
+        is-duplicated={ isDuplicated }
         is-clusters={ isClusters }
         on-engine-name-change={ engineName => this.engineName = engineName }
         on-layout-name-change={ layoutName => this.layoutName = layoutName }
+        on-is-duplicated-change={ isDuplicated => this.isDuplicated = isDuplicated }
         on-is-clusters-change={ isClusters => this.isClusters = isClusters }
       />
       <Engine
         class={ css`height: 100%` }
         layout-name={ layoutName }
+        is-duplicated={ isDuplicated }
         is-clusters={ isClusters }
       />
     </div>

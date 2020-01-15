@@ -26,12 +26,8 @@ export default {
         res.send(graph)
       })
       .get('/dot', async (req, res) => {
-        const dotCode = await dot({ isClusters: req.query.clusters === 'true' })
-        const { stdout: svgCode } = await spawn(
-          'dot',
-          ['-T', 'svg', ...req.query.layout === 'centered' ? ['-K', 'neato'] : []],
-          { capture: ['stdout'] },
-        )
+        const dotCode = await dot({ layoutName: req.query.layout, isDuplicated: req.query.duplicated === 'true', isClusters: req.query.clusters === 'true' })
+        const { stdout: svgCode } = await spawn('dot', ['-T', 'svg'], { capture: ['stdout'] })
           .progress(({ stdin }) => {
             stdin.write(dotCode)
             stdin.end()

@@ -7,6 +7,7 @@ import { colorPrimary } from '../variables'
 export default component({
   props: {
     layoutName: {},
+    isDuplicated: {},
     isClusters: {},
   },
   data: () => ({
@@ -17,6 +18,7 @@ export default component({
     allData() {
       return {
         layoutName: this.layoutName,
+        isDuplicated: this.isDuplicated,
         isClusters: this.isClusters,
       }
     },
@@ -24,12 +26,12 @@ export default component({
   watch: {
     allData: {
       immediate: true,
-      handler({ layoutName, isClusters }) {
+      handler({ layoutName, isDuplicated, isClusters }) {
         this.isLoading = true
         axios.get(
           'http://localhost:4000/dot',
           {
-            params: { layout: layoutName, clusters: isClusters },
+            params: { layout: layoutName, duplicated: isDuplicated, clusters: isClusters },
           },
         )
           .then(({ data: svgCode }) => {

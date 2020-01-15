@@ -1,1 +1,1 @@
-export default ['directed', 'centered', 'duplicated']
+export default ['directed', 'centered']
