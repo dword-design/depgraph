@@ -25,7 +25,7 @@ export default {
         const graph = await buildGraph()
         res.send(graph)
       })
-      .get('/static', async (req, res) => {
+      .get('/dot', async (req, res) => {
         const dotCode = await dot({ isClusters: req.query.clusters === 'true' })
         const { stdout: svgCode } = await spawn(
           'dot',

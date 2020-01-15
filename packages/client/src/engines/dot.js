@@ -27,7 +27,7 @@ export default component({
       handler({ layoutName, isClusters }) {
         this.isLoading = true
         axios.get(
-          'http://localhost:4000/static',
+          'http://localhost:4000/dot',
           {
             params: { layout: layoutName, clusters: isClusters },
           },
