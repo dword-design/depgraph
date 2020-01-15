@@ -1,11 +1,10 @@
-<script>
 import component from '@dword-design/vue-component'
 import * as d3 from 'd3'
 import * as cola from 'webcola'
 import { map, filter, findIndex, forIn } from '@dword-design/functions'
 import path from 'path'
 import { css } from 'linaria'
-import { rasterSize, nodeVerticalPadding, nodeHorizontalPadding, nodeSpacing, groupSpacing, scriptBackground, componentBackground } from './variables'
+import { rasterSize, nodeVerticalPadding, nodeHorizontalPadding, nodeSpacing, groupSpacing, scriptBackground, componentBackground } from '../variables'
 import axios from 'axios'
 
 const vector = (a, b) => ({ x: b.x - a.x, y: b.y - a.y })
@@ -14,7 +13,7 @@ const neg = v => ({ x: -v.x, y: -v.y })
 
 export default component({
   props: {
-    isFlowLayout: {},
+    layoutName: {},
     isClusters: {},
   },
   data: () => ({
@@ -24,7 +23,7 @@ export default component({
   computed: {
     allData() {
       return {
-        isFlowLayout: this.isFlowLayout,
+        layoutName: this.layoutName,
         isClusters: this.isClusters,
         graph: this.graph,
       }
@@ -33,7 +32,7 @@ export default component({
   watch: {
     allData: {
       immediate: true,
-      handler({ graph: { modules = [], dependencies = [], rootFolder = {} }, isFlowLayout, isClusters }) {
+      handler({ graph: { modules = [], dependencies = [], rootFolder = {} }, layoutName, isClusters }) {
         if (this.simulation !== undefined) {
           this.simulation.stop()
           d3.select(this.$el).select('svg').remove()
@@ -86,7 +85,7 @@ export default component({
           .nodes(nodes)
           .links(links)
 
-        if (isFlowLayout) {
+        if (layoutName === 'directed') {
           this.simulation.flowLayout('x', 30)
         }
 
@@ -270,4 +269,3 @@ export default component({
   },
   render: (h, { empty = '' }) => <div class={ css`display: block; padding: 1rem; overflow: auto` + empty }></div>,
 })
-</script>

@@ -3,15 +3,21 @@ import component from '@dword-design/vue-component'
 import { css } from 'linaria'
 import CheckBox from './checkbox.vue'
 import { colorPrimary } from './variables'
+import engines from './engines'
+import { keys, map } from '@dword-design/functions'
+import layoutNames from './layout-names'
 
 export default component({
   props: {
-    config: {},
+    engineName: {},
+    layoutName: {},
+    isClusters: {},
   },
-  render: (h, { config, $listeners }) =>
+  render: ({ engineName, layoutName, isClusters, $listeners }) =>
     <form
       class={ css`
         display: flex;
+        align-items: center;
         color: #fff;
         padding-top: .5rem;
         padding-bottom: .5rem;
@@ -29,23 +35,29 @@ export default component({
       >
         Depgraph
       </span>
+      <label class={ css`margin-right: 1rem` }>
+        <span class={ css`margin-right: .5rem` }>Engine:</span>
+        <select
+          class={ css`background: transparent; border: 1px solid #fff` }
+          value={ engineName }
+          on-input={ ({ target: { value } }) => $listeners['engine-name-change']?.(value) }
+        >
+          { engines |> keys |> map(name => <option value={ name }>{ name }</option>) }
+        </select>
+      </label>
+      <label class={ css`margin-right: 1rem` }>
+        <span class={ css`margin-right: .5rem` }>Layout:</span>
+        <select
+          class={ css`background: transparent; border: 1px solid #fff` }
+          value={ layoutName }
+          on-input={ ({ target: { value } }) => $listeners['layout-name-change']?.(value) }
+        >
+          { layoutNames |> map(name => <option value={ name }>{ name }</option>) }
+        </select>
+      </label>
       <CheckBox
-        class={ css`margin-right: 1rem` }
-        value={ config.isSimulation }
-        on-change={ isSimulation => $listeners.change?.({ ...config, isSimulation }) }
-      >
-        Simulation
-      </CheckBox>
-      <CheckBox
-        class={ css`margin-right: 1rem` }
-        value={ config.isFlowLayout }
-        on-change={ isFlowLayout => $listeners.change?.({ ...config, isFlowLayout }) }
-      >
-        Flow Layout
-      </CheckBox>
-      <CheckBox
-        value={ config.isClusters }
-        on-change={ isClusters => $listeners.change?.({ ...config, isClusters }) }
+        value={ isClusters }
+        on-input={ value => $listeners['is-clusters-change']?.(value) }
       >
         Clusters
       </CheckBox>

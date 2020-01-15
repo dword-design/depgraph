@@ -29,7 +29,7 @@ export default {
         const dotCode = await dot({ isClusters: req.query.clusters === 'true' })
         const { stdout: svgCode } = await spawn(
           'dot',
-          ['-T', 'svg', ...req.query.flow !== 'true' ? ['-K', 'neato'] : []],
+          ['-T', 'svg', ...req.query.layout === 'centered' ? ['-K', 'neato'] : []],
           { capture: ['stdout'] },
         )
           .progress(({ stdin }) => {

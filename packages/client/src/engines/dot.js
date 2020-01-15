@@ -1,13 +1,12 @@
-<script>
 import component from '@dword-design/vue-component'
 import { css } from 'linaria'
 import axios from 'axios'
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
-import { colorPrimary } from './variables'
+import { colorPrimary } from '../variables'
 
 export default component({
   props: {
-    isFlowLayout: {},
+    layoutName: {},
     isClusters: {},
   },
   data: () => ({
@@ -17,7 +16,7 @@ export default component({
   computed: {
     allData() {
       return {
-        isFlowLayout: this.isFlowLayout,
+        layoutName: this.layoutName,
         isClusters: this.isClusters,
       }
     },
@@ -25,12 +24,12 @@ export default component({
   watch: {
     allData: {
       immediate: true,
-      handler({ isFlowLayout, isClusters }) {
+      handler({ layoutName, isClusters }) {
         this.isLoading = true
         axios.get(
           'http://localhost:4000/static',
           {
-            params: { flow: isFlowLayout, clusters: isClusters },
+            params: { layout: layoutName, clusters: isClusters },
           },
         )
           .then(({ data: svgCode }) => {
@@ -74,4 +73,3 @@ export default component({
       </div>
     </div>,
 })
-</script>

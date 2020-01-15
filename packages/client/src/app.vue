@@ -1,18 +1,19 @@
 <script>
 import component from '@dword-design/vue-component'
 import Toolbar from './toolbar.vue'
-import Static from './static.vue'
-import Simulation from './simulation.vue'
 import { css } from 'linaria'
+import engines from './engines'
 
 export default component({
   data: () => ({
     modules: [],
     dependencies: [],
-    config: { default: {} },
+    engineName: undefined,
+    layoutName: undefined,
+    isClusters: false,
   }),
-  render(h, { empty = '' }) {
-    const MainComponent = this.config.isSimulation ? Simulation : Static
+  render({ engineName = 'dot', layoutName = 'directed', isClusters }) {
+    const Engine = engines[engineName]
     return <div
       class={ css`
         height: 100%;
@@ -20,17 +21,21 @@ export default component({
         flex-direction: column;
         background: #fafafa;
         font-family: Verdana, sans-serif
-      ` + empty }
+      ` }
     >
       <Toolbar
         class={ css`flex-shrink: 0; z-index: 1` }
-        config={ this.config }
-        on-change={ config => this.config = config }
+        engine-name={ engineName }
+        layout-name={ layoutName }
+        is-clusters={ isClusters }
+        on-engine-name-change={ engineName => this.engineName = engineName }
+        on-layout-name-change={ layoutName => this.layoutName = layoutName }
+        on-is-clusters-change={ isClusters => this.isClusters = isClusters }
       />
-      <MainComponent
+      <Engine
         class={ css`height: 100%` }
-        is-flow-layout={ this.config.isFlowLayout }
-        is-clusters={ this.config.isClusters }
+        layout-name={ layoutName }
+        is-clusters={ isClusters }
       />
     </div>
   },

@@ -14,7 +14,7 @@ export default component({
         class={ css`margin-right: .5rem; appearance: none` }
         type="checkbox"
         value={ value }
-        on-change={ ({ target }) => $listeners.change?.(target.checked) }
+        on-change={ ({ target }) => $listeners.input?.(target.checked) }
       />
       { (() => {
         const Icon = value ? CheckSquareIcon : SquareIcon
