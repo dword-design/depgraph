@@ -1,14 +1,9 @@
 import buildGraph from './build-graph'
 import { map, join, compact, endent, every, reduce, filter } from '@dword-design/functions'
-import P from 'path'
-import colors from './colors'
+import getModuleAttributes from './get-module-attributes'
 
 export default async ({ layoutName, isDuplicated, isClusters } = {}) => {
   const { modules, rootFolder, dependencies } = await buildGraph()
-  const getModuleAttributes = name => {
-    const { color, backgroundColor } = colors[name |> P.extname] ?? {}
-    return `[label="${isClusters ? (name |> P.basename) : name}"${color !== undefined ? ` fontcolor="${color}"` : ''}${backgroundColor !== undefined ? ` fillcolor="${backgroundColor}"` : ''}]`
-  }
   const content = isDuplicated
     ? (() => {
       const sources = modules |> filter(module => dependencies |> every(({ target }) => target !== module))
@@ -18,7 +13,7 @@ export default async ({ layoutName, isDuplicated, isClusters } = {}) => {
             const targets = dependencies |> filter({ source: module }) |> map('target')
             return endent`
               ${content}
-              "${prefix}${module}" ${getModuleAttributes(module)}
+              "${prefix}${module}" ${getModuleAttributes(module, { isClusters })}
               ${targets |> map(target => `"${prefix}${module}" -> "${prefix}${module}:${target}"`) |> join('\n')}
               ${getContent(targets, `${prefix}${module}:`)}
             `
@@ -28,7 +23,7 @@ export default async ({ layoutName, isDuplicated, isClusters } = {}) => {
       return ''
     })()
     : (() => {
-      const modulesTemplate = (modules = []) => modules |> map(name => `"${name}" ${getModuleAttributes(name)}`) |> join('\n')
+      const modulesTemplate = (modules = []) => modules |> map(name => `"${name}" ${getModuleAttributes(name, { isClusters })}`) |> join('\n')
       const clustersTemplate = ({ name = '', modules, folders }, parentPath = '') => {
         const fullPath = [parentPath, name] |> compact |> join('/')
         return name !== ''
@@ -47,14 +42,14 @@ export default async ({ layoutName, isDuplicated, isClusters } = {}) => {
       return endent`
         ${isClusters ? clustersTemplate(rootFolder) : modulesTemplate(modules)}
 
-        ${dependencies |> map(({ source, target }) => `"${source}" -> "${target}" [penwidth=2.0]`) |> join('\n')}
+        ${dependencies |> map(({ source, target }) => `"${source}" -> "${target}"`) |> join('\n')}
       `
     })()
 
   return endent`
     strict digraph G {
       ordering=out
-      rankdir=LR
+      rankdir=RL
       splines=true
       overlap=false
       nodesep=0.3
