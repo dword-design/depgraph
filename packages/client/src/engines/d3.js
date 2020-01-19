@@ -260,14 +260,14 @@ export default component({
       },
     },
   },
-  mounted() {
-    axios.get('http://localhost:4000/graph')
-      .then(({ data }) => this.graph = data)
+  async mounted() {
+    const { data } = await axios.get('http://localhost:4000/graph')
+    this.graph = data
   },
   beforeDestroy() {
     if (this.simulation !== undefined) {
       this.simulation.stop()
     }
   },
-  render: (h, { empty = '' }) => <div class={ css`display: block; padding: 1rem; overflow: auto` + empty }></div>,
+  render: () => <div class={ css`display: block; padding: 1rem; overflow: auto` }></div>,
 })

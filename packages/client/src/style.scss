@@ -9,7 +9,11 @@ body {
   height: 100%;
 }
 
-.link {
+.icon path {
+  fill: currentColor !important;
+}
+
+/*.link {
   stroke: #000;
   stroke-width: 2px;
   stroke-opacity: .5;
@@ -30,8 +34,4 @@ body {
     font-size: 10px;
     text-anchor: middle;
     cursor: move;
-}
-
-.icon path {
-  fill: currentColor !important;
-}
+}*/
