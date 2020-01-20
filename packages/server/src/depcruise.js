@@ -1,11 +1,13 @@
 import { spawn } from 'child-process-promise'
-import { mapValues, property, map, pickBy, replace, values, some } from '@dword-design/functions'
+import { mapValues, property, map, pickBy, values, some, filter } from '@dword-design/functions'
 import getWorkspaces from 'get-workspaces'
+import config from './config'
+import multimatch from 'multimatch'
 
 export default async () => {
   const workspaces = await getWorkspaces()
-  if (workspaces !== null && workspaces.length > 0) {
-    return workspaces
+  return (workspaces !== null && workspaces.length > 0
+    ? workspaces
       |> map(({ name, config: { dependencies = {} } }) => ({
         source: name,
         dependencies: dependencies
@@ -13,34 +15,24 @@ export default async () => {
           |> mapValues((version, name) => ({ resolved: name }))
           |> values,
       }))
-  } else {
-    const { stdout } = await spawn(
+    : spawn(
       'depcruise',
       [
         '--exclude', /(^|\\|\/)node_modules(\\|\/)/.source,
-        '--include-only', /(^|\\|\/)(src|dist)(\\|\/)/.source,
-        '--do-not-follow', /(^|\\|\/)dist(\\|\/)/.source,
         '--output-type', 'json',
-        '.',
+        'src',
       ],
-      { capture: ['stdout'] }
+      { capture: ['stdout'] },
     )
-    const cleanPath = path => path
-      |> replace(/^packages(\\|\/)/, '')
-      |> replace(/(^|\\|\/)(src|dist)(\\|\/)/, '$1')
-
-    return stdout
+      |> await
+      |> property('stdout')
       |> JSON.parse
       |> property('modules')
-      |> pickBy(({ source }) => !/(^|\\|\/)dist(\\|\/)/.test(source))
-      |> mapValues(module => ({
-        ...module,
-        source: module.source |> cleanPath,
-        dependencies: module.dependencies
-          |> map(dependency => ({
-            ...dependency,
-            resolved: dependency.resolved |> cleanPath,
-          })),
-      }))
-  }
+  )
+    |> filter(({ source }) => multimatch(source, config.ignoreMatches).length === 0)
+    |> map(module => ({
+      ...module,
+      dependencies: module.dependencies
+        |> filter(({ resolved }) => multimatch(resolved, config.ignoreMatches).length === 0),
+    }))
 }
