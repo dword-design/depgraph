@@ -24,7 +24,7 @@ export default {
       .use(express.json())
       .use(express.urlencoded({ extended: true }))
       .use(express.static(clientPath))
-      .get('/graph', async (req, res) => {
+      .get('/modules', async (req, res) => {
         const modules = await depcruise({ isDuplicated: req.query.duplicated === 'true' })
         res.send(modules)
       })

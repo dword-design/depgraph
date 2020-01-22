@@ -36,7 +36,7 @@ export default component({
       async handler(isDuplicated) {
         this.isLoading = true
         const { data } = await axios.get(
-          'http://localhost:4000/graph',
+          'http://localhost:4000/modules',
           { params: { duplicated: isDuplicated } },
         )
         this.modules = data
