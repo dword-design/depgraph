@@ -42,7 +42,7 @@ export default component({
     },
   },
   render: (h, { svgCode, isLoading }) =>
-    <div class={ css`height: 100%; position: relative` }>
+    <div class={ css`height: 100%; position: relative; overflow: auto` }>
       <transition
         enter-active-class={ css`opacity: 0; transition: opacity .5s;` }
         enter-to-class={ css`opacity: 1` }
@@ -70,8 +70,6 @@ export default component({
         color={ colorPrimary }
         loading={ isLoading }
       />
-      <div class={ css`height: 100%; overflow: auto` }>
-        <div domPropsInnerHTML={ svgCode }></div>
-      </div>
+      <div domPropsInnerHTML={ svgCode }></div>
     </div>,
 })

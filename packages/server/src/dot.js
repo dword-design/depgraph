@@ -1,50 +1,32 @@
-import buildGraph from './build-graph'
-import { map, join, compact, endent, every, reduce, filter } from '@dword-design/functions'
-import getModuleAttributes from './get-module-attributes'
+import depcruise from './depcruise'
+import { map, join, endent, flatMap } from '@dword-design/functions'
 
-export default async ({ layoutName, isDuplicated, isClusters } = {}) => {
-  const { modules, rootFolder, dependencies } = await buildGraph()
-  const content = isDuplicated
-    ? (() => {
-      const sources = modules |> filter(module => dependencies |> every(({ target }) => target !== module))
-      if (sources.length > 0) {
-        const getContent = (modules, prefix = '') => modules
-          |> reduce((content, module) => {
-            const targets = dependencies |> filter({ source: module }) |> map('target')
-            return endent`
-              ${content}
-              "${prefix}${module}" ${getModuleAttributes(module, { isClusters })}
-              ${targets |> map(target => `"${prefix}${module}" -> "${prefix}${module}:${target}"`) |> join('\n')}
-              ${getContent(targets, `${prefix}${module}:`)}
-            `
-          }, '')
-        return getContent(sources)
-      }
-      return ''
-    })()
-    : (() => {
-      const modulesTemplate = (modules = []) => modules |> map(name => `"${name}" ${getModuleAttributes(name, { isClusters })}`) |> join('\n')
-      const clustersTemplate = ({ name = '', modules, folders }, parentPath = '') => {
-        const fullPath = [parentPath, name] |> compact |> join('/')
-        return name !== ''
-          ? endent`
-            subgraph "cluster_${fullPath}" {
-              label="${name}"
-              ${modulesTemplate(modules)}
-              ${folders |> map(folder => clustersTemplate(folder, fullPath)) |> join('\n')}
-            }
-          `
-          : endent`
-            ${modulesTemplate(modules)}
-            ${folders |> map(folder => clustersTemplate(folder, fullPath)) |> join('\n')}
-          `
-      }
-      return endent`
-        ${isClusters ? clustersTemplate(rootFolder) : modulesTemplate(modules)}
-
-        ${dependencies |> map(({ source, target }) => `"${source}" -> "${target}"`) |> join('\n')}
+export default async ({ layoutName, isDuplicated } = {}) => {
+  const modules = await depcruise({ isDuplicated })
+  const nodes = modules
+    |> map(({ source, label }) => `"${source}" [label="${label}"]`)
+    |> join('\n')
+  /*const clustersTemplate = ({ name = '', modules, folders }, parentPath = '') => {
+    const fullPath = [parentPath, name] |> compact |> join('/')
+    return name !== ''
+      ? endent`
+        subgraph "cluster_${fullPath}" {
+          label="${name}"
+          ${modulesTemplate(modules)}
+          ${folders |> map(folder => clustersTemplate(folder, fullPath)) |> join('\n')}
+        }
       `
-    })()
+      : endent`
+        ${modulesTemplate(modules)}
+        ${folders |> map(folder => clustersTemplate(folder, fullPath)) |> join('\n')}
+      `
+  }*/
+
+  const edges = modules
+    |> flatMap(({ source, dependencies }) =>
+      dependencies |> map(target => `"${source}" -> "${target}"`)
+    )
+    |> join('\n')
 
   return endent`
     strict digraph G {
@@ -63,7 +45,8 @@ export default async ({ layoutName, isDuplicated, isClusters } = {}) => {
       edge [color="#00000077" penwidth=2.0 arrowhead=normal fontname=Helvetica fontsize=9]
       ${layoutName === 'centered' ? 'layout=neato' : ''}
 
-      ${content}
+      ${/*isClusters ? clustersTemplate(rootFolder) : */nodes}
+      ${edges}
     }
   `
 }

@@ -1,11 +1,12 @@
 import component from '@dword-design/vue-component'
 import * as d3 from 'd3'
 import * as cola from 'webcola'
-import { map, filter, findIndex, forIn } from '@dword-design/functions'
+import { map, flatMap, findIndex } from '@dword-design/functions'
 import path from 'path'
 import { css } from 'linaria'
-import { rasterSize, nodeVerticalPadding, nodeHorizontalPadding, nodeSpacing, groupSpacing, scriptBackground, componentBackground } from '../variables'
+import { rasterSize, nodeVerticalPadding, nodeHorizontalPadding, nodeSpacing, scriptBackground, componentBackground, colorPrimary } from '../variables'
 import axios from 'axios'
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
 const vector = (a, b) => ({ x: b.x - a.x, y: b.y - a.y })
 const add = (a, b) => ({ x: a.x + b.x, y: a.y + b.y })
@@ -15,53 +16,51 @@ export default component({
   props: {
     layoutName: {},
     isDuplicated: {},
-    isClusters: {},
   },
   data: () => ({
-    graph: {},
+    modules: {},
     simulation: undefined,
+    isLoading: undefined,
   }),
   computed: {
-    allData() {
+    clientData() {
       return {
+        modules: this.modules,
         layoutName: this.layoutName,
-        isDuplicated: this.isDuplicated,
-        isClusters: this.isClusters,
-        graph: this.graph,
       }
     },
   },
   watch: {
-    allData: {
+    isDuplicated: {
       immediate: true,
-      handler({ graph: { modules = [], dependencies = [], rootFolder = {} }, layoutName, isClusters }) {
+      async handler(isDuplicated) {
+        this.isLoading = true
+        const { data } = await axios.get(
+          'http://localhost:4000/graph',
+          { params: { duplicated: isDuplicated } },
+        )
+        this.modules = data
+        this.isLoading = false
+      },
+    },
+    clientData: {
+      handler({ modules }) {
         if (this.simulation !== undefined) {
           this.simulation.stop()
-          d3.select(this.$el).select('svg').remove()
         }
+        d3.select(this.$el).select('svg').remove()
 
-        const nodes = modules |> map(module => ({
-          name: isClusters ? path.basename(module) : module,
-          fullName: module,
+        const nodes = modules |> map(({ label }) => ({
+          name: /*this.isClusters ? path.basename(module) : */label,
+          //fullName: module,
         }))
 
-        const links = dependencies
-          |> map(({ source, target }) => {
-            const sourceIndex = nodes |> findIndex({ fullName: source })
-            const targetIndex = nodes |> findIndex({ fullName: target })
-            if (sourceIndex === -1) {
-              console.log(`Module ${source} does not exist.`)
-            }
-            if (targetIndex === -1) {
-              console.log(`Module ${target} does not exist.`)
-            }
-            if (sourceIndex !== -1 && targetIndex !== -1) {
-              return { source: sourceIndex, target: targetIndex }
-            }
-          })
-          |> filter(x => x !== undefined)
+        const links = modules
+          |> flatMap(({ dependencies }, source) => dependencies
+            |> map(dependency => ({ source, target: modules |> findIndex({ source: dependency }) })),
+          )
 
-        const groups = isClusters
+        /*const groups = isClusters
           ? (() => {
             const groups = []
             const rec = (folder, parent) => {
@@ -78,7 +77,7 @@ export default component({
             rec(rootFolder)
             return groups
           })()
-          : []
+          : []*/
 
         this.simulation = cola.d3adaptor(d3)
           .linkDistance(1000)
@@ -87,13 +86,13 @@ export default component({
           .nodes(nodes)
           .links(links)
 
-        if (layoutName === 'directed') {
+        if (this.layoutName === 'directed') {
           this.simulation.flowLayout('x', 30)
         }
 
-        if (isClusters) {
+        /*if (isClusters) {
           this.simulation.groups(groups)
-        }
+        }*/
 
         const svg = d3
           .select(this.$el)
@@ -112,7 +111,7 @@ export default component({
           .attr('stroke-width','0px')
           .attr('color','rgba(0,0,0,.5)')
 
-        const group = isClusters
+        /*const group = isClusters
           ? svg
             .selectAll('.group')
             .data(groups)
@@ -126,7 +125,7 @@ export default component({
               ry: ${rasterSize/2};
             `)
             .call(this.simulation.drag)
-          : undefined
+          : undefined*/
 
         const node = svg
           .selectAll('.node')
@@ -157,7 +156,13 @@ export default component({
           .selectAll('.label')
           .data(nodes)
           .enter().append('text')
-          .attr('class', 'label')
+          .attr('class', css`
+            fill: #000;
+            font-family: Verdana;
+            font-size: 10px;
+            text-anchor: middle;
+            cursor: move;
+          `)
           .text(({ name }) => name)
           .call(this.simulation.drag)
           .each(function (d) {
@@ -166,25 +171,36 @@ export default component({
             d.height = b.height + 2*nodeVerticalPadding + 2*nodeSpacing
           })
 
-        const groupLabel = isClusters
+        /*const groupLabel = isClusters
           ? svg
             .selectAll('.group-label')
             .data(groups)
             .enter().append('text')
-            .attr('class', 'group-label')
+            .attr('class', css`
+              fill: #000;
+              font-family: Verdana;
+              font-size: 10px;
+              text-anchor: middle;
+              cursor: move;
+            `)
             .text(({ name }) => name)
             .each(function (d) {
               const b = this.getBBox()
               d.minWidth = b.width
               d.labelHeight = b.height
             })
-          : undefined
+          : undefined*/
 
         const link = svg
           .selectAll('.link')
           .data(links)
           .enter().append('line')
-          .attr('class', 'link')
+          .attr('class', css`
+            stroke: #000;
+            stroke-width: 2px;
+            stroke-opacity: .5;
+            marker-end: url(#end-arrow);
+          `)
 
         this.simulation.start()//100, 10, 1000)
 
@@ -232,7 +248,7 @@ export default component({
               return y + this.getBBox().height/4 - nodeSpacing
             })
 
-          if (isClusters) {
+          /*if (isClusters) {
             group
               .attr('x', ({ bounds }) => bounds.x)
               .attr('y', ({ bounds, labelHeight }) => bounds.y - labelHeight)
@@ -247,27 +263,52 @@ export default component({
             groupLabel
               .attr('x', ({ bounds }) => bounds.x + bounds.width()/2)
               .attr('y', ({ bounds }) => bounds.y + rasterSize/2)
-          }
+          }*/
 
           if (svg.node() !== null) {
-            const bbox = svg.node().getBBox()
+            const { x, y, width, height } = svg.node().getBBox()
             svg
-              .attr('width', bbox.width)
-              .attr('height', bbox.height)
-              .attr('viewBox', `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`)
+              .attr('width', width + 1)
+              .attr('height', height + 1)
+              .attr('viewBox', `${x - 1} ${y - 1} ${width + 1} ${height + 1}`)
           }
         })
       },
     },
-  },
-  async mounted() {
-    const { data } = await axios.get('http://localhost:4000/graph')
-    this.graph = data
   },
   beforeDestroy() {
     if (this.simulation !== undefined) {
       this.simulation.stop()
     }
   },
-  render: () => <div class={ css`display: block; padding: 1rem; overflow: auto` }></div>,
+  render: ({ isLoading }) =>
+    <div class={ css`height: 100%; position: relative; overflow: auto; padding: 1rem` }>
+      <transition
+        enter-active-class={ css`opacity: 0; transition: opacity .5s;` }
+        enter-to-class={ css`opacity: 1` }
+        leave-active-class={ css`opacity: 1; transition: opacity .5s` }
+        leave-to-class={ css`opacity: 0` }
+      >
+        { isLoading && <div
+          class={ css`
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255, .6);
+          ` }
+        /> }
+      </transition>
+      <PulseLoader
+        class={ css`
+          position: absolute;
+          left: 50%;
+          top: 30%;
+          transform: translate(-50%, -50%);
+        ` }
+        color={ colorPrimary }
+        loading={ isLoading }
+      />
+    </div>,
 })
