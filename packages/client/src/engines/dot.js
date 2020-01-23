@@ -2,7 +2,7 @@ import component from '@dword-design/vue-component'
 import { css } from 'linaria'
 import axios from 'axios'
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
-import { colorPrimary } from '../variables'
+import { primaryColor } from '@dword-design/depgraph-variables'
 
 export default component({
   props: {
@@ -67,7 +67,7 @@ export default component({
           top: 30%;
           transform: translate(-50%, -50%);
         ` }
-        color={ colorPrimary }
+        color={ primaryColor }
         loading={ isLoading }
       />
       <div domPropsInnerHTML={ svgCode }></div>

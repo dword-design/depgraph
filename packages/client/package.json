@@ -15,6 +15,7 @@
     "test": "base test"
   },
   "dependencies": {
+    "@dword-design/depgraph-variables": "^1.0.0",
     "@dword-design/functions": "^2.2.4",
     "@dword-design/reset-sass": "^1.0.2",
     "@dword-design/vue-component": "^1.0.0",
@@ -24,8 +25,7 @@
     "dagre-d3": "^0.6.4",
     "linaria": "dword-design/linaria#fork",
     "vue": "^2.6.10",
-    "vue-spinner": "^1.0.3",
-    "webcola": "^3.4.0"
+    "vue-spinner": "^1.0.3"
   },
   "devDependencies": {
     "@dword-design/base": "^4.0.0",

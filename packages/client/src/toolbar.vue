@@ -2,7 +2,7 @@
 import component from '@dword-design/vue-component'
 import { css } from 'linaria'
 import CheckBox from './checkbox.vue'
-import { colorPrimary } from './variables'
+import { primaryColor } from '@dword-design/depgraph-variables'
 import engines from './engines'
 import { keys, map } from '@dword-design/functions'
 import layoutNames from './layout-names'
@@ -22,7 +22,7 @@ export default component({
         color: #fff;
         padding-top: .5rem;
         padding-bottom: .5rem;
-        background: ${colorPrimary};
+        background: ${primaryColor};
         box-shadow: 0 0 0.5rem 0 rgba(0,0,0,.4);
       ` }
     >

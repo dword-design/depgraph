@@ -1,16 +1,30 @@
 import component from '@dword-design/vue-component'
 import * as d3 from 'd3'
-import * as cola from 'webcola'
-import { map, flatMap, findIndex } from '@dword-design/functions'
-import path from 'path'
+import { map, flatMap } from '@dword-design/functions'
 import { css } from 'linaria'
-import { rasterSize, nodeVerticalPadding, nodeHorizontalPadding, nodeSpacing, scriptBackground, componentBackground, colorPrimary } from '../variables'
+import { edgeColor, edgeWidth, externalEdgeColor, externalEdgeWidth, nodeBorderColor, nodeBorderRadius, nodeVerticalPadding, nodeHorizontalPadding, nodeSpacing, externalNodeBackgroundColor, externalNodeBorderColor, nodeBackgroundColor, primaryColor } from '@dword-design/depgraph-variables'
 import axios from 'axios'
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
 const vector = (a, b) => ({ x: b.x - a.x, y: b.y - a.y })
 const add = (a, b) => ({ x: a.x + b.x, y: a.y + b.y })
 const neg = v => ({ x: -v.x, y: -v.y })
+
+const drag = simulation => d3.drag()
+  .on('start', d => {
+    if (!d3.event.active) simulation.alphaTarget(0.3).restart()
+    d.fx = d.x
+    d.fy = d.y
+  })
+  .on('drag', d => {
+    d.fx = d3.event.x
+    d.fy = d3.event.y
+  })
+  .on('end', d => {
+    if (!d3.event.active) simulation.alphaTarget(0)
+    d.fx = undefined
+    d.fy = undefined
+  })
 
 export default component({
   props: {
@@ -50,14 +64,15 @@ export default component({
         }
         d3.select(this.$el).select('svg').remove()
 
-        const nodes = modules |> map(({ label }) => ({
-          name: /*this.isClusters ? path.basename(module) : */label,
-          //fullName: module,
+        const nodes = modules |> map(module => ({
+          ...module,
+          id: module.source,
+          name: /*this.isClusters ? path.basename(module) : */module.label,
         }))
 
         const links = modules
-          |> flatMap(({ dependencies }, source) => dependencies
-            |> map(dependency => ({ source, target: modules |> findIndex({ source: dependency }) })),
+          |> flatMap(({ source, dependencies }) => dependencies
+            |> map(dependency => ({ ...dependency, source })),
           )
 
         /*const groups = isClusters
@@ -79,16 +94,11 @@ export default component({
           })()
           : []*/
 
-        this.simulation = cola.d3adaptor(d3)
-          .linkDistance(1000)
-          .avoidOverlaps(true)
-          .symmetricDiffLinkLengths(40)
+        this.simulation = d3.forceSimulation()
           .nodes(nodes)
-          .links(links)
-
-        if (this.layoutName === 'directed') {
-          this.simulation.flowLayout('x', 30)
-        }
+          .force('repulsive', d3.forceManyBody(-200))
+          .force('collide', d3.forceCollide(70))
+          .force('links', d3.forceLink(links).id(({ id }) => id))
 
         /*if (isClusters) {
           this.simulation.groups(groups)
@@ -97,6 +107,7 @@ export default component({
         const svg = d3
           .select(this.$el)
           .append('svg')
+          .attr('class', css`overflow: visible`)
 
         svg
           .append('svg:defs').append('svg:marker')
@@ -109,7 +120,7 @@ export default component({
           .append('svg:path')
           .attr('d','M0,-5L10,0L0,5L2,0')
           .attr('stroke-width','0px')
-          .attr('color','rgba(0,0,0,.5)')
+          .attr('fill', edgeColor)
 
         /*const group = isClusters
           ? svg
@@ -131,22 +142,22 @@ export default component({
           .selectAll('.node')
           .data(nodes)
           .enter().append('rect')
-          .attr('class', ({ name }) =>
-            `${path.extname(name) === '.vue' ? 'node-component' : ''} `
+          .attr('class', ({ isExternal }) => `${isExternal ? 'is-external' : ''} `
             + css`
               cursor: move;
-              stroke: #000;
-              rx: ${rasterSize/4};
-              ry: ${rasterSize/4};
-              &:not(.node-component) {
-                fill: ${scriptBackground};
+              rx: ${nodeBorderRadius};
+              ry: ${nodeBorderRadius};
+              &:not(.is-external) {
+                fill: ${nodeBackgroundColor};
+                stroke: ${nodeBorderColor};
               }
-              &.node-component {
-                fill: ${componentBackground};
+              &.is-external {
+                fill: ${externalNodeBackgroundColor};
+                stroke: ${externalNodeBorderColor};
               }
             `,
           )
-          .call(this.simulation.drag)
+          .call(drag(this.simulation))
 
         node
           .append('title')
@@ -164,7 +175,7 @@ export default component({
             cursor: move;
           `)
           .text(({ name }) => name)
-          .call(this.simulation.drag)
+          .call(drag(this.simulation))
           .each(function (d) {
             const b = this.getBBox()
             d.width = b.width + 2*nodeHorizontalPadding + 2*nodeSpacing
@@ -195,19 +206,23 @@ export default component({
           .selectAll('.link')
           .data(links)
           .enter().append('line')
-          .attr('class', css`
-            stroke: #000;
-            stroke-width: 2px;
-            stroke-opacity: .5;
-            marker-end: url(#end-arrow);
-          `)
-
-        this.simulation.start()//100, 10, 1000)
+          .attr('class', ({ isExternal }) => `${isExternal ? 'is-external' : ''} `
+            + css`
+              marker-end: url(#end-arrow);
+              &:not(.is-external) {
+                stroke: ${edgeColor};
+                stroke-width: ${edgeWidth}px;
+              }
+              &.is-external {
+                stroke: ${externalEdgeColor};
+                stroke-width: ${externalEdgeWidth}px;
+              }
+            `,
+          )
 
         this.simulation.on('tick', () => {
           link
             .each(function ({ source, target }) {
-
               const getNodeOffset = (node, direction) => {
                 const width = source.width/2 - nodeSpacing
                 const height = source.height/2 - nodeSpacing
@@ -268,9 +283,9 @@ export default component({
           if (svg.node() !== null) {
             const { x, y, width, height } = svg.node().getBBox()
             svg
-              .attr('width', width + 1)
-              .attr('height', height + 1)
-              .attr('viewBox', `${x - 1} ${y - 1} ${width + 1} ${height + 1}`)
+              .attr('width', width)
+              .attr('height', height)
+              .attr('viewBox', `${x} ${y} ${width} ${height}`)
           }
         })
       },
@@ -307,7 +322,7 @@ export default component({
           top: 30%;
           transform: translate(-50%, -50%);
         ` }
-        color={ colorPrimary }
+        color={ primaryColor }
         loading={ isLoading }
       />
     </div>,
