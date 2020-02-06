@@ -1,4 +1,3 @@
-<script>
 import component from '@dword-design/vue-component'
 import { css } from 'linaria'
 import SquareIcon from '@fortawesome/fontawesome-free/svgs/regular/square.svg'
@@ -23,4 +22,3 @@ export default component({
       <span class={ css`cursor: pointer` }>{ $scopedSlots.default?.() }</span>
     </label>,
 })
-</script>

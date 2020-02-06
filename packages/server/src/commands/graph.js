@@ -11,7 +11,7 @@ export default {
     const port = 4000
     const clientPath = P.resolve(
       require.resolve('@dword-design/depgraph-client/package.json') |> P.dirname,
-      'dist'
+      'dist',
     )
     const app = express()
       .use((req, res, next) => {

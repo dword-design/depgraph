@@ -5,7 +5,7 @@ import { css } from 'linaria'
 import axios from 'axios'
 import dagreD3 from 'dagre-d3'
 import { edgeWidth, externalEdgeColor, externalEdgeWidth, nodeBorderColor, edgeColor, primaryColor, nodeBackgroundColor, externalNodeBackgroundColor, externalNodeBorderColor, nodeBorderRadius } from '@dword-design/depgraph-variables'
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+import { PulseLoader } from 'vue-spinner/dist/vue-spinner'
 
 export default component({
   props: {
