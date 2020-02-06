@@ -1,7 +1,6 @@
-<script>
 import component from '@dword-design/vue-component'
 import { css } from 'linaria'
-import CheckBox from './checkbox.vue'
+import CheckBox from './checkbox'
 import { primaryColor } from '@dword-design/depgraph-variables'
 import engines from './engines'
 import { keys, map } from '@dword-design/functions'
@@ -71,4 +70,3 @@ export default component({
       </CheckBox>
     </form>,
 })
-</script>

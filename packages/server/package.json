@@ -5,15 +5,18 @@
   "repository": "dword-design/depgraph",
   "license": "MIT",
   "author": "Sebastian Landwehr <info@dword-design.de>",
-  "files": [
-    "dist"
-  ],
   "main": "dist/index.js",
   "bin": {
     "depgraph": "./dist/cli.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "prepublishOnly": "base build",
+    "depgraph": "base depgraph",
+    "dev": "base dev",
+    "prepare": "base prepare",
+    "prepublishOnly": "base prepublishOnly",
     "start": "base start",
     "test": "base test"
   },
@@ -32,7 +35,7 @@
     "require-package-name": "^2.0.1"
   },
   "devDependencies": {
-    "@dword-design/base": "^4.0.0",
+    "@dword-design/base": "^5.0.0",
     "@dword-design/base-config-server": "^1.1.2"
   },
   "baseConfig": "server"

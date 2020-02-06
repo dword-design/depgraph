@@ -23,7 +23,7 @@ export default async ({ layoutName, isDuplicated } = {}) => {
             fillcolor: externalNodeBackgroundColor,
           }
           : {},
-      })
+      }),
     )
     |> join('\n')
 
@@ -56,8 +56,8 @@ export default async ({ layoutName, isDuplicated } = {}) => {
                 arrowsize: .7,
               }
               : {},
-          })
-      )
+          }),
+      ),
     )
     |> join('\n')
 

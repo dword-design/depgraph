@@ -4,7 +4,7 @@ import { map, flatMap } from '@dword-design/functions'
 import { css } from 'linaria'
 import { edgeColor, edgeWidth, externalEdgeColor, externalEdgeWidth, nodeBorderColor, nodeBorderRadius, nodeVerticalPadding, nodeHorizontalPadding, nodeSpacing, externalNodeBackgroundColor, externalNodeBorderColor, nodeBackgroundColor, primaryColor } from '@dword-design/depgraph-variables'
 import axios from 'axios'
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+import { PulseLoader } from 'vue-spinner/dist/vue-spinner'
 
 const vector = (a, b) => ({ x: b.x - a.x, y: b.y - a.y })
 const add = (a, b) => ({ x: a.x + b.x, y: a.y + b.y })

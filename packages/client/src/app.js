@@ -1,6 +1,5 @@
-<script>
 import component from '@dword-design/vue-component'
-import Toolbar from './toolbar.vue'
+import Toolbar from './toolbar'
 import { css } from 'linaria'
 import engines from './engines'
 
@@ -44,4 +43,3 @@ export default component({
     </div>
   },
 })
-</script>
