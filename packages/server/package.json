@@ -32,7 +32,7 @@
     "require-package-name": "^2.0.1"
   },
   "devDependencies": {
-    "@dword-design/base": "^4.0.0",
+    "@dword-design/base": "^5.0.0",
     "@dword-design/base-config-server": "^1.1.2"
   },
   "baseConfig": "server"
