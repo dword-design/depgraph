@@ -1,11 +1,11 @@
 import component from '@dword-design/vue-component'
 import * as d3 from 'd3'
 import { map, flatMap } from '@dword-design/functions'
-import { css } from 'linaria'
-import { edgeColor, edgeWidth, externalEdgeColor, externalEdgeWidth, nodeBorderColor, nodeBorderRadius, nodeVerticalPadding, nodeHorizontalPadding, nodeSpacing, externalNodeBackgroundColor, externalNodeBorderColor, nodeBackgroundColor, primaryColor } from '@dword-design/depgraph-variables'
+import variables from '../variables.config'
 import axios from 'axios'
-import { PulseLoader } from 'vue-spinner/dist/vue-spinner'
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
+const { edgeColor, edgeWidth, externalEdgeColor, externalEdgeWidth, nodeBorderColor, nodeBorderRadius, nodeVerticalPadding, nodeHorizontalPadding, nodeSpacing, externalNodeBackgroundColor, externalNodeBorderColor, nodeBackgroundColor, primaryColor } = variables
 const vector = (a, b) => ({ x: b.x - a.x, y: b.y - a.y })
 const add = (a, b) => ({ x: a.x + b.x, y: a.y + b.y })
 const neg = v => ({ x: -v.x, y: -v.y })
@@ -107,7 +107,7 @@ export default component({
         const svg = d3
           .select(this.$el)
           .append('svg')
-          .attr('class', css`overflow: visible`)
+          .attr('class', 'Ov(v)')
 
         svg
           .append('svg:defs').append('svg:marker')
@@ -142,21 +142,13 @@ export default component({
           .selectAll('.node')
           .data(nodes)
           .enter().append('rect')
-          .attr('class', ({ isExternal }) => `${isExternal ? 'is-external' : ''} `
-            + css`
-              cursor: move;
-              rx: ${nodeBorderRadius};
-              ry: ${nodeBorderRadius};
-              &:not(.is-external) {
-                fill: ${nodeBackgroundColor};
-                stroke: ${nodeBorderColor};
-              }
-              &.is-external {
-                fill: ${externalNodeBackgroundColor};
-                stroke: ${externalNodeBorderColor};
-              }
-            `,
-          )
+          .attr('class', ({ isExternal }) => {
+            const fill = isExternal ? externalNodeBackgroundColor : nodeBackgroundColor
+            const stroke = isExternal ? externalNodeBorderColor : nodeBorderColor
+            return `Cur(m) Fill(${fill}) Stk(${stroke})`
+          })
+          .attr('rx', nodeBorderRadius)
+          .attr('ry', nodeBorderRadius)
           .call(drag(this.simulation))
 
         node
@@ -167,13 +159,8 @@ export default component({
           .selectAll('.label')
           .data(nodes)
           .enter().append('text')
-          .attr('class', css`
-            fill: #000;
-            font-family: Verdana;
-            font-size: 10px;
-            text-anchor: middle;
-            cursor: move;
-          `)
+          .attr('class', 'Fill(#000) Ff(sans) Fz(10px) Cur(m)')
+          .attr('text-anchor', 'middle')
           .text(({ name }) => name)
           .call(drag(this.simulation))
           .each(function (d) {
@@ -206,19 +193,12 @@ export default component({
           .selectAll('.link')
           .data(links)
           .enter().append('line')
-          .attr('class', ({ isExternal }) => `${isExternal ? 'is-external' : ''} `
-            + css`
-              marker-end: url(#end-arrow);
-              &:not(.is-external) {
-                stroke: ${edgeColor};
-                stroke-width: ${edgeWidth}px;
-              }
-              &.is-external {
-                stroke: ${externalEdgeColor};
-                stroke-width: ${externalEdgeWidth}px;
-              }
-            `,
-          )
+          .attr('class', ({ isExternal }) => {
+            const stroke = isExternal ? externalEdgeColor : edgeColor
+            const strokeWidth = isExternal ? externalEdgeWidth : edgeWidth
+            return `Stk(${stroke}) Stkw(${strokeWidth})`
+          })
+          .attr('marker-end', 'url(#end-arrow)')
 
         this.simulation.on('tick', () => {
           link
@@ -297,31 +277,17 @@ export default component({
     }
   },
   render: ({ isLoading }) =>
-    <div class={ css`height: 100%; position: relative; overflow: auto; padding: 1rem` }>
+    <div class="Pos(r) Ov(a) P(1rem)">
       <transition
-        enter-active-class={ css`opacity: 0; transition: opacity .5s;` }
-        enter-to-class={ css`opacity: 1` }
-        leave-active-class={ css`opacity: 1; transition: opacity .5s` }
-        leave-to-class={ css`opacity: 0` }
+        enter-active-class="Op(0) Trs(opacity .5s)"
+        enter-to-class="Op(1)"
+        leave-active-class="Op(1) Trs(opacity .5s)"
+        leave-to-class="Op(0)"
       >
-        { isLoading && <div
-          class={ css`
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255,255,255, .6);
-          ` }
-        /> }
+        { isLoading && <div class="StretchedBox Bg(rgba(#fff, .6))" /> }
       </transition>
       <PulseLoader
-        class={ css`
-          position: absolute;
-          left: 50%;
-          top: 30%;
-          transform: translate(-50%, -50%);
-        ` }
+        class="Pos(a) Start(50%) T(30%) Translate(-50%, -50%)"
         color={ primaryColor }
         loading={ isLoading }
       />

@@ -1,7 +1,6 @@
 {
-  "name": "@dword-design/depgraph-root",
+  "name": "@dword-design/depgraph",
   "version": "1.0.0",
-  "private": true,
   "description": "",
   "repository": "dword-design/depgraph",
   "license": "MIT",
@@ -10,16 +9,39 @@
   "files": [
     "dist"
   ],
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
+    "analyze": "base analyze",
     "depgraph": "base depgraph",
+    "dev": "base dev",
     "prepare": "base prepare",
     "prepublishOnly": "base prepublishOnly",
+    "start": "base start",
     "test": "base test"
   },
+  "dependencies": {
+    "@babel/core": "^7.8.4",
+    "@dword-design/functions": "^2.7.2",
+    "@dword-design/reset-sass": "^1.0.7",
+    "@dword-design/vue-component": "^1.0.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-regular-svg-icons": "^5.12.1",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/vue-fontawesome": "^0.1.9",
+    "@nuxtjs/axios": "^5.9.5",
+    "axios": "^0.19.2",
+    "child-process-promise": "^2.2.1",
+    "cosmiconfig": "^6.0.0",
+    "d3": "4.0.0",
+    "dagre-d3": "^0.6.4",
+    "express": "^4.17.1",
+    "require-from-string": "^2.0.2",
+    "require-package-name": "^2.0.1",
+    "vue": "^2.6.10",
+    "vue-spinner": "^1.0.3"
+  },
   "devDependencies": {
-    "@dword-design/base": "^5.0.0"
-  }
+    "@dword-design/base": "^5.0.0",
+    "@dword-design/base-config-nuxt": "^1.7.4"
+  },
+  "baseConfig": "nuxt"
 }

@@ -1,11 +1,12 @@
 import component from '@dword-design/vue-component'
 import * as d3 from 'd3'
 import { forIn, stubObject, flatMap, map } from '@dword-design/functions'
-import { css } from 'linaria'
 import axios from 'axios'
 import dagreD3 from 'dagre-d3'
-import { edgeWidth, externalEdgeColor, externalEdgeWidth, nodeBorderColor, edgeColor, primaryColor, nodeBackgroundColor, externalNodeBackgroundColor, externalNodeBorderColor, nodeBorderRadius } from '@dword-design/depgraph-variables'
-import { PulseLoader } from 'vue-spinner/dist/vue-spinner'
+import variables from '../variables.config'
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+
+const { primaryColor, nodeBorderRadius } = variables
 
 export default component({
   props: {
@@ -45,13 +46,17 @@ export default component({
           .setGraph({ rankdir: 'RL' })
           .setDefaultEdgeLabel(stubObject)
 
-        modules |> forIn(({ source, label, isExternal }) => g.setNode(source, {
+        modules |> forIn(({ source, label }) => g.setNode(source, {
           label,
           height: 4,
-          class: `${isExternal ? 'is-external' : ''} `
+          style: {
+            rx: nodeBorderRadius,
+            ry: nodeBorderRadius,
+          },
+          /*class: `${isExternal ? 'is-external' : ''} `,
             + css`
               .label-container {
-                rx: ${nodeBorderRadius};
+                rx: ${};
                 ry: ${nodeBorderRadius};
               }
               .label {
@@ -70,18 +75,18 @@ export default component({
                   fill: ${externalNodeBackgroundColor};
                 }
               }
-            `,
+            `,*/
         }))
 
         modules
           |> flatMap(({ source, dependencies }) => dependencies
             |> map(dependency => ({ ...dependency, source })),
           )
-          |> forIn(({ source, target, isExternal }) => g.setEdge(
+          |> forIn(({ source, target }) => g.setEdge(
             source,
             target,
             {
-              class: `${isExternal ? 'is-external' : ''} `
+              /*class: `${isExternal ? 'is-external' : ''} `
                 + css`
                   [id^=arrowhead] path {
                     stroke-width: 0 !important;
@@ -100,7 +105,7 @@ export default component({
                       fill: ${externalEdgeColor};
                     }
                   }
-                `,
+                `,*/
             },
           ))
 
@@ -108,7 +113,7 @@ export default component({
         const svg = d3
           .select(this.$el)
           .append('svg')
-          .attr('class', css`overflow: visible`)
+          .attr('class', 'Ov(v)')
         const inner = svg.append('g')
 
         render(inner, g)
@@ -124,31 +129,17 @@ export default component({
     },
   },
   render: ({ isLoading }) =>
-    <div class={ css`height: 100%; position: relative; overflow: auto; padding: 1rem` }>
+    <div class="Pos(r) Ov(a) P(1rem)">
       <transition
-        enter-active-class={ css`opacity: 0; transition: opacity .5s;` }
-        enter-to-class={ css`opacity: 1` }
-        leave-active-class={ css`opacity: 1; transition: opacity .5s` }
-        leave-to-class={ css`opacity: 0` }
+        enter-active-class="Op(0) Trs(opacity .5s)"
+        enter-to-class="Op(1)"
+        leave-active-class="Op(1) Trs(opacity .5s)"
+        leave-to-class="Op(0)"
       >
-        { isLoading && <div
-          class={ css`
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255,255,255, .6);
-          ` }
-        /> }
+        { isLoading && <div class="StretchedBox Bg(rgba(#fff, .6))" /> }
       </transition>
       <PulseLoader
-        class={ css`
-          position: absolute;
-          left: 50%;
-          top: 30%;
-          transform: translate(-50%, -50%);
-        ` }
+        class="Pos(a) Start(50%) T(30%) Translate(-50%, -50%)"
         color={ primaryColor }
         loading={ isLoading }
       />

@@ -1,10 +1,8 @@
 import component from '@dword-design/vue-component'
-import { css } from 'linaria'
 import CheckBox from './checkbox'
-import { primaryColor } from '@dword-design/depgraph-variables'
-import engines from './engines'
+import engines from '../engines'
 import { keys, map } from '@dword-design/functions'
-import layoutNames from './layout-names'
+import layoutNames from '../layout-names'
 
 export default component({
   props: {
@@ -14,41 +12,22 @@ export default component({
     isClusters: {},
   },
   render: ({ engineName, layoutName, isDuplicated, isClusters, $listeners }) =>
-    <form
-      class={ css`
-        display: flex;
-        align-items: center;
-        color: #fff;
-        padding-top: .5rem;
-        padding-bottom: .5rem;
-        background: ${primaryColor};
-        box-shadow: 0 0 0.5rem 0 rgba(0,0,0,.4);
-      ` }
-    >
-      <span
-        class={ css`
-          padding: .5rem 1rem;
-          margin-right: 1rem;
-          border-right: 1px solid #fff;
-          font-weight: bold;
-        ` }
-      >
-        Depgraph
-      </span>
-      <label class={ css`margin-right: 1rem` }>
-        <span class={ css`margin-right: .5rem` }>Engine:</span>
+    <form class="D(f) Ai(c) C(#fff) Py(.5rem) Bg(primaryColor) Bxsh(0 0 0.5rem 0 rgba(#fff, .4))">
+      <span class="Px(1rem) Py(.5rem) Mend(1rem) Bdend(#fff) Fw(b)">Depgraph</span>
+      <label class="Mend(1rem)">
+        <span class="Mend(.5rem)">Engine:</span>
         <select
-          class={ css`background: transparent; border: 1px solid #fff` }
+          class="Bg(t) Bd Bdc(#fff)"
           value={ engineName }
           on-input={ ({ target: { value } }) => $listeners['engine-name-change']?.(value) }
         >
           { engines |> keys |> map(name => <option value={ name }>{ name }</option>) }
         </select>
       </label>
-      <label class={ css`margin-right: 1rem` }>
-        <span class={ css`margin-right: .5rem` }>Layout:</span>
+      <label class="Mend(1rem)">
+        <span class="Mend(.5rem)">Layout:</span>
         <select
-          class={ css`background: transparent; border: 1px solid #fff` }
+          class="Bg(t) Bd Bdc(#fff)"
           value={ layoutName }
           on-input={ ({ target: { value } }) => $listeners['layout-name-change']?.(value) }
         >
@@ -56,7 +35,7 @@ export default component({
         </select>
       </label>
       <CheckBox
-        class={ css`margin-right: 1rem` }
+        class="Mend(1rem)"
         value={ isDuplicated }
         on-input={ value => $listeners['is-duplicated-change']?.(value) }
       >
