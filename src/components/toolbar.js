@@ -1,7 +1,7 @@
 import component from '@dword-design/vue-component'
 import CheckBox from './checkbox'
-import engines from '../engines'
-import { keys, map } from '@dword-design/functions'
+import engines from '../engines.config'
+import { map } from '@dword-design/functions'
 import layoutNames from '../layout-names'
 
 export default component({
@@ -21,7 +21,7 @@ export default component({
           value={ engineName }
           on-input={ ({ target: { value } }) => $listeners['engine-name-change']?.(value) }
         >
-          { engines |> keys |> map(name => <option value={ name }>{ name }</option>) }
+          { engines |> map(name => <option value={ name }>{ name }</option>) }
         </select>
       </label>
       <label class="Mend(1rem)">
