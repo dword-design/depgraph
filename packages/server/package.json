@@ -29,7 +29,7 @@
     "dependency-cruiser": "^4.27.3",
     "express": "^4.17.1",
     "get-package-name": "^1.1.0",
-    "get-workspaces": "^0.5.2",
+    "get-workspaces": "^0.6.0",
     "make-cli": "^1.0.13",
     "multimatch": "^4.0.0",
     "require-package-name": "^2.0.1"
