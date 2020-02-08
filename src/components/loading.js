@@ -19,7 +19,7 @@ export default component({
   render: ({ loading }) =>
     <transition name="fade">
       { loading &&
-        <div class="StretchedBox Bg(#fff.5)">
+        <div class="StretchedBox Bg(#fff.5) Z(1)">
           <Spinner
             class="Pos(a) Start(50%) T(30%) Fxd(r) Translate(-50%, -50%)"
             color={ primaryColor }

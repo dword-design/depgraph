@@ -3,6 +3,11 @@ import Toolbar from '../components/toolbar'
 import { split, last } from '@dword-design/functions'
 
 export default component({
+  middleware: ({ route, redirect }) => {
+    if (route.name === 'index') {
+      return redirect({ name: 'index-dagre' })
+    }
+  },
   render: ({ $route, $router }) => {
     const engineName = $route.name |> split('-') |> last
     const layoutName = $route.query.layout ?? 'directed'
