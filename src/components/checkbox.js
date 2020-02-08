@@ -6,18 +6,35 @@ export default component({
   props: {
     value: {},
   },
-  render: (h, { value, $scopedSlots, $listeners }) =>
-    <label class="D(f) Ai(c)">
+  data: () => ({
+    editedValue: undefined,
+  }),
+  watch: {
+    value: {
+      immediate: true,
+      handler(value) {
+        this.editedValue = value
+      },
+    },
+    editedValue(editedValue) {
+      this.$listeners.input?.(editedValue)
+    },
+  },
+  render({ editedValue, $scopedSlots }) {
+    return <label class="D(f) Ai(c)">
       <input
         class="Ap(n)"
         type="checkbox"
-        value={ value }
-        on-change={ ({ target }) => $listeners.input?.(target.checked) }
+        checked={ editedValue }
+        on-change={ ({ target: { checked } }) => this.editedValue = checked }
       />
-      <font-awesome-icon
-        class="Mend(.25rem)"
-        icon={ value ? faCheckSquare : faSquare }
-      />
-      <span class="Cur(p)">{ $scopedSlots.default() }</span>
-    </label>,
+      <span class="Cur(p)">
+        <font-awesome-icon
+          class="Mend(.25rem)"
+          icon={ editedValue ? faCheckSquare : faSquare }
+        />
+        { $scopedSlots.default() }
+      </span>
+    </label>
+  },
 })

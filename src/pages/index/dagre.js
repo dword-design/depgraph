@@ -7,9 +7,10 @@ import variables from '../../variables.config'
 const { nodeBorderRadius } = variables
 
 export default component({
-  asyncData: async ({ query, $axios }) => ({
-    modules: await $axios.$get('/api/modules', { query }),
-  }),
+  watchQuery: true,
+  asyncData: async ({ query, $axios }) => { console.log(query); return ({
+    modules: await $axios.$get('/api/modules', { params: query }),
+  }) },
   mounted() {
     d3.select(this.$el).select('svg').remove()
 

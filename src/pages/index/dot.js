@@ -1,8 +1,9 @@
 import component from '@dword-design/vue-component'
 
 export default component({
+  watchQuery: true,
   asyncData: async ({ $axios, query }) => {
-    const svgCode = $axios.$get('/api/dot', { query }) |> await
+    const svgCode = $axios.$get('/api/dot', { params: query }) |> await
     return ({
       svgCode,
     })

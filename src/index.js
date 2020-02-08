@@ -7,6 +7,7 @@ import { spawn } from 'child-process-promise'
 export default {
   css: [
     'assets/style.scss',
+    '@fortawesome/fontawesome-svg-core/styles.css',
   ],
   cssVariables: variables,
   plugins: [

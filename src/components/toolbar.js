@@ -11,7 +11,7 @@ export default component({
     isDuplicated: {},
     isClusters: {},
   },
-  render: ({ engineName, layoutName, isDuplicated, isClusters, $listeners }) =>
+  render: ({ engineName, layoutName, isDuplicated, isClusters, $router }) =>
     <form class="D(f) Ai(c) C(#fff) Py(.5rem) Bg(primaryColor) Bxsh(0 0 0.5rem 0 rgba(#fff, .4))">
       <span class="Px(1rem) Py(.5rem) Mend(1rem) Bdend(#fff) Fw(b)">Depgraph</span>
       <label class="Mend(1rem)">
@@ -19,7 +19,7 @@ export default component({
         <select
           class="Bg(t) Bd Bdc(#fff)"
           value={ engineName }
-          on-input={ ({ target: { value } }) => $listeners['engine-name-change']?.(value) }
+          on-input={ ({ target: { value } }) => $router.push({ name: `index-${value}` }) }
         >
           { engines |> map(name => <option value={ name }>{ name }</option>) }
         </select>
@@ -29,7 +29,7 @@ export default component({
         <select
           class="Bg(t) Bd Bdc(#fff)"
           value={ layoutName }
-          on-input={ ({ target: { value } }) => $listeners['layout-name-change']?.(value) }
+          on-input={ ({ target: { value } }) => $router.push({ query: { layout: value } }) }
         >
           { layoutNames |> map(name => <option value={ name }>{ name }</option>) }
         </select>
@@ -37,13 +37,13 @@ export default component({
       <CheckBox
         class="Mend(1rem)"
         value={ isDuplicated }
-        on-input={ value => $listeners['is-duplicated-change']?.(value) }
+        on-input={ value => $router.push({ query: { duplicated: value } }) }
       >
         Duplicated
       </CheckBox>
       <CheckBox
         value={ isClusters }
-        on-input={ value => $listeners['is-clusters-change']?.(value) }
+        on-input={ value => $router.push({ query: { clusters: value } }) }
       >
         Clusters
       </CheckBox>
