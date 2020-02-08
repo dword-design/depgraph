@@ -16,7 +16,7 @@ export default {
   ],
   modules: [
     '@nuxtjs/axios',
-    '~/modules/express-server-middleware.js',
+    require('./modules/express-server-middleware'),
   ],
   expressServerMiddleware: {
     '/modules': async (req, res) => {
