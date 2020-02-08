@@ -28,8 +28,15 @@
 <h2>Install</h2>
 
 <a href="https://npmjs.com" title="npm is a package manager for javascript"><h3>npm</h3></a>
+<h4>Install Globally</h4>
+<ul>
+<li>Install: <code>npm install --global @dword-design/depgraph</code></li>
+<li>Executable: <code>depgraph</code></li>
+</ul>
+<h4>Install Locally</h4>
 <ul>
 <li>Install: <code>npm install --save @dword-design/depgraph</code></li>
+<li>Executable: <code>npx depgraph</code></li>
 <li>Import: <code>import * as pkg from ('@dword-design/depgraph')</code></li>
 <li>Require: <code>const pkg = require('@dword-design/depgraph')</code></li>
 </ul>

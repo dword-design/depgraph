@@ -6,6 +6,9 @@
   "license": "MIT",
   "author": "Sebastian Landwehr <info@dword-design.de>",
   "main": "dist/index.js",
+  "bin": {
+    "depgraph": "./dist/cli.js"
+  },
   "files": [
     "dist"
   ],
@@ -19,29 +22,32 @@
     "test": "base test"
   },
   "dependencies": {
-    "@babel/core": "^7.8.4",
     "@dword-design/functions": "^2.7.2",
     "@dword-design/reset-sass": "^1.0.7",
     "@dword-design/vue-component": "^1.0.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-regular-svg-icons": "^5.12.1",
-    "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/vue-fontawesome": "^0.1.9",
     "@nuxtjs/axios": "^5.9.5",
-    "axios": "^0.19.2",
     "child-process-promise": "^2.2.1",
     "cosmiconfig": "^6.0.0",
     "d3": "4.0.0",
     "dagre-d3": "^0.6.4",
     "express": "^4.17.1",
-    "require-from-string": "^2.0.2",
+    "get-package-name": "^1.1.0",
+    "get-workspaces": "dword-design/changesets#fork/get-workspaces",
+    "make-cli": "^1.0.16",
+    "multimatch": "^4.0.0",
     "require-package-name": "^2.0.1",
     "vue": "^2.6.10",
     "vue-spinner": "^1.0.3"
   },
   "devDependencies": {
     "@dword-design/base": "^5.0.0",
-    "@dword-design/base-config-nuxt": "^1.7.4"
+    "@dword-design/base-config-nuxt": "^1.7.5",
+    "output-files": "^1.1.14",
+    "stealthy-require": "^1.1.1",
+    "with-local-tmp-dir": "^2.2.7"
   },
   "baseConfig": "nuxt"
 }

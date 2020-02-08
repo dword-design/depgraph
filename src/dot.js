@@ -1,6 +1,8 @@
 import depcruise from './depcruise'
-import { map, join, endent, flatMap, mapValues, values, isEmpty } from '@dword-design/functions'
-import { nodeBorderRadius, edgeColor, edgeWidth, externalEdgeColor, externalEdgeWidth, nodeBackgroundColor, nodeBorderColor, externalNodeBorderColor, externalNodeBackgroundColor } from '@dword-design/depgraph-variables'
+import { map, join, endent, flatMap, mapValues, values, isEmpty, compact } from '@dword-design/functions'
+import variables from './variables.config'
+
+const { nodeBorderRadius, edgeColor, edgeWidth, externalEdgeColor, externalEdgeWidth, nodeBackgroundColor, nodeBorderColor, externalNodeBorderColor, externalNodeBackgroundColor } = variables
 
 export default async ({ layoutName, isDuplicated } = {}) => {
   const modules = await depcruise({ isDuplicated })
@@ -14,16 +16,21 @@ export default async ({ layoutName, isDuplicated } = {}) => {
       )
     + ']'
   const nodes = modules
-    |> map(({ source, label, isExternal }) => `"${source}" `
-      + attributesToString({
-        label,
-        ...isExternal
-          ? {
-            color: externalNodeBorderColor,
-            fillcolor: externalNodeBackgroundColor,
-          }
-          : {},
-      }),
+    |> map(({ source, label, isExternal }) =>
+      [
+        `"${source}"`,
+        attributesToString({
+          label,
+          ...isExternal
+            ? {
+              color: externalNodeBorderColor,
+              fillcolor: externalNodeBackgroundColor,
+            }
+            : {},
+        }),
+      ]
+        |> compact
+        |> join(' '),
     )
     |> join('\n')
 
@@ -46,8 +53,9 @@ export default async ({ layoutName, isDuplicated } = {}) => {
   const edges = modules
     |> flatMap(({ source, dependencies }) =>
       dependencies |> map(({ target, isExternal }) =>
-        `"${source}" -> "${target}" `
-          + attributesToString({
+        [
+          `"${source}" -> "${target}"`,
+          attributesToString({
             ...isExternal
               ? {
                 color: externalEdgeColor,
@@ -57,30 +65,35 @@ export default async ({ layoutName, isDuplicated } = {}) => {
               }
               : {},
           }),
+        ]
+          |> compact
+          |> join(' '),
       ),
     )
     |> join('\n')
 
   const nodeStyle = ['filled', ...nodeBorderRadius > 0 ? ['rounded'] : []] |> join(',')
 
+  const rows = [
+    'ordering=out',
+    'rankdir=RL',
+    'splines=true',
+    'overlap=false',
+    'nodesep=0.3',
+    'ranksep=1',
+    'fontname="Helvetica-bold"',
+    'fontsize=9',
+    'bgcolor="transparent"',
+    'compound=true',
+    `node [shape=box style="${nodeStyle}" color="${nodeBorderColor}" fillcolor="${nodeBackgroundColor}" height=0.2 fontname=Helvetica fontsize=9]`,
+    `edge [color="${edgeColor}" penwidth=${edgeWidth} arrowhead=normal fontname=Helvetica fontsize=9]`,
+    ...layoutName === 'centered' ? ['layout=neato'] : [],
+    /*isClusters ? clustersTemplate(rootFolder) : */nodes,
+    edges,
+  ]
   return endent`
     strict digraph G {
-      ordering=out
-      rankdir=RL
-      splines=true
-      overlap=false
-      nodesep=0.3
-      ranksep=1
-      fontname="Helvetica-bold"
-      fontsize=9
-      bgcolor="transparent"
-      compound=true
-      node [shape=box style="${nodeStyle}" color="${nodeBorderColor}" fillcolor="${nodeBackgroundColor}" height=0.2 fontname=Helvetica fontsize=9]
-      edge [color="${edgeColor}" penwidth=${edgeWidth} arrowhead=normal fontname=Helvetica fontsize=9]
-      ${layoutName === 'centered' ? 'layout=neato' : ''}
-
-      ${/*isClusters ? clustersTemplate(rootFolder) : */nodes}
-      ${edges}
+      ${rows |> compact |> join('\n')}
     }
   `
 }

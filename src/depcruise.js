@@ -9,9 +9,9 @@ import P from 'path'
 export default async ({ isDuplicated } = {}) => {
 
   const workspaces = await getWorkspaces()
-
+  
   const modules = workspaces |> ifElse(
-    workspaces => workspaces !== null && workspaces.length > 0,
+    workspaces => workspaces.length > 0,
     workspaces => workspaces
       |> flatMap(({ name, config: { dependencies = {} } }) => [name, ...dependencies |> keys])
       |> uniq
@@ -20,7 +20,7 @@ export default async ({ isDuplicated } = {}) => {
         return {
           source: name,
           label: name,
-          isExternal: workspace === undefined,
+          ...workspace === undefined ? { isExternal: true } : {},
           dependencies: workspace !== undefined
             ? (workspace.config.dependencies ?? {}) |> keys |> map(resolved => ({ resolved }))
             : [],
@@ -40,13 +40,14 @@ export default async ({ isDuplicated } = {}) => {
       |> JSON.parse
       |> property('modules')
       |> map(module => ({
-        ...module,
+        source: module.source,
         label: module.coreModule
           ? module.source
           : module.matchesDoNotFollow
             ? getPackageName(module.source)
             : P.relative('src', module.source),
         isExternal: module.matchesDoNotFollow || module.coreModule,
+        dependencies: module.dependencies,
       })),
   )
     |> await

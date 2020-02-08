@@ -40,6 +40,11 @@ export default component({
   mounted() {
     this.renderGraph()
   },
+  beforeDestroy() {
+    if (this.simulation !== undefined) {
+      this.simulation.stop()
+    }
+  },
   methods: {
     renderGraph() {
       if (this.simulation !== undefined) {
@@ -252,11 +257,6 @@ export default component({
         }
       })
     },
-  },
-  beforeDestroy() {
-    if (this.simulation !== undefined) {
-      this.simulation.stop()
-    }
   },
   render: () => <div class="Pos(r) Ov(a) P(1rem)" />,
 })

@@ -1,8 +1,9 @@
 import variables from './variables.config'
 import dot from './dot'
 import depcruise from './depcruise'
-import express from 'express'
 import { spawn } from 'child-process-promise'
+import expressServerMiddleware from './modules/express-server-middleware'
+import axios from '@nuxtjs/axios'
 
 export default {
   css: [
@@ -15,8 +16,8 @@ export default {
     '~/plugins/fontawesome.js',
   ],
   modules: [
-    '@nuxtjs/axios',
-    require('./modules/express-server-middleware'),
+    axios,
+    expressServerMiddleware,
   ],
   expressServerMiddleware: {
     '/modules': async (req, res) => {
