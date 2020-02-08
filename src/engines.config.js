@@ -1,1 +1,1 @@
-export default ['d3', 'dot', 'dagre']
+export default ['dagre', 'dot', 'd3']
