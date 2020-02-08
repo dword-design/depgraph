@@ -10,6 +10,7 @@ export default {
     '@fortawesome/fontawesome-svg-core/styles.css',
   ],
   cssVariables: variables,
+  loading: '~/components/loading.js',
   plugins: [
     '~/plugins/fontawesome.js',
   ],
