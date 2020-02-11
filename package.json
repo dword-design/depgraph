@@ -26,9 +26,7 @@
     "@dword-design/functions": "^2.7.2",
     "@dword-design/reset-sass": "^1.0.7",
     "@dword-design/vue-component": "^1.0.3",
-    "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-regular-svg-icons": "^5.12.1",
-    "@fortawesome/vue-fontawesome": "^0.1.9",
     "@nuxtjs/axios": "^5.9.5",
     "child-process-promise": "^2.2.1",
     "cosmiconfig": "^6.0.0",
@@ -40,16 +38,16 @@
     "get-workspaces": "dword-design/changesets#fork/get-workspaces",
     "make-cli": "^1.0.16",
     "multimatch": "^4.0.0",
+    "nuxt-fontawesome": "^0.4.0",
     "require-package-name": "^2.0.1",
-    "vue": "^2.6.10",
     "vue-spinner": "^1.0.3"
   },
   "devDependencies": {
     "@dword-design/base": "^5.0.0",
+    "@dword-design/puppeteer": "^1.0.0",
     "nuxt": "^2.11.0",
     "output-files": "^1.1.14",
     "port-ready": "^0.1.0",
-    "puppeteer": "^2.1.1",
     "stealthy-require": "^1.1.1",
     "tree-kill": "^1.2.2",
     "with-local-tmp-dir": "^2.2.7"

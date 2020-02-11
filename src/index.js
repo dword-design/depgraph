@@ -2,25 +2,21 @@ import variables from './variables.config'
 import dot from './dot'
 import depcruise from './depcruise'
 import { spawn } from 'child-process-promise'
-import expressServerMiddleware from './modules/express-server-middleware'
-import axios from '@nuxtjs/axios'
+import expressServerMiddlewareModule from './modules/express-server-middleware'
+import axiosModule from '@nuxtjs/axios'
+import fontawesomeModule from 'nuxt-fontawesome'
 import P from 'path'
 
 export default {
   rootDir: P.resolve(__dirname, '..'),
   buildDir: P.resolve(__dirname, '..', 'dist', 'nuxt'),
-  css: [
-    'assets/style.scss',
-    '@fortawesome/fontawesome-svg-core/styles.css',
-  ],
+  css: ['assets/style.scss'],
   cssVariables: variables,
   loading: '~/components/loading.js',
-  plugins: [
-    '~/plugins/fontawesome.js',
-  ],
   modules: [
-    axios,
-    expressServerMiddleware,
+    axiosModule,
+    expressServerMiddlewareModule,
+    fontawesomeModule,
   ],
   expressServerMiddleware: {
     '/modules': async (req, res) => {

@@ -3,7 +3,7 @@ import stealthyRequire from 'stealthy-require'
 import outputFiles from 'output-files'
 import kill from 'tree-kill'
 import portReady from 'port-ready'
-import puppeteer from 'puppeteer'
+import puppeteer from '@dword-design/puppeteer'
 import { spawn } from 'child-process-promise'
 import P from 'path'
 
