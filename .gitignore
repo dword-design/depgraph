@@ -1,8 +1,7 @@
 .DS_Store
-.acss
-.nuxt
 /.editorconfig
 /.env
+/.eslintrc.json
 /.nyc_output
 /.vscode
 /coverage

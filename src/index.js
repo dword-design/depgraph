@@ -4,8 +4,11 @@ import depcruise from './depcruise'
 import { spawn } from 'child-process-promise'
 import expressServerMiddleware from './modules/express-server-middleware'
 import axios from '@nuxtjs/axios'
+import P from 'path'
 
 export default {
+  rootDir: P.resolve(__dirname, '..'),
+  buildDir: P.resolve(__dirname, '..', 'dist', 'nuxt'),
   css: [
     'assets/style.scss',
     '@fortawesome/fontawesome-svg-core/styles.css',

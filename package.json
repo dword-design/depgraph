@@ -22,6 +22,7 @@
     "test": "base test"
   },
   "dependencies": {
+    "@dword-design/base-config-nuxt": "^1.8.2",
     "@dword-design/functions": "^2.7.2",
     "@dword-design/reset-sass": "^1.0.7",
     "@dword-design/vue-component": "^1.0.3",
@@ -44,9 +45,12 @@
   },
   "devDependencies": {
     "@dword-design/base": "^5.0.0",
-    "@dword-design/base-config-nuxt": "^1.7.5",
+    "nuxt": "^2.11.0",
     "output-files": "^1.1.14",
+    "port-ready": "^0.1.0",
+    "puppeteer": "^2.1.1",
     "stealthy-require": "^1.1.1",
+    "tree-kill": "^1.2.2",
     "with-local-tmp-dir": "^2.2.7"
   },
   "baseConfig": "nuxt"

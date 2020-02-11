@@ -3,13 +3,14 @@
 import makeCli from 'make-cli'
 import dot from './dot'
 import depcruise from './depcruise'
+import graph from './graph'
 
 makeCli({
   commands: [
     {
       name: 'graph',
       description: 'Output the dependency graph in the browser',
-      handler: () => {},
+      handler: () => graph(),
     },  
     {
       name: 'dot',
