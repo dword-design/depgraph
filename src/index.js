@@ -1,7 +1,7 @@
 import variables from './variables.config'
 import dot from './dot'
 import depcruise from './depcruise'
-import { spawn } from 'child-process-promise'
+import execa from 'execa'
 import expressServerMiddlewareModule from './modules/express-server-middleware'
 import axiosModule from '@nuxtjs/axios'
 import fontawesomeModule from 'nuxt-fontawesome'
@@ -28,11 +28,10 @@ export default {
         isDuplicated: req.query.duplicated === 'true',
         isClusters: req.query.clusters === 'true',
       })
-      const { stdout: svgCode } = await spawn('dot', ['-T', 'svg'], { capture: ['stdout'] })
-        .progress(({ stdin }) => {
-          stdin.write(dotCode)
-          stdin.end()
-        })
+      const childProcess = execa.command('dot -T svg', { all: true })
+      childProcess.stdin.write(dotCode)
+      childProcess.stdin.end()
+      const { all: svgCode } = await childProcess
       res.setHeader('Content-Type', 'image/svg+xml')
       res.send(svgCode)
     },
