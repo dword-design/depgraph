@@ -1,7 +1,7 @@
 import withLocalTmpDir from 'with-local-tmp-dir'
 import stealthyRequire from 'stealthy-require'
 import { outputFile } from 'fs-extra'
-import kill from 'tree-kill'
+import kill from 'tree-kill-promise'
 import portReady from 'port-ready'
 import execa from 'execa'
 import P from 'path'
@@ -17,6 +17,6 @@ export default {
     const childProcess = graph({ log: true })
     await portReady(3000)
     expect(axios.get('http://localhost:3000') |> await |> property('data')).toMatch('Depgraph')
-    kill(childProcess.pid)
+    await kill(childProcess.pid)
   }),
 }
