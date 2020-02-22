@@ -1,6 +1,6 @@
 import withLocalTmpDir from 'with-local-tmp-dir'
 import stealthyRequire from 'stealthy-require'
-import outputFiles from 'output-files'
+import { outputFile } from 'fs-extra'
 import kill from 'tree-kill'
 import portReady from 'port-ready'
 import execa from 'execa'
@@ -10,9 +10,7 @@ import { property } from '@dword-design/functions'
 
 export default {
   valid: () => withLocalTmpDir(async () => {
-    await outputFiles({
-      'src/index.js': '',
-    })
+    await outputFile('src/index.js', '')
     const { nuxtConfigFilename } = stealthyRequire(require.cache, () => require('@dword-design/base-config-nuxt'))
     await execa('nuxt', ['build', '--config-file', nuxtConfigFilename], { cwd: P.resolve(__dirname, '..') })
     const graph = stealthyRequire(require.cache, () => require('./graph'))
