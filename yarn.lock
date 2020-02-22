@@ -873,16 +873,16 @@
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
 "@dword-design/atomizer-plugin-autoprefixer@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@dword-design/atomizer-plugin-autoprefixer/-/atomizer-plugin-autoprefixer-1.0.0.tgz#adbcc9411512107bc2f5ad04fba7b13b3aea2d98"
-  integrity sha512-fNmVsStkNFT87z0V86hfU+JOZsJy6ZiimgW5hMxINvsm0P6dEROZdLdYzcWd/7y5agimeI+BbDQm5B40E/pAZQ==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@dword-design/atomizer-plugin-autoprefixer/-/atomizer-plugin-autoprefixer-1.0.1.tgz#e1d4598fab8ede97892798f8330546906df0e367"
+  integrity sha512-i7r0Z7QT760ZvDnRksAX03qwbWQCbgh1DMZTv+5xuus0wGs23p9wcVlIHSWGFNJEQz4Xw6VnnMll9AkfE/LuIA==
   dependencies:
     autoprefixer "^9.7.4"
 
 "@dword-design/atomizer-plugin-vertical-rhythm@^1.0.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@dword-design/atomizer-plugin-vertical-rhythm/-/atomizer-plugin-vertical-rhythm-1.1.0.tgz#89e6d01e8abe93857345d6dcd2c52aca4a980bc8"
-  integrity sha512-N+BXqxVdnWh2X7u/vbRY20FuvAs/brQnvT1FpGa+w787pTg/n/h2WRvPqutsXHAc9bD1/DG7slpI3cGIWfQS/g==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@dword-design/atomizer-plugin-vertical-rhythm/-/atomizer-plugin-vertical-rhythm-1.1.1.tgz#9f0cee8e93a16a49a358a154c9ed4a8fa600f9f4"
+  integrity sha512-5O8/TSCZ2/2q0rhLkdP77C9VB6NzUe9/yY3YRsOV2Rc/OcgnBLDf3w8/kk1bj7vx6t8yikXoFN2naV9LKEAEcQ==
   dependencies:
     modularscale "^2.0.1"
     postcss-custom-unit "^1.0.0"
@@ -1018,9 +1018,9 @@
     depcheck dword-design/depcheck#fork
 
 "@dword-design/depcheck-execa-detector@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@dword-design/depcheck-execa-detector/-/depcheck-execa-detector-1.0.0.tgz#a31fac13074ae9d17e4530dd6f6533c04b97ffd4"
-  integrity sha512-M4ZeLu0pqUjYk2zezI09xsV5++++pyhEo1CRg/+CBzMAyDfFBpH/GjrmlLi2gL+ZeQJBuujqOdXsi9SPgsFBpQ==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@dword-design/depcheck-execa-detector/-/depcheck-execa-detector-1.0.1.tgz#f2f8de8d60ec44288e233f5588e1d04460918e63"
+  integrity sha512-YSP8u98TYj+3c1ZCkiiicjCyF11sQM4/SMcua73qQt9tk5W3n02rfXrvlPcvZL2b3uJJe494r/bOX6Yhnihigg==
   dependencies:
     "@dword-design/functions" "^2.2.4"
     resolve-from "^5.0.0"
