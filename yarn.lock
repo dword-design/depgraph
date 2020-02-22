@@ -1026,9 +1026,9 @@
     resolve-from "^5.0.0"
 
 "@dword-design/depcheck-sass-parser@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@dword-design/depcheck-sass-parser/-/depcheck-sass-parser-1.0.2.tgz#40bec11550dcd40ac3a0798134144492b7ad225f"
-  integrity sha512-FPCa2XoIbR7ynfViQ37Nj7SLSC6NEGvAN39A2UEjbBB6XCEP81s8IM72qMygsZnDFXsAwyPQmUMmPSrEW+uaLQ==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@dword-design/depcheck-sass-parser/-/depcheck-sass-parser-1.0.3.tgz#d4c74f807886d508a130e4aefe7986f779a12d95"
+  integrity sha512-aE0qpopIiiUDMn9ElKiRhcEHFQdWImr0Q8z4AhKgbRz37Vg7yz2ANc+m4UeqxgIGBwznQ8nN89xzk4Oa+U8jsg==
   dependencies:
     "@dword-design/functions" "^2.2.4"
     "@dword-design/node-sass-importer" "^1.0.0"
@@ -1116,9 +1116,9 @@
     resolve-from "^5.0.0"
 
 "@dword-design/nuxt-atomizer@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@dword-design/nuxt-atomizer/-/nuxt-atomizer-1.0.0.tgz#0c5219e8e4362e26d070fbbc2360c277390b5054"
-  integrity sha512-+tLYZDkX5iHV9N0C3zhDuJIPZ1KjgcLFEo8K7xlF5shTW8+d6dXzJt45qrBBaR1IbLfRajuJH0Rpfxr0hjbwMg==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@dword-design/nuxt-atomizer/-/nuxt-atomizer-1.0.1.tgz#7132460f684c8169cedbe03572e99ba2ef5f1967"
+  integrity sha512-9RPTPaOJivv/a+j9YxNgL0nayqJyEXBG8vCatlAwZHqnTlyh3/2c9OopTC5bcxetvcsiJaxlGowbFXCZ/4PnYQ==
   dependencies:
     "@dword-design/functions" "^2.7.2"
     get-package-name "^1.1.0"
@@ -2161,19 +2161,7 @@
     lodash.kebabcase "^4.1.1"
     svg-tags "^1.0.0"
 
-"@vue/babel-preset-jsx@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@vue/babel-preset-jsx/-/babel-preset-jsx-1.1.2.tgz#2e169eb4c204ea37ca66c2ea85a880bfc99d4f20"
-  integrity sha512-zDpVnFpeC9YXmvGIDSsKNdL7qCG2rA3gjywLYHPCKDT10erjxF4U+6ay9X6TW5fl4GsDlJp9bVfAVQAAVzxxvQ==
-  dependencies:
-    "@vue/babel-helper-vue-jsx-merge-props" "^1.0.0"
-    "@vue/babel-plugin-transform-vue-jsx" "^1.1.2"
-    "@vue/babel-sugar-functional-vue" "^1.1.2"
-    "@vue/babel-sugar-inject-h" "^1.1.2"
-    "@vue/babel-sugar-v-model" "^1.1.2"
-    "@vue/babel-sugar-v-on" "^1.1.2"
-
-"@vue/babel-preset-jsx@github:dword-design/jsx#fork/babel-preset-jsx":
+"@vue/babel-preset-jsx@^1.1.2", "@vue/babel-preset-jsx@github:dword-design/jsx#fork/babel-preset-jsx":
   version "1.1.2"
   resolved "https://codeload.github.com/dword-design/jsx/tar.gz/2d986d9fe3881743b3efe9755f48bb3eade788b4"
   dependencies:
@@ -2188,13 +2176,6 @@
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@vue/babel-sugar-functional-vue/-/babel-sugar-functional-vue-1.1.2.tgz#f7e24fba09e6f1ee70104560a8808057555f1a9a"
   integrity sha512-YhmdJQSVEFF5ETJXzrMpj0nkCXEa39TvVxJTuVjzvP2rgKhdMmQzlJuMv/HpadhZaRVMCCF3AEjjJcK5q/cYzQ==
-  dependencies:
-    "@babel/plugin-syntax-jsx" "^7.2.0"
-
-"@vue/babel-sugar-inject-h@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@vue/babel-sugar-inject-h/-/babel-sugar-inject-h-1.1.2.tgz#8a5276b6d8e2ed16ffc8078aad94236274e6edf0"
-  integrity sha512-VRSENdTvD5htpnVp7i7DNuChR5rVMcORdXjvv5HVvpdKHzDZAYiLSD+GhnhxLm3/dMuk8pSzV+k28ECkiN5m8w==
   dependencies:
     "@babel/plugin-syntax-jsx" "^7.2.0"
 
@@ -14871,7 +14852,7 @@ wcwidth@^1.0.0:
   dependencies:
     defaults "^1.0.3"
 
-webpack-atomizer-loader@dword-design/webpack-atomizer-loader#fork:
+"webpack-atomizer-loader@github:dword-design/webpack-atomizer-loader#fork":
   version "1.0.2"
   resolved "https://codeload.github.com/dword-design/webpack-atomizer-loader/tar.gz/7fd9e8d7eab26934de91eac026cf37589234772e"
   dependencies:
