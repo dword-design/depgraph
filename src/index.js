@@ -4,18 +4,18 @@ import depcruise from './depcruise'
 import execa from 'execa'
 import expressServerMiddlewareModule from './modules/express-server-middleware'
 import axiosModule from '@nuxtjs/axios'
+import atomizerModule from '@dword-design/nuxt-atomizer'
 import fontawesomeModule from 'nuxt-fontawesome'
-import P from 'path'
+import verticalRhythmAtomizerPlugin from '@dword-design/atomizer-plugin-vertical-rhythm'
+import autoprefixerAtomizerPlugin from '@dword-design/atomizer-plugin-autoprefixer'
 
 export default {
-  rootDir: P.resolve(__dirname, '..'),
-  buildDir: P.resolve(__dirname, '..', 'dist', 'nuxt'),
   css: ['assets/style.scss'],
-  cssVariables: variables,
   loading: '~/components/loading.js',
   modules: [
     axiosModule,
     expressServerMiddlewareModule,
+    atomizerModule,
     fontawesomeModule,
   ],
   expressServerMiddleware: {
@@ -35,5 +35,19 @@ export default {
       res.setHeader('Content-Type', 'image/svg+xml')
       res.send(svgCode)
     },
+  },
+  atomizer: {
+    classNames: [],
+    custom: variables,
+    breakPoints: {
+      sm: '@media (min-width: 576px)',
+      md: '@media (min-width: 768px)',
+      lg: '@media (min-width: 992px)',
+      xl: '@media (min-width: 1200px)',
+    },
+    plugins: [
+      verticalRhythmAtomizerPlugin(variables),
+      autoprefixerAtomizerPlugin,
+    ],
   },
 }

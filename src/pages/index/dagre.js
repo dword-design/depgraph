@@ -8,12 +8,9 @@ const { nodeBorderRadius } = variables
 
 export default component({
   watchQuery: true,
-  asyncData: async foo => {
-    const { query, $axios } = foo
-    return ({
-      modules: await $axios.$get('/api/modules', { params: query }),
-    })
-  },
+  asyncData: async ({ query, $axios }) => ({
+    modules: await $axios.$get('/api/modules', { params: query }),
+  }),
   watch: {
     modules: {
       handler() {

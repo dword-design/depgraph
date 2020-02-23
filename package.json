@@ -24,8 +24,11 @@
     "test": "base test"
   },
   "dependencies": {
-    "@dword-design/base-config-nuxt": "^1.8.2",
+    "@dword-design/atomizer-plugin-autoprefixer": "^1.0.1",
+    "@dword-design/atomizer-plugin-vertical-rhythm": "^1.1.1",
+    "@dword-design/base-config-nuxt": "^1.8.9",
     "@dword-design/functions": "^2.7.2",
+    "@dword-design/nuxt-atomizer": "^1.0.1",
     "@dword-design/reset-sass": "^1.0.7",
     "@dword-design/vue-component": "^1.0.3",
     "@fortawesome/free-regular-svg-icons": "^5.12.1",
