@@ -1,3 +1,10 @@
+## [1.6.6](https://github.com/dword-design/depgraph/compare/v1.6.5...v1.6.6) (2020-03-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency fs-extra to v9 ([a2b6f0b](https://github.com/dword-design/depgraph/commit/a2b6f0b1cd94495dfdaa0f0894d32b831fe70c47))
+
 ## [1.6.5](https://github.com/dword-design/depgraph/compare/v1.6.4...v1.6.5) (2020-02-23)
 
 
