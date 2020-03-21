@@ -19,7 +19,7 @@ export default component({
         <select
           class="Bg(t) Bd Bdc(#fff)"
           value={ engineName }
-          on-input={ ({ target: { value } }) => $router.push({ name: `index-${value}` }) }
+          on-input={ ({ target: { value } }) => $router.push({ name: `index.${value}` }) }
         >
           { engines |> map(name => <option value={ name }>{ name }</option>) }
         </select>
