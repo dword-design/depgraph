@@ -27,7 +27,7 @@ const drag = simulation => d3.drag()
 
 export default component({
   watchQuery: true,
-  asyncData: async ({ query, $axios }) => ({
+  asyncData: async ({ query, app: { $axios } }) => ({
     modules: await $axios.$get('/api/modules', { params: query }),
   }),
   watch: {

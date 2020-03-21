@@ -2,7 +2,7 @@ import component from '@dword-design/vue-component'
 
 export default component({
   watchQuery: true,
-  asyncData: async ({ $axios, query }) => {
+  asyncData: async ({ query, app: { $axios } }) => {
     const svgCode = $axios.$get('/api/dot', { params: query }) |> await
     return ({
       svgCode,
