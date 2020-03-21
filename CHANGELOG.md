@@ -1,3 +1,11 @@
+## [1.6.7](https://github.com/dword-design/depgraph/compare/v1.6.6...v1.6.7) (2020-03-21)
+
+
+### Bug Fixes
+
+* upgrades ([c53aa4f](https://github.com/dword-design/depgraph/commit/c53aa4f4d614b3f4b50e48fcfa61d346e942bfbc))
+* upgrades and outsource express server ([37649a8](https://github.com/dword-design/depgraph/commit/37649a8da7d4e838a63af9c49382e951c9b1c04a))
+
 ## [1.6.6](https://github.com/dword-design/depgraph/compare/v1.6.5...v1.6.6) (2020-03-19)
 
 
