@@ -1,3 +1,11 @@
+## [1.6.8](https://github.com/dword-design/depgraph/compare/v1.6.7...v1.6.8) (2020-05-17)
+
+
+### Bug Fixes
+
+* fix tests ([46fcffb](https://github.com/dword-design/depgraph/commit/46fcffbc354ecc68bbf059eb243061518c6f23c8))
+* upgrades ([898cb99](https://github.com/dword-design/depgraph/commit/898cb99ec2f6a0cfdd68695b1a65ce7de3569525))
+
 ## [1.6.7](https://github.com/dword-design/depgraph/compare/v1.6.6...v1.6.7) (2020-03-21)
 
 
