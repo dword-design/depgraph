@@ -4,16 +4,17 @@ import stealthyRequire from 'stealthy-require'
 import { endent } from '@dword-design/functions'
 
 export default {
-  valid: () => withLocalTmpDir(async () => {
-    await outputFiles({
-      src: {
-        'index.js': 'import foo from \'./foo\'',
-        'foo.js': '',
-      },
-    })
-    const dot = stealthyRequire(require.cache, () => require('./dot'))
+  valid: () =>
+    withLocalTmpDir(async () => {
+      await outputFiles({
+        src: {
+          'index.js': "import foo from './foo'",
+          'foo.js': '',
+        },
+      })
+      const dot = stealthyRequire(require.cache, () => require('./dot'))
 
-    expect(await dot()).toEqual(endent`
+      expect(await dot()).toEqual(endent`
       strict digraph G {
         ordering=out
         rankdir=RL
@@ -32,5 +33,5 @@ export default {
         "src/index.js" -> "src/foo.js"
       }
     `)
-  }),
+    }),
 }

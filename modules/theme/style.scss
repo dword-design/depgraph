@@ -16,3 +16,11 @@ body {
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
+.stretchedbox {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
