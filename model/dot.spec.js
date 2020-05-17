@@ -7,10 +7,8 @@ export default {
   valid: () =>
     withLocalTmpDir(async () => {
       await outputFiles({
-        src: {
-          'index.js': "import foo from './foo'",
-          'foo.js': '',
-        },
+        'index.js': "import foo from './foo'",
+        'foo.js': '',
       })
       const dot = stealthyRequire(require.cache, () => require('./dot'))
 
@@ -28,9 +26,9 @@ export default {
         compound=true
         node [shape=box style="filled,rounded" color="#000000" fillcolor="#ffffcc" height=0.2 fontname=Helvetica fontsize=9]
         edge [color="#00000077" penwidth=2 arrowhead=normal fontname=Helvetica fontsize=9]
-        "src/foo.js" [label="foo.js"]
-        "src/index.js" [label="index.js"]
-        "src/index.js" -> "src/foo.js"
+        "foo.js" [label="foo.js"]
+        "index.js" [label="index.js"]
+        "index.js" -> "foo.js"
       }
     `)
     }),

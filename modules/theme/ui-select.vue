@@ -1,11 +1,7 @@
 <template>
   <label>
     <span :class="$style.label">{{ label }}:</span>
-    <select
-      :class="$style.select"
-      :value="value"
-      v-on="$listeners"
-    >
+    <select :class="$style.select" :value="value" v-on="$listeners">
       <slot />
     </select>
   </label>

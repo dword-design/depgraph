@@ -41,5 +41,5 @@ export default function (moduleOptions) {
     fileName: P.join('theme', 'plugin.js'),
   })
   this.options.css.push(require.resolve('./style.scss'))
-  //this.options.loading = require.resolve('./ui-loading.vue')
+  // this.options.loading = require.resolve('./ui-loading.vue')
 }

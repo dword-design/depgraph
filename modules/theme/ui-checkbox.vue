@@ -7,10 +7,7 @@
       @change="editedValue = $event.target.checked"
     />
     <span :class="$style.label">
-      <font-awesome-icon
-        :class="$style.icon"
-        :icon="icon"
-      />
+      <font-awesome-icon :class="$style.icon" :icon="icon" />
       <slot />
     </span>
   </label>

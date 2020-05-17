@@ -7,9 +7,9 @@
       :value="engineName"
       @input="$router.push({ name: 'index.' + $event.target.value })"
     >
-      <option v-for="name in engines" :key="name" :value="name">{{
-        name
-      }}</option>
+      <option v-for="name in engines" :key="name" :value="name">
+        {{ name }}
+      </option>
     </ui-select>
     <ui-select
       :class="$style.item"

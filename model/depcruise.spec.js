@@ -6,10 +6,8 @@ export default {
   valid: () =>
     withLocalTmpDir(async () => {
       await outputFiles({
-        src: {
-          'index.js': "import foo from './foo'",
-          'foo.js': '',
-        },
+        'index.js': "import foo from './foo'",
+        'foo.js': '',
       })
       const depcruise = stealthyRequire(require.cache, () =>
         require('./depcruise')
@@ -17,14 +15,14 @@ export default {
 
       expect(await depcruise()).toEqual([
         {
-          source: 'src/foo.js',
+          source: 'foo.js',
           label: 'foo.js',
           dependencies: [],
         },
         {
-          source: 'src/index.js',
+          source: 'index.js',
           label: 'index.js',
-          dependencies: [{ target: 'src/foo.js' }],
+          dependencies: [{ target: 'foo.js' }],
         },
       ])
     }),
