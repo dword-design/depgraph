@@ -5,20 +5,10 @@ import kill from 'tree-kill-promise'
 import portReady from 'port-ready'
 import axios from 'axios'
 import { property } from '@dword-design/functions'
-import { Nuxt, Builder } from 'nuxt'
-import baseConfigNuxt from '@dword-design/base-config-nuxt'
-
-const { nuxtConfig } = baseConfigNuxt
+import execa from 'execa'
 
 export default {
-  before: async () => {
-    const nuxt = new Nuxt({
-      ...nuxtConfig,
-      dev: false,
-      build: { ...nuxtConfig.build, quiet: true },
-    })
-    await new Builder(nuxt).build()
-  },
+  before: () => execa.command('base prepublishOnly'),
   valid: () =>
     withLocalTmpDir(async () => {
       await outputFile('src/index.js', '')
