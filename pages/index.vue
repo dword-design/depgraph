@@ -21,28 +21,28 @@
 </template>
 
 <script>
-import { split, last } from '@dword-design/functions'
+import { last, split } from '@dword-design/functions'
 
 export default {
-  middleware: ({ route, redirect }) => {
-    if (route.name === 'index') {
-      return redirect({ name: 'index.dagre' })
-    }
-    return undefined
-  },
   computed: {
     engineName() {
       return this.$route.name |> split('.') |> last
     },
-    layoutName() {
-      return this.$route.query.layout || 'directed'
+    isClusters() {
+      return [true, 'true'].includes(this.$route.query.clusters)
     },
     isDuplicated() {
       return [true, 'true'].includes(this.$route.query.duplicated)
     },
-    isClusters() {
-      return [true, 'true'].includes(this.$route.query.clusters)
+    layoutName() {
+      return this.$route.query.layout || 'directed'
     },
+  },
+  middleware: context => {
+    if (context.route.name === 'index') {
+      return context.redirect({ name: 'index.dagre' })
+    }
+    return undefined
   },
 }
 </script>
@@ -52,15 +52,15 @@ export default {
 
 .container {
   display: flex;
-  height: 100%;
   flex-direction: column;
+  height: 100%;
   background: #fafafa;
   font-family: $sans;
 }
 
 .toolbar {
-  flex-shrink: 0;
   z-index: 1;
+  flex-shrink: 0;
 }
 
 .child {

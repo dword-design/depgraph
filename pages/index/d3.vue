@@ -3,22 +3,14 @@
 </template>
 
 <script>
+import { flatMap, join, map } from '@dword-design/functions'
 import * as d3 from 'd3'
-import { map, flatMap, join } from '@dword-design/functions'
-import variables from '@/model/variables.config'
 
-const {
-  edgeColor,
-  nodeBorderRadius,
-  nodeVerticalPadding,
-  nodeHorizontalPadding,
-  nodeSpacing,
-} = variables
+import variables from '@/model/variables.config'
 
 const vector = (a, b) => ({ x: b.x - a.x, y: b.y - a.y })
 const add = (a, b) => ({ x: a.x + b.x, y: a.y + b.y })
 const neg = v => ({ x: -v.x, y: -v.y })
-
 const drag = simulation =>
   d3
     .drag()
@@ -36,15 +28,13 @@ const drag = simulation =>
       d.fx = undefined
       d.fy = undefined
     })
-
 const getNodeOffset = (source, node, direction) => {
-  const width = source.width / 2 - nodeSpacing
-  const height = source.height / 2 - nodeSpacing
+  const width = source.width / 2 - variables.nodeSpacing
+  const height = source.height / 2 - variables.nodeSpacing
   const consideringWidthX = Math.sign(direction.x) * width
   const consideringWidthY = (direction.y * consideringWidthX) / direction.x
   const consideringHeightY = Math.sign(direction.y) * height
   const consideringHeightX = (direction.x * consideringHeightY) / direction.y
-
   return {
     x:
       Math.abs(consideringWidthY) <= height
@@ -58,20 +48,11 @@ const getNodeOffset = (source, node, direction) => {
 }
 
 export default {
-  watchQuery: true,
-  asyncData: async ({ query, app: { $axios } }) => ({
-    modules: await $axios.$get('/api/modules', { params: query }),
+  asyncData: async context => ({
+    modules: await context.app.$axios.$get('/api/modules', {
+      params: context.query,
+    }),
   }),
-  watch: {
-    modules: {
-      handler() {
-        this.renderGraph()
-      },
-    },
-  },
-  mounted() {
-    this.renderGraph()
-  },
   beforeDestroy() {
     if (this.simulation !== undefined) {
       this.simulation.stop()
@@ -83,22 +64,21 @@ export default {
         this.simulation.stop()
       }
       d3.select(this.$el).select('svg').remove()
-
       const nodes =
         this.modules
         |> map(module => ({
           ...module,
           id: module.source,
-          name: /* this.isClusters ? path.basename(module) : */ module.label,
+          // name: this.isClusters ? path.basename(module) : module.label,
+          name: module.label,
         }))
-
       const links =
         this.modules
         |> flatMap(
-          ({ source, dependencies }) =>
-            dependencies |> map(dependency => ({ ...dependency, source }))
+          module =>
+            module.dependencies
+            |> map(dependency => ({ ...dependency, source: module.source }))
         )
-
       /* const groups = isClusters
         ? (() => {
           const groups = []
@@ -117,7 +97,6 @@ export default {
           return groups
         })()
         : [] */
-
       this.simulation = d3
         .forceSimulation()
         .nodes(nodes)
@@ -125,18 +104,15 @@ export default {
         .force('collide', d3.forceCollide(70))
         .force(
           'links',
-          d3.forceLink(links).id(({ id }) => id)
+          d3.forceLink(links).id(link => link.id)
         )
-
       /* if (isClusters) {
         this.simulation.groups(groups)
       } */
-
       const svg = d3
         .select(this.$el)
         .append('svg')
         .attr('class', this.$style.svg)
-
       svg
         .append('svg:defs')
         .append('svg:marker')
@@ -149,8 +125,7 @@ export default {
         .append('svg:path')
         .attr('d', 'M0,-5L10,0L0,5L2,0')
         .attr('stroke-width', '0px')
-        .attr('fill', edgeColor)
-
+        .attr('fill', variables.edgeColor)
       /* const group = isClusters
         ? svg
           .selectAll('.group')
@@ -166,41 +141,43 @@ export default {
           `)
           .call(this.simulation.drag)
         : undefined */
-
-      const node = svg
+      const $nodes = svg
         .selectAll('.node')
         .data(nodes)
         .enter()
         .append('rect')
         .attr(
           'class',
-          ({ isExternal }) =>
+          node =>
             [
               this.$style.module,
-              ...(isExternal ? [this.$style.isExternal] : []),
+              ...(node.isExternal ? [this.$style.isExternal] : []),
             ] |> join(' ')
         )
-        .attr('rx', nodeBorderRadius)
-        .attr('ry', nodeBorderRadius)
+        .attr('rx', variables.nodeBorderRadius)
+        .attr('ry', variables.nodeBorderRadius)
         .call(drag(this.simulation))
-
-      node.append('title').text(({ name }) => name)
-
-      const label = svg
+      $nodes.append('title').text(node => node.name)
+      const $labels = svg
         .selectAll('.label')
         .data(nodes)
         .enter()
         .append('text')
         .attr('text-anchor', 'middle')
-        .text(({ name }) => name)
+        .text(node => node.name)
         .attr('class', this.$style.label)
         .call(drag(this.simulation))
         .each(function (d) {
           const b = this.getBBox()
-          d.width = b.width + 2 * nodeHorizontalPadding + 2 * nodeSpacing
-          d.height = b.height + 2 * nodeVerticalPadding + 2 * nodeSpacing
+          d.width =
+            b.width +
+            2 * variables.nodeHorizontalPadding +
+            2 * variables.nodeSpacing
+          d.height =
+            b.height +
+            2 * variables.nodeVerticalPadding +
+            2 * variables.nodeSpacing
         })
-
       /* const groupLabel = isClusters
         ? svg
           .selectAll('.group-label')
@@ -220,67 +197,67 @@ export default {
             d.labelHeight = b.height
           })
         : undefined */
-
-      const link = svg
+      const $links = svg
         .selectAll('.link')
         .data(links)
         .enter()
         .append('line')
         .attr(
           'class',
-          ({ isExternal }) =>
+          link =>
             [
               this.$style.dependency,
-              ...(isExternal ? [this.$style.isExternal] : []),
+              ...(link.isExternal ? [this.$style.isExternal] : []),
             ] |> join(' ')
         )
         .attr('marker-end', 'url(#end-arrow)')
-
       this.simulation.on('tick', () => {
-        link.each(function ({ source, target }) {
-          const direction = vector(source, target)
-
-          const sourceOffset = getNodeOffset(source, source, direction)
-          const targetOffset = getNodeOffset(source, target, neg(direction))
-          const sourcePoint = add(source, sourceOffset)
-          const targetPoint = add(target, targetOffset)
-
+        $links.each(function (link) {
+          const direction = vector(link.source, link.target)
+          const sourceOffset = getNodeOffset(
+            link.source,
+            link.source,
+            direction
+          )
+          const targetOffset = getNodeOffset(
+            link.source,
+            link.target,
+            neg(direction)
+          )
+          const sourcePoint = add(link.source, sourceOffset)
+          const targetPoint = add(link.target, targetOffset)
           d3.select(this)
-            .attr('x1', sourcePoint.x - nodeSpacing)
-            .attr('y1', sourcePoint.y - nodeSpacing)
-            .attr('x2', targetPoint.x - nodeSpacing)
-            .attr('y2', targetPoint.y - nodeSpacing)
+            .attr('x1', sourcePoint.x - variables.nodeSpacing)
+            .attr('y1', sourcePoint.y - variables.nodeSpacing)
+            .attr('x2', targetPoint.x - variables.nodeSpacing)
+            .attr('y2', targetPoint.y - variables.nodeSpacing)
         })
-
-        node
-          .attr('x', ({ x, width }) => x - width / 2)
-          .attr('y', ({ y, height }) => y - height / 2)
-          .attr('width', ({ width }) => width - 2 * nodeSpacing)
-          .attr('height', ({ height }) => height - 2 * nodeSpacing)
-
-        label
-          .attr('x', ({ x }) => x - nodeSpacing)
-          .attr('y', function ({ y }) {
-            return y + this.getBBox().height / 4 - nodeSpacing
+        $nodes
+          .attr('x', node => node.x - node.width / 2)
+          .attr('y', node => node.y - node.height / 2)
+          .attr('width', node => node.width - 2 * variables.nodeSpacing)
+          .attr('height', node => node.height - 2 * variables.nodeSpacing)
+        $labels
+          .attr('x', label => label.x - variables.nodeSpacing)
+          .attr('y', function (label) {
+            return label.y + this.getBBox().height / 4 - variables.nodeSpacing
           })
-
         /* if (isClusters) {
           group
-            .attr('x', ({ bounds }) => bounds.x)
-            .attr('y', ({ bounds, labelHeight }) => bounds.y - labelHeight)
+            .attr('x', group => group.bounds.x)
+            .attr('y', group => group.bounds.y - group.labelHeight)
             // .each(({ bounds }) =>
             //   var cx = d.bounds.cx()
             //   // d.bounds.x = cx - 150
             //   // d.bounds.X = cx + 150
             // })
-            .attr('width', ({ bounds }) => bounds.width() - groupSpacing)
-            .attr('height', ({ bounds, labelHeight }) => bounds.height() - groupSpacing + labelHeight)
+            .attr('width', group => group.bounds.width() - variables.groupSpacing)
+            .attr('height', group => group.bounds.height() - variables.groupSpacing + group.labelHeight)
 
           groupLabel
-            .attr('x', ({ bounds }) => bounds.x + bounds.width()/2)
-            .attr('y', ({ bounds }) => bounds.y + rasterSize/2)
+            .attr('x', group => group.bounds.x + group.bounds.width()/2)
+            .attr('y', group => group.bounds.y + variables.rasterSize/2)
         } */
-
         if (svg.node()) {
           const bbox = svg.node().getBBox()
           svg
@@ -291,6 +268,17 @@ export default {
       })
     },
   },
+  mounted() {
+    this.renderGraph()
+  },
+  watch: {
+    modules: {
+      handler() {
+        this.renderGraph()
+      },
+    },
+  },
+  watchQuery: true,
 }
 </script>
 
@@ -322,10 +310,10 @@ export default {
 }
 
 .label {
-  fill: #000;
-  font-family: $sans;
   font-size: 10px;
+  font-family: $sans;
   cursor: move;
+  fill: #000;
 }
 
 .dependency {

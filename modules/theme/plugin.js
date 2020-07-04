@@ -1,7 +1,8 @@
 import Vue from 'vue'
+
 import UiCheckbox from './ui-checkbox.vue'
-import UiSelect from './ui-select.vue'
 import UiLoading from './ui-loading.vue'
+import UiSelect from './ui-select.vue'
 import UiToolbar from './ui-toolbar.vue'
 
 Vue.component('UiCheckbox', UiCheckbox)

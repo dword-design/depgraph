@@ -1,19 +1,19 @@
-import withLocalTmpDir from 'with-local-tmp-dir'
+import { endent } from '@dword-design/functions'
 import execa from 'execa'
 import outputFiles from 'output-files'
-import { endent } from '@dword-design/functions'
+import withLocalTmpDir from 'with-local-tmp-dir'
 
 export default {
   dot: () =>
     withLocalTmpDir(async () => {
       await outputFiles({
-        'index.js': "import foo from './foo'",
         'foo.js': '',
+        'index.js': "import foo from './foo'",
       })
-      const { all } = await execa(require.resolve('./cli'), ['dot'], {
+      const output = await execa(require.resolve('./cli'), ['dot'], {
         all: true,
       })
-      expect(all).toEqual(endent`
+      expect(output.all).toEqual(endent`
         strict digraph G {
           ordering=out
           rankdir=RL
@@ -36,29 +36,27 @@ export default {
   json: () =>
     withLocalTmpDir(async () => {
       await outputFiles({
-        'index.js': "import foo from './foo'",
         'foo.js': '',
+        'index.js': "import foo from './foo'",
       })
-      const { all } = await execa(require.resolve('./cli'), ['json'], {
+      const output = await execa(require.resolve('./cli'), ['json'], {
         all: true,
       })
-      expect(all).toEqual(endent`
-      [
+      expect(JSON.parse(output.all)).toEqual([
         {
-          "source": "foo.js",
-          "label": "foo.js",
-          "dependencies": []
+          dependencies: [],
+          label: 'foo.js',
+          source: 'foo.js',
         },
         {
-          "source": "index.js",
-          "label": "index.js",
-          "dependencies": [
+          dependencies: [
             {
-              "target": "foo.js"
-            }
-          ]
-        }
-      ]
-    `)
+              target: 'foo.js',
+            },
+          ],
+          label: 'index.js',
+          source: 'index.js',
+        },
+      ])
     }),
 }
