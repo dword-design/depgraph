@@ -14,30 +14,30 @@
 </template>
 
 <script>
-import { faSquare } from '@fortawesome/free-regular-svg-icons/faSquare'
 import { faCheckSquare } from '@fortawesome/free-regular-svg-icons/faCheckSquare'
+import { faSquare } from '@fortawesome/free-regular-svg-icons/faSquare'
 
 export default {
-  props: {
-    value: {},
-  },
-  data: () => ({
-    editedValue: undefined,
-  }),
   computed: {
     icon() {
       return this.editedValue ? faCheckSquare : faSquare
     },
   },
+  data: () => ({
+    editedValue: undefined,
+  }),
+  props: {
+    value: {},
+  },
   watch: {
+    editedValue(editedValue) {
+      this.$emit('input', editedValue)
+    },
     value: {
-      immediate: true,
       handler(value) {
         this.editedValue = value
       },
-    },
-    editedValue(editedValue) {
-      this.$emit('input', editedValue)
+      immediate: true,
     },
   },
 }

@@ -8,26 +8,25 @@
 
 <script>
 import Spinner from 'vue-spinner/src/BeatLoader.vue'
-import variables from './variables.json'
 
-const { primaryColor } = variables
+import variables from './variables.json'
 
 export default {
   components: {
     Spinner,
   },
+  computed: {
+    primaryColor: () => variables.primaryColor,
+  },
   data: () => ({
     loading: false,
   }),
-  computed: {
-    primaryColor,
-  },
   methods: {
-    start() {
-      this.loading = true
-    },
     finish() {
       this.loading = false
+    },
+    start() {
+      this.loading = true
     },
   },
 }
@@ -37,14 +36,14 @@ export default {
 @import 'variables';
 
 .container {
-  background: rgba(#fff, 0.5);
   z-index: 1;
+  background: rgba(#fff, 0.5);
 }
 
 .spinner {
   position: absolute;
-  left: 50%;
   top: 30%;
+  left: 50%;
   flex-direction: row;
   transform: translate(-50%, -50%);
 }

@@ -1,30 +1,19 @@
 import {
-  map,
-  join,
+  compact,
   endent,
   flatMap,
+  isEmpty,
+  join,
+  map,
   mapValues,
   values,
-  isEmpty,
-  compact,
 } from '@dword-design/functions'
+
 import depcruise from './depcruise'
 import variables from './variables.config'
 
-const {
-  nodeBorderRadius,
-  edgeColor,
-  edgeWidth,
-  externalEdgeColor,
-  externalEdgeWidth,
-  nodeBackgroundColor,
-  nodeBorderColor,
-  externalNodeBorderColor,
-  externalNodeBackgroundColor,
-} = variables
-
-export default async ({ layoutName, isDuplicated } = {}) => {
-  const modules = await depcruise({ isDuplicated })
+export default async (options = {}) => {
+  const modules = await depcruise({ isDuplicated: options.isDuplicated })
   const attributesToString = attributes =>
     attributes |> isEmpty
       ? ''
@@ -37,15 +26,15 @@ export default async ({ layoutName, isDuplicated } = {}) => {
   const nodes =
     modules
     |> map(
-      ({ source, label, isExternal }) =>
+      module =>
         [
-          `"${source}"`,
+          `"${module.source}"`,
           attributesToString({
-            label,
-            ...(isExternal
+            label: module.label,
+            ...(module.isExternal
               ? {
-                  color: externalNodeBorderColor,
-                  fillcolor: externalNodeBackgroundColor,
+                  color: variables.externalNodeBorderColor,
+                  fillcolor: variables.externalNodeBackgroundColor,
                 }
               : {}),
           }),
@@ -54,7 +43,6 @@ export default async ({ layoutName, isDuplicated } = {}) => {
         |> join(' ')
     )
     |> join('\n')
-
   /* const clustersTemplate = ({ name = '', modules, folders }, parentPath = '') => {
     const fullPath = [parentPath, name] |> compact |> join('/')
     return name !== ''
@@ -70,23 +58,22 @@ export default async ({ layoutName, isDuplicated } = {}) => {
         ${folders |> map(folder => clustersTemplate(folder, fullPath)) |> join('\n')}
       `
   } */
-
   const edges =
     modules
     |> flatMap(
-      ({ source, dependencies }) =>
-        dependencies
+      module =>
+        module.dependencies
         |> map(
-          ({ target, isExternal }) =>
+          dependency =>
             [
-              `"${source}" -> "${target}"`,
+              `"${module.source}" -> "${dependency.target}"`,
               attributesToString({
-                ...(isExternal
+                ...(dependency.isExternal
                   ? {
-                      color: externalEdgeColor,
-                      penwidth: externalEdgeWidth,
                       arrowhead: 'open',
                       arrowsize: 0.7,
+                      color: variables.externalEdgeColor,
+                      penwidth: variables.externalEdgeWidth,
                     }
                   : {}),
               }),
@@ -96,10 +83,9 @@ export default async ({ layoutName, isDuplicated } = {}) => {
         )
     )
     |> join('\n')
-
   const nodeStyle =
-    ['filled', ...(nodeBorderRadius > 0 ? ['rounded'] : [])] |> join(',')
-
+    ['filled', ...(variables.nodeBorderRadius > 0 ? ['rounded'] : [])]
+    |> join(',')
   const rows = [
     'ordering=out',
     'rankdir=RL',
@@ -111,10 +97,11 @@ export default async ({ layoutName, isDuplicated } = {}) => {
     'fontsize=9',
     'bgcolor="transparent"',
     'compound=true',
-    `node [shape=box style="${nodeStyle}" color="${nodeBorderColor}" fillcolor="${nodeBackgroundColor}" height=0.2 fontname=Helvetica fontsize=9]`,
-    `edge [color="${edgeColor}" penwidth=${edgeWidth} arrowhead=normal fontname=Helvetica fontsize=9]`,
-    ...(layoutName === 'centered' ? ['layout=neato'] : []),
-    /* isClusters ? clustersTemplate(rootFolder) : */ nodes,
+    `node [shape=box style="${nodeStyle}" color="${variables.nodeBorderColor}" fillcolor="${variables.nodeBackgroundColor}" height=0.2 fontname=Helvetica fontsize=9]`,
+    `edge [color="${variables.edgeColor}" penwidth=${variables.edgeWidth} arrowhead=normal fontname=Helvetica fontsize=9]`,
+    ...(options.layoutName === 'centered' ? ['layout=neato'] : []),
+    /* isClusters ? clustersTemplate(rootFolder) : */
+    nodes,
     edges,
   ]
   return endent`

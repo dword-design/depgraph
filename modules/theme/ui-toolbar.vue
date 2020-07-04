@@ -41,21 +41,22 @@
 <script>
 import engines from '@/model/engines.config'
 import layoutNames from '@/model/layout-names'
+
 import UiCheckbox from './ui-checkbox.vue'
 
 export default {
   components: {
     UiCheckbox,
   },
-  props: {
-    engineName: {},
-    layoutName: {},
-    isDuplicated: {},
-    isClusters: {},
-  },
   computed: {
     engines: () => engines,
     layoutNames: () => layoutNames,
+  },
+  props: {
+    engineName: {},
+    isClusters: {},
+    isDuplicated: {},
+    layoutName: {},
   },
 }
 </script>
@@ -66,16 +67,16 @@ export default {
 .container {
   display: flex;
   align-items: center;
-  color: #fff;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   background: $primary-color;
+  color: #fff;
   box-shadow: 0 0 0.5rem 0 rgba(#fff, 0.4);
 }
 
 .title {
-  padding: 0.5rem 1rem;
   margin-right: 1rem;
+  padding: 0.5rem 1rem;
   border-right: 1px solid #fff;
   font-weight: bold;
 }

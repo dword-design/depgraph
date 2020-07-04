@@ -1,16 +1,17 @@
-<template>
-  <div class="container" v-html="svgCode" />
-</template>
-
 <script>
 export default {
-  watchQuery: true,
-  asyncData: async ({ query, app: { $axios } }) => {
-    const svgCode = await $axios.$get('/api/dot', { params: query })
+  asyncData: async context => {
+    const svgCode = await context.app.$axios.$get('/api/dot', {
+      params: context.query,
+    })
     return {
       svgCode,
     }
   },
+  render() {
+    return <div class="container" domPropsInnerHTML={this.svgCode} />
+  },
+  watchQuery: true,
 }
 </script>
 

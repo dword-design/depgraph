@@ -1,11 +1,11 @@
-import withLocalTmpDir from 'with-local-tmp-dir'
-import stealthyRequire from 'stealthy-require'
-import { outputFile } from 'fs-extra'
-import kill from 'tree-kill-promise'
-import portReady from 'port-ready'
-import axios from 'axios'
 import { property } from '@dword-design/functions'
+import axios from 'axios'
 import execa from 'execa'
+import { outputFile } from 'fs-extra'
+import portReady from 'port-ready'
+import stealthyRequire from 'stealthy-require'
+import kill from 'tree-kill-promise'
+import withLocalTmpDir from 'with-local-tmp-dir'
 
 export default {
   before: () => execa.command('base prepublishOnly'),

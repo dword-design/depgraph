@@ -4,8 +4,10 @@
 /.editorconfig
 /.env.json
 /.eslintrc.json
+/.nuxt
 /.nyc_output
 /.releaserc.json
+/.stylelintrc.json
 /.test.env.json
 /.vscode
 /coverage

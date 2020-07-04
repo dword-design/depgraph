@@ -1,17 +1,16 @@
-import withLocalTmpDir from 'with-local-tmp-dir'
+import { endent } from '@dword-design/functions'
 import outputFiles from 'output-files'
 import stealthyRequire from 'stealthy-require'
-import { endent } from '@dword-design/functions'
+import withLocalTmpDir from 'with-local-tmp-dir'
 
 export default {
   valid: () =>
     withLocalTmpDir(async () => {
       await outputFiles({
-        'index.js': "import foo from './foo'",
         'foo.js': '',
+        'index.js': "import foo from './foo'",
       })
       const dot = stealthyRequire(require.cache, () => require('./dot'))
-
       expect(await dot()).toEqual(endent`
       strict digraph G {
         ordering=out

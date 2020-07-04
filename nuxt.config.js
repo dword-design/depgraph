@@ -1,12 +1,12 @@
-import execa from 'execa'
 import sassJsImporter from '@dword-design/node-sass-js-importer'
+import execa from 'execa'
+
 import depcruise from './model/depcruise'
 import dot from './model/dot'
 import variables from './model/variables.config'
 import themeModule from './modules/theme'
 
 export default {
-  name: 'Depgraph',
   modules: [
     [
       '@dword-design/nuxt-sass-importer',
@@ -18,23 +18,23 @@ export default {
       '@dword-design/nuxt-express-server',
       {
         routes: {
-          '/modules': async (req, res) => {
-            res.send(
-              await depcruise({ isDuplicated: req.query.duplicated === 'true' })
-            )
-          },
           '/dot': async (req, res) => {
             const dotCode = await dot({
-              layoutName: req.query.layout,
-              isDuplicated: req.query.duplicated === 'true',
               isClusters: req.query.clusters === 'true',
+              isDuplicated: req.query.duplicated === 'true',
+              layoutName: req.query.layout,
             })
             const childProcess = execa.command('dot -T svg', { all: true })
             childProcess.stdin.write(dotCode)
             childProcess.stdin.end()
-            const { all: svgCode } = await childProcess
+            const output = await childProcess
             res.setHeader('Content-Type', 'image/svg+xml')
-            res.send(svgCode)
+            res.send(output.all)
+          },
+          '/modules': async (req, res) => {
+            res.send(
+              await depcruise({ isDuplicated: req.query.duplicated === 'true' })
+            )
           },
         },
       },
@@ -42,4 +42,5 @@ export default {
     'nuxt-fontawesome',
     [themeModule, variables],
   ],
+  name: 'Depgraph',
 }

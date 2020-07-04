@@ -10,16 +10,16 @@
 <script>
 export default {
   props: {
-    value: {},
     label: {},
+    value: {},
   },
 }
 </script>
 
 <style lang="scss" module>
 .select {
-  background: transparent;
   border: 1px solid #fff;
+  background: transparent;
 }
 
 .label {
