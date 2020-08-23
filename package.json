@@ -14,6 +14,7 @@
   ],
   "scripts": {
     "analyze": "base analyze",
+    "clean": "base clean",
     "commit": "base commit",
     "dev": "base dev",
     "lint": "base lint",
@@ -47,7 +48,7 @@
   },
   "devDependencies": {
     "@dword-design/base": "^6.0.0",
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "fs-extra": "^9.0.0",
     "output-files": "^1.1.14",
     "port-ready": "^0.1.0",
