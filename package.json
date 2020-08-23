@@ -32,7 +32,7 @@
     "@dword-design/nuxt-sass-importer": "^1.0.0",
     "@dword-design/reset-sass": "^1.0.7",
     "@fortawesome/free-regular-svg-icons": "^5.12.1",
-    "cosmiconfig": "^6.0.0",
+    "cosmiconfig": "^7.0.0",
     "d3": "4.0.0",
     "dagre-d3": "^0.6.4",
     "dependency-cruiser": "^9.2.0",
