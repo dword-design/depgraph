@@ -1,3 +1,10 @@
+## [1.6.11](https://github.com/dword-design/depgraph/compare/v1.6.10...v1.6.11) (2020-08-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency cosmiconfig to v7 ([4c24198](https://github.com/dword-design/depgraph/commit/4c241986cb7099f8ad9fb28fa4529af6fbbd9d09))
+
 ## [1.6.10](https://github.com/dword-design/depgraph/compare/v1.6.9...v1.6.10) (2020-08-23)
 
 
