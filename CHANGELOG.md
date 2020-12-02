@@ -1,3 +1,10 @@
+## [1.6.12](https://github.com/dword-design/depgraph/compare/v1.6.11...v1.6.12) (2020-12-02)
+
+
+### Bug Fixes
+
+* **config:** Update changed files ([bf3e642](https://github.com/dword-design/depgraph/commit/bf3e6425934d1aa9faa08cb64046247e0877e922))
+
 ## [1.6.11](https://github.com/dword-design/depgraph/compare/v1.6.10...v1.6.11) (2020-08-23)
 
 
