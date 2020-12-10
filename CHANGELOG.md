@@ -1,3 +1,11 @@
+## [1.6.13](https://github.com/dword-design/depgraph/compare/v1.6.12...v1.6.13) (2020-12-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to ^0.21.0 ([c76bdbc](https://github.com/dword-design/depgraph/commit/c76bdbc97428d253b46eeba14e7f126bf17483c1))
+* **deps:** update dependency execa to v5 ([8c4e178](https://github.com/dword-design/depgraph/commit/8c4e178c99025929ad1649b32d5ac7ed342b2ffa))
+
 ## [1.6.12](https://github.com/dword-design/depgraph/compare/v1.6.11...v1.6.12) (2020-12-02)
 
 
