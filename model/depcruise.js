@@ -33,7 +33,7 @@ export default async (options = {}) => {
         '--do-not-follow',
         /^node_modules/.source,
         '--exclude',
-        /^(coverage|.nyc_output|dist)/.source,
+        /^(coverage|\.nyc_output|dist)/.source,
         '--output-type',
         'json',
         '.',
