@@ -1,3 +1,13 @@
+## [1.6.15](https://github.com/dword-design/depgraph/compare/v1.6.14...v1.6.15) (2020-12-11)
+
+
+### Bug Fixes
+
+* gitpod dockerfile ([70e1641](https://github.com/dword-design/depgraph/commit/70e1641155bb22d0ac8db34a0882414cd39a1b6f))
+* make compatible to d3 6 ([487ff1b](https://github.com/dword-design/depgraph/commit/487ff1ba569697e17273a9b4344fd70215840e05))
+* **deps:** update dependency d3 to v6 ([168e6f7](https://github.com/dword-design/depgraph/commit/168e6f7a01192891454ef8a528162d6bda53769e))
+* **deps:** update dependency multimatch to v5 ([0a8dda0](https://github.com/dword-design/depgraph/commit/0a8dda0fcfda58aeea2d527947513499ce774a05))
+
 ## [1.6.14](https://github.com/dword-design/depgraph/compare/v1.6.13...v1.6.14) (2020-12-11)
 
 
