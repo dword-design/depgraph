@@ -1,3 +1,11 @@
+## [1.6.14](https://github.com/dword-design/depgraph/compare/v1.6.13...v1.6.14) (2020-12-11)
+
+
+### Bug Fixes
+
+* fix unused dependency issue ([5f5992a](https://github.com/dword-design/depgraph/commit/5f5992a90e0efd58f2f96218139f2560947b5f0f))
+* use dependency cruiser fork ([1151bff](https://github.com/dword-design/depgraph/commit/1151bff41e6672b09ecc506e7b1b412c7fc32cda))
+
 ## [1.6.13](https://github.com/dword-design/depgraph/compare/v1.6.12...v1.6.13) (2020-12-10)
 
 
