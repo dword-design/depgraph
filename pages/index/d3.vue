@@ -14,17 +14,17 @@ const neg = v => ({ x: -v.x, y: -v.y })
 const drag = simulation =>
   d3
     .drag()
-    .on('start', d => {
-      if (!d3.event.active) simulation.alphaTarget(0.3).restart()
+    .on('start', (event, d) => {
+      if (!event.active) simulation.alphaTarget(0.3).restart()
       d.fx = d.x
       d.fy = d.y
     })
-    .on('drag', d => {
-      d.fx = d3.event.x
-      d.fy = d3.event.y
+    .on('drag', (event, d) => {
+      d.fx = event.x
+      d.fy = event.y
     })
-    .on('end', d => {
-      if (!d3.event.active) simulation.alphaTarget(0)
+    .on('end', (event, d) => {
+      if (!event.active) simulation.alphaTarget(0)
       d.fx = undefined
       d.fy = undefined
     })
