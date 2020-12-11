@@ -8,6 +8,7 @@ import {
   reduce,
   uniq,
 } from '@dword-design/functions'
+import packageName from 'depcheck-package-name'
 import execa from 'execa'
 import getPackageName from 'get-package-name'
 import multimatch from 'multimatch'
@@ -28,7 +29,7 @@ const getLabel = module => {
 export default async (options = {}) => {
   let modules =
     execa(
-      'depcruise',
+      packageName`dependency-cruiser`,
       [
         '--do-not-follow',
         /^node_modules/.source,
