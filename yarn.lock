@@ -2212,7 +2212,6 @@
 
 "@vue/babel-preset-jsx@dword-design/jsx#fork-babel-preset-jsx":
   version "1.1.2"
-  uid a73cb9961541a60a66b1b99a69a32e00bc66d336
   resolved "https://codeload.github.com/dword-design/jsx/tar.gz/a73cb9961541a60a66b1b99a69a32e00bc66d336"
   dependencies:
     "@vue/babel-helper-vue-jsx-merge-props" "^1.0.0"
@@ -3016,7 +3015,6 @@ babel-plugin-transform-imports@^2.0.0:
 
 babel-plugin-wildcard@dword-design/babel-plugin-wildcard#fork:
   version "6.0.0"
-  uid c5ed97308da37a98dfa7df56bf7e20b9c7ea999d
   resolved "https://codeload.github.com/dword-design/babel-plugin-wildcard/tar.gz/c5ed97308da37a98dfa7df56bf7e20b9c7ea999d"
   dependencies:
     rimraf "^2.6.2"
@@ -5423,7 +5421,6 @@ depcheck-special-nuxt@^1.0.0:
 
 depcheck@dword-design/depcheck#fork:
   version "0.0.1"
-  uid "8a9eb41006c2c6f9cbd79e4e68bf265e1c1df1dc"
   resolved "https://codeload.github.com/dword-design/depcheck/tar.gz/8a9eb41006c2c6f9cbd79e4e68bf265e1c1df1dc"
   dependencies:
     "@babel/parser" "^7.8.4"
@@ -5449,9 +5446,10 @@ depd@~1.1.2:
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
 
-dependency-cruiser@dword-design/dependency-cruiser#fork:
-  version "9.19.0"
-  resolved "https://codeload.github.com/dword-design/dependency-cruiser/tar.gz/d9120b1f56c7951e90ab8cb1b9b6ef3a557f73b7"
+dependency-cruiser@^9.19.1:
+  version "9.19.1"
+  resolved "https://registry.yarnpkg.com/dependency-cruiser/-/dependency-cruiser-9.19.1.tgz#81d12508aa7fe8423312494ecbb5e80ac66a48ec"
+  integrity sha512-+qs2robLyV/AXuDlD/8YX4l+wn8JwelMeofdvmEGMvT3y9MNL0BUOxQqvDMx31ahUo2quCkLbcJXcp97MjZwYA==
   dependencies:
     acorn "8.0.4"
     acorn-jsx "5.3.1"
@@ -5991,7 +5989,6 @@ eslint-config-prettier@^7.0.0:
 
 eslint-import-resolver-babel-module@dword-design/eslint-import-resolver-babel-module#fork:
   version "5.1.2"
-  uid "97550c5b7626a9cf582ea2392b9749702a27473d"
   resolved "https://codeload.github.com/dword-design/eslint-import-resolver-babel-module/tar.gz/97550c5b7626a9cf582ea2392b9749702a27473d"
   dependencies:
     pkg-up "^2.0.0"
@@ -6026,7 +6023,6 @@ eslint-module-utils@^2.4.1:
 
 eslint-plugin-import@dword-design/eslint-plugin-import#fork:
   version "2.20.1"
-  uid "092878bcc1f9b7ef80ca755bfd77e13b15aa9ef3"
   resolved "https://codeload.github.com/dword-design/eslint-plugin-import/tar.gz/092878bcc1f9b7ef80ca755bfd77e13b15aa9ef3"
   dependencies:
     array-includes "^3.0.3"
@@ -6386,7 +6382,6 @@ expect@^26.0.0:
 
 express-mount-files@dword-design/express-mount-files#fork:
   version "0.1.1"
-  uid c9778e91443c9a3824a01298dc5090a3b53db8df
   resolved "https://codeload.github.com/dword-design/express-mount-files/tar.gz/c9778e91443c9a3824a01298dc5090a3b53db8df"
   dependencies:
     fast-glob "^3.0.4"
@@ -8752,7 +8747,6 @@ jsonparse@^1.2.0:
 
 jsontosass@dword-design/jsontosass#fork:
   version "0.1.1"
-  uid a63dc485c9bbb76c2ef4c2128f5e11a70394b68b
   resolved "https://codeload.github.com/dword-design/jsontosass/tar.gz/a63dc485c9bbb76c2ef4c2128f5e11a70394b68b"
   dependencies:
     extend "^3.0.0"
@@ -10499,7 +10493,6 @@ nuxt-fontawesome@^0.4.0:
 
 nuxt-i18n@dword-design/i18n-module#fork:
   version "6.15.1"
-  uid "888d845fdc8f1435f50037df9ced785db1fb042b"
   resolved "https://codeload.github.com/dword-design/i18n-module/tar.gz/888d845fdc8f1435f50037df9ced785db1fb042b"
   dependencies:
     "@babel/parser" "^7.5.5"
@@ -13014,7 +13007,6 @@ safe-regex@^1.1.0:
 
 safe-require@dword-design/node-safe-require#fork:
   version "1.0.3"
-  uid "53682cf7aa25d784c6278f8ccbc9986ad0dd5f38"
   resolved "https://codeload.github.com/dword-design/node-safe-require/tar.gz/53682cf7aa25d784c6278f8ccbc9986ad0dd5f38"
 
 "safer-buffer@>= 2.1.2 < 3", "safer-buffer@>= 2.1.2 < 3.0.0", safer-buffer@^2.0.2, safer-buffer@^2.1.0, safer-buffer@~2.1.0:
@@ -14047,7 +14039,6 @@ stylelint-scss@^3.17.2:
 
 stylelint-use-nesting@dword-design/stylelint-use-nesting#fork:
   version "3.0.0"
-  uid "3fa262d8898e33da3831ed526e45dade37c270e7"
   resolved "https://codeload.github.com/dword-design/stylelint-use-nesting/tar.gz/3fa262d8898e33da3831ed526e45dade37c270e7"
 
 stylelint-webpack-plugin@^2.0.0:
