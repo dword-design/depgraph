@@ -1,3 +1,10 @@
+## [1.6.16](https://github.com/dword-design/depgraph/compare/v1.6.15...v1.6.16) (2020-12-14)
+
+
+### Bug Fixes
+
+* use official dependency-cruiser ([871688b](https://github.com/dword-design/depgraph/commit/871688b9023d29f4fa867a580b402e7c07359f20))
+
 ## [1.6.15](https://github.com/dword-design/depgraph/compare/v1.6.14...v1.6.15) (2020-12-11)
 
 
