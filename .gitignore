@@ -1,17 +1,10 @@
 .DS_Store
-/.babelrc.json
-/.commitlintrc.json
-/.cz.json
-/.editorconfig
 /.env.json
 /.eslintrc.json
-/.huskyrc.json
 /.nuxt
 /.nyc_output
-/.releaserc.json
 /.stylelintrc.json
 /.test.env.json
-/.vscode
 /coverage
 /dist
 /node_modules
