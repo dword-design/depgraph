@@ -1,9 +1,7 @@
 .DS_Store
 /.env.json
-/.eslintrc.json
 /.nuxt
 /.nyc_output
-/.stylelintrc.json
 /.test.env.json
 /coverage
 /dist
