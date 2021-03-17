@@ -1,3 +1,10 @@
+## [1.6.19](https://github.com/dword-design/depgraph/compare/v1.6.18...v1.6.19) (2021-03-17)
+
+
+### Bug Fixes
+
+* update dependency d3 to v6.6.0 ([#38](https://github.com/dword-design/depgraph/issues/38)) ([848ae09](https://github.com/dword-design/depgraph/commit/848ae098fdca0f55cb9d7b09e227a2ea8b8424fc))
+
 ## [1.6.18](https://github.com/dword-design/depgraph/compare/v1.6.17...v1.6.18) (2021-03-09)
 
 
