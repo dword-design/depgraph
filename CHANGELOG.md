@@ -1,3 +1,10 @@
+## [1.6.20](https://github.com/dword-design/depgraph/compare/v1.6.19...v1.6.20) (2021-03-17)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#40](https://github.com/dword-design/depgraph/issues/40)) ([f0976f6](https://github.com/dword-design/depgraph/commit/f0976f6aad527bbf320fac083130a20e40f27ac4))
+
 ## [1.6.19](https://github.com/dword-design/depgraph/compare/v1.6.18...v1.6.19) (2021-03-17)
 
 
