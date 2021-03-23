@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@dword-design/base-config-nuxt": "^2.4.2",
-    "@dword-design/functions": "^2.7.2",
+    "@dword-design/functions": "^3.0.0",
     "@dword-design/node-sass-js-importer": "^1.1.2",
     "@dword-design/nuxt-express-server": "^1.0.0",
     "@dword-design/nuxt-push-plugins": "^1.0.0",
