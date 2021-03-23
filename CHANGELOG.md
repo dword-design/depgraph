@@ -1,3 +1,10 @@
+## [1.6.22](https://github.com/dword-design/depgraph/compare/v1.6.21...v1.6.22) (2021-03-23)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/functions to v3 ([#42](https://github.com/dword-design/depgraph/issues/42)) ([9ccd521](https://github.com/dword-design/depgraph/commit/9ccd52112a67a055a613fd6300675a6cda7f99d8))
+
 ## [1.6.21](https://github.com/dword-design/depgraph/compare/v1.6.20...v1.6.21) (2021-03-22)
 
 
