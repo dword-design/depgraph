@@ -64,7 +64,7 @@ $ yarn add @dword-design/depgraph
 <!-- LICENSE/ -->
 ## Contribute
 
-Are you missing something or want to contribute? Feel free to file an [issue](https://github.com/dword-design/depgraph/issues) or [pull request](https://github.com/dword-design/depgraph/pulls)! ⚙️
+Are you missing something or want to contribute? Feel free to file an [issue](https://github.com/dword-design/depgraph/issues) or a [pull request](https://github.com/dword-design/depgraph/pulls)! ⚙️
 
 ## Support
 
