@@ -23,6 +23,7 @@ const getLabel = module => {
   if (module.matchesDoNotFollow) {
     return getPackageName(module.source)
   }
+
   return P.relative(process.cwd(), module.source)
 }
 
@@ -70,6 +71,7 @@ export default async (options = {}) => {
           target,
         })),
     }))
+
   return options.isDuplicated
     ? (() => {
         const getContent = (currentModules, prefix = '') =>
@@ -97,12 +99,15 @@ export default async (options = {}) => {
             ],
             []
           )
+
         const targetNames =
           modules
           |> flatMap(module => module.dependencies |> map('target'))
           |> uniq
+
         const sources =
           modules |> filter(module => !(targetNames |> includes(module.source)))
+
         return getContent(sources)
       })()
     : modules

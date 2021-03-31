@@ -10,6 +10,7 @@ export default {
         'foo.js': '',
         'index.js': "import foo from './foo'",
       })
+
       const output = await execa(require.resolve('./cli'), ['dot'], {
         all: true,
       })
@@ -39,6 +40,7 @@ export default {
         'foo.js': '',
         'index.js': "import foo from './foo'",
       })
+
       const output = await execa(require.resolve('./cli'), ['json'], {
         all: true,
       })

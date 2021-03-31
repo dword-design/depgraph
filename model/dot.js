@@ -14,6 +14,7 @@ import variables from './variables.config'
 
 export default async (options = {}) => {
   const modules = await depcruise({ isDuplicated: options.isDuplicated })
+
   const attributesToString = attributes =>
     attributes |> isEmpty
       ? ''
@@ -23,6 +24,7 @@ export default async (options = {}) => {
           |> values
           |> join(' ')
         }]`
+
   const nodes =
     modules
     |> map(
@@ -43,6 +45,7 @@ export default async (options = {}) => {
         |> join(' ')
     )
     |> join('\n')
+
   /* const clustersTemplate = ({ name = '', modules, folders }, parentPath = '') => {
     const fullPath = [parentPath, name] |> compact |> join('/')
     return name !== ''
@@ -83,9 +86,11 @@ export default async (options = {}) => {
         )
     )
     |> join('\n')
+
   const nodeStyle =
     ['filled', ...(variables.nodeBorderRadius > 0 ? ['rounded'] : [])]
     |> join(',')
+
   const rows = [
     'ordering=out',
     'rankdir=RL',
@@ -104,6 +109,7 @@ export default async (options = {}) => {
     nodes,
     edges,
   ]
+
   return endent`
     strict digraph G {
       ${rows |> compact |> join('\n')}
