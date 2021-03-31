@@ -24,9 +24,11 @@ export default {
               isDuplicated: req.query.duplicated === 'true',
               layoutName: req.query.layout,
             })
+
             const childProcess = execa.command('dot -T svg', { all: true })
             childProcess.stdin.write(dotCode)
             childProcess.stdin.end()
+
             const output = await childProcess
             res.setHeader('Content-Type', 'image/svg+xml')
             res.send(output.all)
