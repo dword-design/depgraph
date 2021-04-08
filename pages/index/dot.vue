@@ -4,6 +4,7 @@ export default {
     const svgCode = await context.app.$axios.$get('/api/dot', {
       params: context.query,
     })
+
     return {
       svgCode,
     }

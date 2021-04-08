@@ -9,8 +9,11 @@ import * as d3 from 'd3'
 import variables from '@/model/variables.config'
 
 const vector = (a, b) => ({ x: b.x - a.x, y: b.y - a.y })
+
 const add = (a, b) => ({ x: a.x + b.x, y: a.y + b.y })
+
 const neg = v => ({ x: -v.x, y: -v.y })
+
 const drag = simulation =>
   d3
     .drag()
@@ -28,13 +31,20 @@ const drag = simulation =>
       d.fx = undefined
       d.fy = undefined
     })
+
 const getNodeOffset = (source, node, direction) => {
   const width = source.width / 2 - variables.nodeSpacing
+
   const height = source.height / 2 - variables.nodeSpacing
+
   const consideringWidthX = Math.sign(direction.x) * width
+
   const consideringWidthY = (direction.y * consideringWidthX) / direction.x
+
   const consideringHeightY = Math.sign(direction.y) * height
+
   const consideringHeightX = (direction.x * consideringHeightY) / direction.y
+
   return {
     x:
       Math.abs(consideringWidthY) <= height
@@ -64,6 +74,7 @@ export default {
         this.simulation.stop()
       }
       d3.select(this.$el).select('svg').remove()
+
       const nodes =
         this.modules
         |> map(module => ({
@@ -72,6 +83,7 @@ export default {
           // name: this.isClusters ? path.basename(module) : module.label,
           name: module.label,
         }))
+
       const links =
         this.modules
         |> flatMap(
@@ -106,6 +118,7 @@ export default {
           'links',
           d3.forceLink(links).id(link => link.id)
         )
+
       /* if (isClusters) {
         this.simulation.groups(groups)
       } */
@@ -126,6 +139,7 @@ export default {
         .attr('d', 'M0,-5L10,0L0,5L2,0')
         .attr('stroke-width', '0px')
         .attr('fill', variables.edgeColor)
+
       /* const group = isClusters
         ? svg
           .selectAll('.group')
@@ -158,6 +172,7 @@ export default {
         .attr('ry', variables.nodeBorderRadius)
         .call(drag(this.simulation))
       $nodes.append('title').text(node => node.name)
+
       const $labels = svg
         .selectAll('.label')
         .data(nodes)
@@ -178,6 +193,7 @@ export default {
             2 * variables.nodeVerticalPadding +
             2 * variables.nodeSpacing
         })
+
       /* const groupLabel = isClusters
         ? svg
           .selectAll('.group-label')
@@ -214,17 +230,21 @@ export default {
       this.simulation.on('tick', () => {
         $links.each(function (link) {
           const direction = vector(link.source, link.target)
+
           const sourceOffset = getNodeOffset(
             link.source,
             link.source,
             direction
           )
+
           const targetOffset = getNodeOffset(
             link.source,
             link.target,
             neg(direction)
           )
+
           const sourcePoint = add(link.source, sourceOffset)
+
           const targetPoint = add(link.target, targetOffset)
           d3.select(this)
             .attr('x1', sourcePoint.x - variables.nodeSpacing)

@@ -18,6 +18,7 @@ export default {
   methods: {
     renderGraph() {
       d3.select(this.$el).select('svg').remove()
+
       const g = new dagreD3.graphlib.Graph()
         .setGraph({ rankdir: 'RL' })
         .setDefaultEdgeLabel(stubObject)
@@ -34,6 +35,7 @@ export default {
           ry: variables.nodeBorderRadius,
         })
       )
+
       const allDependencies =
         this.modules
         |> flatMap(
@@ -50,7 +52,9 @@ export default {
             ] |> join(' '),
         })
       )
+
       const render = new dagreD3.render()
+
       const svg = d3
         .select(this.$el)
         .append('svg')

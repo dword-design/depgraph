@@ -10,6 +10,7 @@ export default {
         'foo.js': '',
         'index.js': "import foo from './foo'",
       })
+
       const dot = stealthyRequire(require.cache, () => require('./dot'))
       expect(await dot()).toEqual(endent`
       strict digraph G {

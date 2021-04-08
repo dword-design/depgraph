@@ -42,6 +42,7 @@ export default {
     if (context.route.name === 'index') {
       return context.redirect({ name: 'index.dagre' })
     }
+
     return undefined
   },
 }

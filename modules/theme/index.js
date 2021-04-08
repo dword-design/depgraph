@@ -8,6 +8,7 @@ export default function (moduleOptions) {
     ...this.options.theme,
     ...moduleOptions,
   }
+
   const optionsString = options |> jsonToString({ indent: 2 })
   this.addTemplate({
     fileName: P.join('theme', 'ui-checkbox.vue'),

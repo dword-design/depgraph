@@ -1,4 +1,5 @@
 const rasterSize = 12
+
 const edgeColor = '#00000077'
 
 export default {
