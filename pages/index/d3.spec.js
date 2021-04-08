@@ -1,3 +1,4 @@
+import { delay } from '@dword-design/functions'
 import tester from '@dword-design/tester'
 import testerPluginPuppeteer from '@dword-design/tester-plugin-puppeteer'
 import execa from 'execa'
@@ -22,6 +23,7 @@ export default tester(
         width: 1400,
       })
       await this.page.goto('http://localhost:3000/d3')
+      await delay(1000)
       expect(
         await this.page.screenshot({ fullPage: true })
       ).toMatchImageSnapshot(this)
