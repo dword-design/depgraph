@@ -39,9 +39,12 @@ export default tester(
         function () {
           return withLocalTmpDir(async () => {
             const childProcess = graph({ log: true })
-            await portReady(3000)
-            await test.call(this)
-            await kill(childProcess.pid)
+            try {
+              await portReady(3000)
+              await test.call(this)
+            } finally {
+              await kill(childProcess.pid)
+            }
           })
         },
     },
