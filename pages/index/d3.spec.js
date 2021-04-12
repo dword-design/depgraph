@@ -23,7 +23,7 @@ export default tester(
         width: 1400,
       })
       await this.page.goto('http://localhost:3000/d3')
-      await delay(1000)
+      await delay(5000)
       expect(
         await this.page.screenshot({ fullPage: true })
       ).toMatchImageSnapshot(this)
