@@ -22,7 +22,8 @@
     "prepare": "base prepare",
     "prepublishOnly": "base prepublishOnly",
     "start": "base start",
-    "test": "base test"
+    "test": "base test",
+    "test:raw": "base test:raw"
   },
   "dependencies": {
     "@dword-design/base-config-nuxt": "^2.4.2",
@@ -34,7 +35,7 @@
     "@dword-design/reset-sass": "^1.0.7",
     "@fortawesome/free-regular-svg-icons": "^5.12.1",
     "cosmiconfig": "^7.0.0",
-    "d3": "6.6.0",
+    "d3": "6.6.2",
     "dagre-d3": "^0.6.4",
     "depcheck-package-name": "^1.0.0",
     "dependency-cruiser": "^9.19.1",
@@ -50,16 +51,22 @@
   },
   "devDependencies": {
     "@dword-design/base": "^7.0.0",
+    "@dword-design/puppeteer": "^3.0.3",
+    "@dword-design/tester": "^1.2.4",
+    "@dword-design/tester-plugin-puppeteer": "^2.0.3",
     "axios": "^0.21.0",
     "fs-extra": "^9.0.0",
-    "output-files": "^1.1.14",
+    "output-files": "^1.1.24",
     "port-ready": "^0.1.0",
     "stealthy-require": "^1.1.1",
     "tree-kill-promise": "^1.0.0",
-    "with-local-tmp-dir": "^2.2.7"
+    "with-local-tmp-dir": "^2.2.18"
   },
   "publishConfig": {
     "access": "public"
   },
-  "baseConfig": "@dword-design/nuxt"
+  "baseConfig": {
+    "name": "@dword-design/nuxt",
+    "testInContainer": true
+  }
 }
