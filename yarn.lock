@@ -1113,10 +1113,10 @@
     fs-extra "^9.0.0"
     micromatch "^4.0.2"
 
-"@dword-design/base-config-nuxt@^2.4.2":
-  version "2.21.5"
-  resolved "https://registry.yarnpkg.com/@dword-design/base-config-nuxt/-/base-config-nuxt-2.21.5.tgz#fc1853fed300b6ed01a356448490088f7ef3be7c"
-  integrity sha512-F9UMb4I0AFYbMQPVo+PmWaooTf4xrzNW5vOjMKv6riFkQJvi1PDTloovgkDtfngdUAe1nKlIdFYHhg67nMg/HQ==
+"@dword-design/base-config-nuxt@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@dword-design/base-config-nuxt/-/base-config-nuxt-3.0.0.tgz#7d9c8460650d4ea3706bb697a04e75be6731f611"
+  integrity sha512-7N7I+IA28R/l78wCpqGPVCFjDkJ4cFQ53gPCs6wbJcAnaLDYpi7RZiQZKSL/6e0XoWVuWFhSP86Xv2wB1hH0KQ==
   dependencies:
     "@babel/register" "^7.13.8"
     "@dword-design/depcheck-parser-sass" "^1.1.0"
@@ -1127,7 +1127,6 @@
     "@dword-design/stylelint-config" "^1.0.0"
     "@nuxtjs/axios" "^5.10.3"
     "@nuxtjs/eslint-module" "^3.0.0"
-    "@nuxtjs/global-components" "^0.6.1"
     "@nuxtjs/stylelint-module" "^4.0.0"
     body-parser "^1.19.0"
     depcheck-package-name "^1.0.0"
@@ -1953,14 +1952,6 @@
   dependencies:
     consola "^2.15.0"
     eslint-webpack-plugin "^2.4.1"
-
-"@nuxtjs/global-components@^0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/global-components/-/global-components-0.6.1.tgz#7328530cea320871b19d2db2c814db9362b14784"
-  integrity sha512-9aNDUeSP1HaDwBWveRjOlpEKLL2h7kIwJyeGnr7CflT9upFcm0BkLyjy7eM4oACkUemuOtAIKCOulsnbz2ci2w==
-  dependencies:
-    chokidar "^3.3.1"
-    globby "^11.0.0"
 
 "@nuxtjs/proxy@^2.1.0":
   version "2.1.0"
@@ -3833,7 +3824,7 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
-chokidar@3.5.1, chokidar@^3.3.1, chokidar@^3.4.0, chokidar@^3.4.1, chokidar@^3.5.1:
+chokidar@3.5.1, chokidar@^3.4.0, chokidar@^3.4.1, chokidar@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.1.tgz#ee9ce7bbebd2b79f49f304799d5468e31e14e68a"
   integrity sha512-9+s+Od+W0VJJzawDma/gvBNQqkTiqYTWLuZoyAsivsI4AaWTCzHG06/TMjsf1cYe9Cb97UCEhjz7HvnPk2p/tw==
