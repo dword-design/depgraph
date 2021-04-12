@@ -1,3 +1,10 @@
+## [1.6.25](https://github.com/dword-design/depgraph/compare/v1.6.24...v1.6.25) (2021-04-12)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/base-config-nuxt to v3 ([#46](https://github.com/dword-design/depgraph/issues/46)) ([d2202b1](https://github.com/dword-design/depgraph/commit/d2202b1983def733e357873b2fc57bda1b6bf7e8))
+
 ## [1.6.24](https://github.com/dword-design/depgraph/compare/v1.6.23...v1.6.24) (2021-04-12)
 
 
