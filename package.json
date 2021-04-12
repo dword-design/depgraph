@@ -67,7 +67,6 @@
   },
   "baseConfig": {
     "name": "@dword-design/nuxt",
-    "testInContainer": true,
-    "useJobMatrix": false
+    "testInContainer": true
   }
 }
