@@ -1150,10 +1150,10 @@
     stylelint "^13.6.0"
     vue "^2.6.11"
 
-"@dword-design/base@^7.0.0":
-  version "7.12.4"
-  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-7.12.4.tgz#d6185c6f8cb77895982b6b30c6b9ecce4b616b81"
-  integrity sha512-ZHshkBudeU92LxiHimGPD+1LI29ToMsoc+qPd4M20P+9HbpVOcwzcG+Ndio1YJt3//AdPy4IEv976tOvJbFYuw==
+"@dword-design/base@^7.13.2":
+  version "7.13.2"
+  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-7.13.2.tgz#b1bf1c495c2bfec6d9d9de6f202d9f379633643c"
+  integrity sha512-+tG14FNQhwK0F+fLik/IY+CewqR0DgR/ucrTU1BL2qb+qBFNHpU9WEY/DLm+vjl2qip0lUDczImbRutV9AqkoQ==
   dependencies:
     "@babel/core" "^7.6.4"
     "@babel/register" "^7.6.2"
