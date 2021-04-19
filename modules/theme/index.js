@@ -1,6 +1,6 @@
 import { jsonToString } from '@dword-design/functions'
-import nuxtPushPlugins from 'nuxt-push-plugins'
 import jsontosass from 'jsontosass'
+import nuxtPushPlugins from 'nuxt-push-plugins'
 import P from 'path'
 
 export default function (moduleOptions) {
