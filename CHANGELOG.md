@@ -1,3 +1,10 @@
+## [1.6.26](https://github.com/dword-design/depgraph/compare/v1.6.25...v1.6.26) (2021-04-19)
+
+
+### Bug Fixes
+
+* fix deprecated dependency ([#52](https://github.com/dword-design/depgraph/issues/52)) ([d49c18a](https://github.com/dword-design/depgraph/commit/d49c18a4d852d88ac0d8144003c15c82a9d5e6d2))
+
 ## [1.6.25](https://github.com/dword-design/depgraph/compare/v1.6.24...v1.6.25) (2021-04-12)
 
 
