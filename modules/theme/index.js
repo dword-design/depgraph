@@ -1,5 +1,5 @@
 import { jsonToString } from '@dword-design/functions'
-import pushPlugins from '@dword-design/nuxt-push-plugins'
+import nuxtPushPlugins from 'nuxt-push-plugins'
 import jsontosass from 'jsontosass'
 import P from 'path'
 
@@ -36,7 +36,7 @@ export default function (moduleOptions) {
     options: optionsString,
     src: require.resolve('./output.template'),
   })
-  pushPlugins(this, {
+  nuxtPushPlugins(this, {
     fileName: P.join('theme', 'plugin.js'),
     src: require.resolve('./plugin'),
   })
