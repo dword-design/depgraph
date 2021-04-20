@@ -1,7 +1,7 @@
 {
   "name": "@dword-design/depgraph",
   "version": "1.6.26",
-  "description": "",
+  "description": null,
   "repository": "dword-design/depgraph",
   "funding": "https://www.buymeacoffee.com/dword",
   "license": "MIT",
@@ -68,5 +68,7 @@
   "baseConfig": {
     "name": "@dword-design/nuxt",
     "testInContainer": true
-  }
+  },
+  "homepage": null,
+  "keywords": []
 }
