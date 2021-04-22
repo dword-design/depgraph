@@ -1,3 +1,11 @@
+## [1.6.29](https://github.com/dword-design/depgraph/compare/v1.6.28...v1.6.29) (2021-04-22)
+
+
+### Bug Fixes
+
+* update config files ([3606d3a](https://github.com/dword-design/depgraph/commit/3606d3ab654150283e945574cc27513341f2c434))
+* updated package.json[description] ([#56](https://github.com/dword-design/depgraph/issues/56)) ([ce46c79](https://github.com/dword-design/depgraph/commit/ce46c794b9bfe51341b28e06a109055aebb9a3ce))
+
 ## [1.6.28](https://github.com/dword-design/depgraph/compare/v1.6.27...v1.6.28) (2021-04-21)
 
 
