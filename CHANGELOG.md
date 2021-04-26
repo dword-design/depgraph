@@ -1,3 +1,10 @@
+## [1.6.31](https://github.com/dword-design/depgraph/compare/v1.6.30...v1.6.31) (2021-04-26)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/puppeteer to v4 ([#59](https://github.com/dword-design/depgraph/issues/59)) ([5b29e0d](https://github.com/dword-design/depgraph/commit/5b29e0d5619b7109c0616e601f450bd9632eb601))
+
 ## [1.6.30](https://github.com/dword-design/depgraph/compare/v1.6.29...v1.6.30) (2021-04-26)
 
 
