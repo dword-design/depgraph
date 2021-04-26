@@ -1,3 +1,10 @@
+## [1.6.30](https://github.com/dword-design/depgraph/compare/v1.6.29...v1.6.30) (2021-04-26)
+
+
+### Bug Fixes
+
+* update dependency with-local-tmp-dir to v3 ([#54](https://github.com/dword-design/depgraph/issues/54)) ([3604c1a](https://github.com/dword-design/depgraph/commit/3604c1a1df55e8daa945a29e48ecfa529c829d6e))
+
 ## [1.6.29](https://github.com/dword-design/depgraph/compare/v1.6.28...v1.6.29) (2021-04-22)
 
 
