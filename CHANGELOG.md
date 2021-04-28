@@ -1,3 +1,10 @@
+## [1.6.32](https://github.com/dword-design/depgraph/compare/v1.6.31...v1.6.32) (2021-04-28)
+
+
+### Bug Fixes
+
+* updated package.json[description] ([#57](https://github.com/dword-design/depgraph/issues/57)) ([1340d07](https://github.com/dword-design/depgraph/commit/1340d07c9c414996abc21a35fc5436073f7a0a83))
+
 ## [1.6.31](https://github.com/dword-design/depgraph/compare/v1.6.30...v1.6.31) (2021-04-26)
 
 
