@@ -29,7 +29,7 @@
     "@dword-design/functions": "^3.0.0",
     "@dword-design/node-sass-js-importer": "^1.1.2",
     "@dword-design/nuxt-express-server": "^1.0.0",
-    "@dword-design/nuxt-sass-importer": "^1.0.0",
+    "@dword-design/nuxt-sass-importer": "^2.0.0",
     "@dword-design/reset-sass": "^1.0.7",
     "@fortawesome/free-regular-svg-icons": "^5.12.1",
     "cosmiconfig": "^7.0.0",

@@ -1365,10 +1365,10 @@
     "@dword-design/functions" "^3.0.0"
     express "^4.17.1"
 
-"@dword-design/nuxt-sass-importer@^1.0.0":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@dword-design/nuxt-sass-importer/-/nuxt-sass-importer-1.0.11.tgz#742a5db20bf90d29e6dd8eace5c409d9fb753622"
-  integrity sha512-5Z/fKxrjXB3ovrm3F3JH12zLiQoStCcQDYkfnUwWhGVvH6K4nrhr0j5ttK8l2VzGAUuxEHj1o0LkKKBZfqZ38w==
+"@dword-design/nuxt-sass-importer@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@dword-design/nuxt-sass-importer/-/nuxt-sass-importer-2.0.0.tgz#6d87f7a9b6d3b6aebce16c5bd96caf57b5b7c0be"
+  integrity sha512-NhiAd9xmxTLx4t1a2i/HtyIkq+NZdrNfdC6ZGO0hjR3iAIEadt8l0hPSWYB6VO9mqgnki9ic0Oqp1a8DEqEhJg==
 
 "@dword-design/puppeteer@^4.0.0":
   version "4.0.1"
