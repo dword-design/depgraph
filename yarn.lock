@@ -1367,10 +1367,10 @@
     jsontosass "github:dword-design/jsontosass#fork"
     resolve-from "^5.0.0"
 
-"@dword-design/nuxt-express-server@^1.0.0":
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/@dword-design/nuxt-express-server/-/nuxt-express-server-1.0.14.tgz#0e55782b0112791ef8213d8bb0ceb053d5e761c8"
-  integrity sha512-KcoauwtS5QEVr3A7aeSyuyy9xq+BzEfG9xoWlvPdR4GcOAauxjACkiLKaProJkfVYdVqaT/enWj3D0WvuBGFMQ==
+"@dword-design/nuxt-express-server@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@dword-design/nuxt-express-server/-/nuxt-express-server-2.0.0.tgz#2d9d62d23b61e1d7ff22ab730ac867e4fbeec424"
+  integrity sha512-vX/mYRreudf3TiOfZUY+k+9B3oUTI2ADgQkSZuR40v9ZwgLmw3CVNtmoxbtbe+ZNHtoyxRWle1bGaAWZPSM/iQ==
   dependencies:
     "@dword-design/functions" "^3.0.0"
     express "^4.17.1"
