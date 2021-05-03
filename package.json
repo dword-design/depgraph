@@ -35,7 +35,7 @@
     "cosmiconfig": "^7.0.0",
     "d3": "6.7.0",
     "dagre-d3": "^0.6.4",
-    "depcheck-package-name": "^1.0.0",
+    "depcheck-package-name": "^2.0.0",
     "dependency-cruiser": "^9.19.1",
     "execa": "^5.0.0",
     "get-package-name": "^2.0.0",
