@@ -1359,10 +1359,10 @@
     lodash "^4.17.15"
     tinycolor2 "^1.4.1"
 
-"@dword-design/node-sass-js-importer@^1.1.2":
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/@dword-design/node-sass-js-importer/-/node-sass-js-importer-1.1.16.tgz#ecd94ee8d126b9993084a3aa05a2dbfd9b383039"
-  integrity sha512-DlLOe0fEmJ0F0YTZ6FwauLqD7w+FpEkFpkrb+ATTMBq2UFYYRclDDkkIoblwwkGtSz9/+W+UlJ2dS6t07ywK5A==
+"@dword-design/node-sass-js-importer@^2.0.0":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@dword-design/node-sass-js-importer/-/node-sass-js-importer-2.0.2.tgz#2dd9b3a78accd64de543888251e2dc3ef34022c0"
+  integrity sha512-l+CMcK/D5DGOhbWkHg/n+qDZeJuInnJuEtTz+xOSTAGHFVBIT/miPF9Ajlvsg3ZEW8X2zApnwQ2YvTCg7vAcUA==
   dependencies:
     jsontosass "github:dword-design/jsontosass#fork"
     resolve-from "^5.0.0"
