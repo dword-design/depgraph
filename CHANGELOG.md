@@ -1,3 +1,10 @@
+## [1.6.36](https://github.com/dword-design/depgraph/compare/v1.6.35...v1.6.36) (2021-05-04)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/node-sass-js-importer to v2 ([#64](https://github.com/dword-design/depgraph/issues/64)) ([e32a95f](https://github.com/dword-design/depgraph/commit/e32a95f820b910d8087536353c07ab96709db296))
+
 ## [1.6.35](https://github.com/dword-design/depgraph/compare/v1.6.34...v1.6.35) (2021-05-04)
 
 
