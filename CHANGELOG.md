@@ -1,3 +1,17 @@
+## [1.6.34](https://github.com/dword-design/depgraph/compare/v1.6.33...v1.6.34) (2021-05-04)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/functions to v4 ([#63](https://github.com/dword-design/depgraph/issues/63)) ([e34020a](https://github.com/dword-design/depgraph/commit/e34020a82577aa3b118c1bf2cdf1477d9139ee51))
+* update dependency @dword-design/nuxt-sass-importer to v2 ([#66](https://github.com/dword-design/depgraph/issues/66)) ([d534a29](https://github.com/dword-design/depgraph/commit/d534a29874b6806ecb65106eca4dff79a4efac91))
+* update dependency @dword-design/tester to v2 ([#68](https://github.com/dword-design/depgraph/issues/68)) ([9eee261](https://github.com/dword-design/depgraph/commit/9eee2615f33c3007d60fb22765e1e0b1a4dc76ac))
+* update dependency depcheck-package-name to v2 ([#69](https://github.com/dword-design/depgraph/issues/69)) ([858c0c9](https://github.com/dword-design/depgraph/commit/858c0c9286947c84f13046682b05bd7524c3c9e6))
+* update dependency get-package-name to v2 ([#28](https://github.com/dword-design/depgraph/issues/28)) ([9cb18bb](https://github.com/dword-design/depgraph/commit/9cb18bb164d215b5fbdedf5125cece691efa44e9))
+* update dependency make-cli to v2 ([#70](https://github.com/dword-design/depgraph/issues/70)) ([639fc4d](https://github.com/dword-design/depgraph/commit/639fc4d5c86120ef2ae2883721df20b05e480184))
+* update dependency nuxt-push-plugins to v2 ([#71](https://github.com/dword-design/depgraph/issues/71)) ([c11169d](https://github.com/dword-design/depgraph/commit/c11169dbf4ee9ebac8679b12ce5faca18ff015ef))
+* update dependency output-files to v2 ([#72](https://github.com/dword-design/depgraph/issues/72)) ([cfcb4ec](https://github.com/dword-design/depgraph/commit/cfcb4ec4c145fc73efe430cd5d0c63b1d7bf9e49))
+
 ## [1.6.33](https://github.com/dword-design/depgraph/compare/v1.6.32...v1.6.33) (2021-05-03)
 
 
