@@ -54,7 +54,7 @@
     "@dword-design/tester": "^2.0.0",
     "@dword-design/tester-plugin-puppeteer": "^2.0.3",
     "axios": "^0.21.0",
-    "fs-extra": "^9.0.0",
+    "fs-extra": "^10.0.0",
     "output-files": "^2.0.0",
     "port-ready": "^0.1.0",
     "stealthy-require": "^1.1.1",
