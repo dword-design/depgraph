@@ -1,3 +1,13 @@
+## [1.6.35](https://github.com/dword-design/depgraph/compare/v1.6.34...v1.6.35) (2021-05-04)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/nuxt-express-server to v2 ([#65](https://github.com/dword-design/depgraph/issues/65)) ([dcd7e44](https://github.com/dword-design/depgraph/commit/dcd7e4407ff82903a9982201a3c8e4c54516ef50))
+* update dependency @dword-design/puppeteer to v5 ([#67](https://github.com/dword-design/depgraph/issues/67)) ([4eecbd6](https://github.com/dword-design/depgraph/commit/4eecbd661396c86621cba3358072824aa104276a))
+* update dependency fs-extra to v10 ([#74](https://github.com/dword-design/depgraph/issues/74)) ([5f9ee1d](https://github.com/dword-design/depgraph/commit/5f9ee1d1918ca08eb29b8cfea2ab16790b7cc247))
+* update dependency tree-kill-promise to v2 ([#73](https://github.com/dword-design/depgraph/issues/73)) ([37e9661](https://github.com/dword-design/depgraph/commit/37e96612ba718956eaa43f21907993e28665407b))
+
 ## [1.6.34](https://github.com/dword-design/depgraph/compare/v1.6.33...v1.6.34) (2021-05-04)
 
 
