@@ -28,7 +28,7 @@
     "@dword-design/base-config-nuxt": "^3.0.0",
     "@dword-design/functions": "^4.0.0",
     "@dword-design/node-sass-js-importer": "^1.1.2",
-    "@dword-design/nuxt-express-server": "^1.0.0",
+    "@dword-design/nuxt-express-server": "^2.0.0",
     "@dword-design/nuxt-sass-importer": "^2.0.0",
     "@dword-design/reset-sass": "^1.0.7",
     "@fortawesome/free-regular-svg-icons": "^5.12.1",
