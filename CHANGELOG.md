@@ -1,3 +1,10 @@
+## [1.6.39](https://github.com/dword-design/depgraph/compare/v1.6.38...v1.6.39) (2021-06-09)
+
+
+### Bug Fixes
+
+* update dependency dependency-cruiser to v10 ([#76](https://github.com/dword-design/depgraph/issues/76)) ([3d95bd7](https://github.com/dword-design/depgraph/commit/3d95bd7bb6d343b92aa544782a4f7eede90bac67))
+
 ## [1.6.38](https://github.com/dword-design/depgraph/compare/v1.6.37...v1.6.38) (2021-05-28)
 
 
