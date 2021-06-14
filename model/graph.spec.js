@@ -3,7 +3,7 @@ import axios from 'axios'
 import execa from 'execa'
 import { outputFile } from 'fs-extra'
 import portReady from 'port-ready'
-import stealthyRequire from 'stealthy-require'
+import stealthyRequire from 'stealthy-require-no-leak'
 import kill from 'tree-kill-promise'
 import withLocalTmpDir from 'with-local-tmp-dir'
 
