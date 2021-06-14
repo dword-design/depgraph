@@ -4,7 +4,7 @@
   "repository": "dword-design/depgraph",
   "funding": "https://www.buymeacoffee.com/dword",
   "license": "MIT",
-  "author": "Sebastian Landwehr <info@dword-design.de>",
+  "author": "Sebastian Landwehr <info@sebastianlandwehr.com>",
   "main": "dist/index.js",
   "bin": {
     "depgraph": "./dist/cli.js"
@@ -39,7 +39,7 @@
     "dependency-cruiser": "^10.0.0",
     "execa": "^5.0.0",
     "get-package-name": "^2.0.0",
-    "jsontosass": "dword-design/jsontosass#fork",
+    "jsontosass": "^0.2.0",
     "make-cli": "^2.0.0",
     "multimatch": "^5.0.0",
     "nuxt-fontawesome": "^0.4.0",
@@ -57,7 +57,7 @@
     "fs-extra": "^10.0.0",
     "output-files": "^2.0.0",
     "port-ready": "^0.1.0",
-    "stealthy-require": "^1.1.1",
+    "stealthy-require-no-leak": "^1.0.3",
     "tree-kill-promise": "^2.0.0",
     "with-local-tmp-dir": "^4.0.0"
   },

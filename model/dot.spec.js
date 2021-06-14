@@ -1,6 +1,6 @@
 import { endent } from '@dword-design/functions'
 import outputFiles from 'output-files'
-import stealthyRequire from 'stealthy-require'
+import stealthyRequire from 'stealthy-require-no-leak'
 import withLocalTmpDir from 'with-local-tmp-dir'
 
 export default {
