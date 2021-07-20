@@ -1,3 +1,11 @@
+## [1.6.42](https://github.com/dword-design/depgraph/compare/v1.6.41...v1.6.42) (2021-07-20)
+
+
+### Bug Fixes
+
+* replace forEach with for of ([940b438](https://github.com/dword-design/depgraph/commit/940b438cd831b3e533e11569b3478ccdbe0be36b))
+* update config files ([9b47800](https://github.com/dword-design/depgraph/commit/9b47800ec8a7d6f38a6fe23dbcfae475932011fe))
+
 ## [1.6.41](https://github.com/dword-design/depgraph/compare/v1.6.40...v1.6.41) (2021-07-06)
 
 
