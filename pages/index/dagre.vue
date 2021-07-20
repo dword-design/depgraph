@@ -22,7 +22,7 @@ export default {
       const g = new dagreD3.graphlib.Graph()
         .setGraph({ rankdir: 'RL' })
         .setDefaultEdgeLabel(stubObject)
-      this.modules.forEach(module =>
+      for (const module of this.modules) {
         g.setNode(module.source, {
           class:
             [
@@ -34,7 +34,7 @@ export default {
           rx: variables.nodeBorderRadius,
           ry: variables.nodeBorderRadius,
         })
-      )
+      }
 
       const allDependencies =
         this.modules
@@ -43,7 +43,7 @@ export default {
             module.dependencies
             |> map(dependency => ({ ...dependency, source: module.source }))
         )
-      allDependencies.forEach(dependency =>
+      for (const dependency of allDependencies) {
         g.setEdge(dependency.source, dependency.target, {
           class:
             [
@@ -51,7 +51,7 @@ export default {
               ...(dependency.isExternal ? [this.$style.isExternal] : []),
             ] |> join(' '),
         })
-      )
+      }
 
       const render = new dagreD3.render()
 
