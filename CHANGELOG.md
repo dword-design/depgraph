@@ -1,3 +1,10 @@
+## [1.6.43](https://github.com/dword-design/depgraph/compare/v1.6.42...v1.6.43) (2021-10-05)
+
+
+### Bug Fixes
+
+* update dependency axios to ^0.22.0 ([c2f6cfa](https://github.com/dword-design/depgraph/commit/c2f6cfa002de83761d71a3ed5c11190bd8d86ef0))
+
 ## [1.6.42](https://github.com/dword-design/depgraph/compare/v1.6.41...v1.6.42) (2021-07-20)
 
 
