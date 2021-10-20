@@ -41,7 +41,7 @@
     "get-package-name": "^2.0.0",
     "jsontosass": "^0.2.0",
     "make-cli": "^2.0.0",
-    "multimatch": "^5.0.0",
+    "multimatch": "^6.0.0",
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-push-plugins": "^2.0.0",
     "require-package-name": "^2.0.1",

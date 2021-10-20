@@ -2463,7 +2463,7 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/minimatch@*", "@types/minimatch@^3.0.3":
+"@types/minimatch@*", "@types/minimatch@^3.0.3", "@types/minimatch@^3.0.5":
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.5.tgz#1001cc5e6a3704b83c236027e77f2f58ea010f40"
   integrity sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==
@@ -3307,6 +3307,11 @@ array-differ@^3.0.0:
   resolved "https://registry.yarnpkg.com/array-differ/-/array-differ-3.0.0.tgz#3cbb3d0f316810eafcc47624734237d6aee4ae6b"
   integrity sha512-THtfYS6KtME/yIAhKjZ2ul7XI96lQGHRputJQHO80LAWQnuGP4iCIN8vdMRboGbIEYBwU33q8Tch1os2+X0kMg==
 
+array-differ@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/array-differ/-/array-differ-4.0.0.tgz#aa3c891c653523290c880022f45b06a42051b026"
+  integrity sha512-Q6VPTLMsmXZ47ENG3V+wQyZS1ZxXMxFyYzA+Z/GMrJ6yIutAIEf9wTyroTzmGjNfox9/h3GdGBCVh43GVFx4Uw==
+
 array-flatten@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
@@ -3332,6 +3337,11 @@ array-union@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/array-union/-/array-union-2.1.0.tgz#b798420adbeb1de828d84acd8a2e23d3efe85e8d"
   integrity sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==
+
+array-union@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/array-union/-/array-union-3.0.1.tgz#da52630d327f8b88cfbfb57728e2af5cd9b6b975"
+  integrity sha512-1OvF9IbWwaeiM9VhzYXVQacMibxpXOMYVNIvMtKRyX9SImBXpKcFr8XvFDeEslCyuH/t6KRt7HEO94AlP8Iatw==
 
 array-unique@^0.3.2:
   version "0.3.2"
@@ -10854,6 +10864,16 @@ multimatch@^5.0.0:
     array-differ "^3.0.0"
     array-union "^2.1.0"
     arrify "^2.0.1"
+    minimatch "^3.0.4"
+
+multimatch@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/multimatch/-/multimatch-6.0.0.tgz#c72a9bddbc94baa4727efd613b5d22a1fe4d6ee3"
+  integrity sha512-I7tSVxHGPlmPN/enE3mS1aOSo6bWBfls+3HmuEeCUBCE7gWnm3cBXCBkpurzFjVRwC6Kld8lLaZ1Iv5vOcjvcQ==
+  dependencies:
+    "@types/minimatch" "^3.0.5"
+    array-differ "^4.0.0"
+    array-union "^3.0.1"
     minimatch "^3.0.4"
 
 mustache@^2.3.0:
