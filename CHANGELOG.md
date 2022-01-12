@@ -1,3 +1,10 @@
+## [1.6.45](https://github.com/dword-design/depgraph/compare/v1.6.44...v1.6.45) (2022-01-12)
+
+
+### Bug Fixes
+
+* update config files ([be2993f](https://github.com/dword-design/depgraph/commit/be2993fae27c98cb1c18880f1ee8eeaf60a10836))
+
 ## [1.6.44](https://github.com/dword-design/depgraph/compare/v1.6.43...v1.6.44) (2022-01-04)
 
 
