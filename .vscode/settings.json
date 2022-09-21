@@ -6,6 +6,7 @@
     ".commitlintrc.json": true,
     ".cz.json": true,
     ".editorconfig": true,
+    ".eslintcache": true,
     ".eslintrc.json": true,
     ".gitattributes": true,
     ".github": true,
