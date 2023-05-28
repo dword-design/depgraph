@@ -1476,9 +1476,9 @@
     tinycolor2 "^1.4.1"
 
 "@dword-design/node-sass-js-importer@^2.0.0":
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/@dword-design/node-sass-js-importer/-/node-sass-js-importer-2.0.8.tgz#18534f150f9ae77c8369cb038aba5a0ad50a7b0b"
-  integrity sha512-d2MPxPrkv1h58AxJ0NWxmqwOe/E+XbXf+I/1BJJgProxzuR4H4fLVQiUyn9VUEbtla0+xNC/hXxZt48WODsuCA==
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@dword-design/node-sass-js-importer/-/node-sass-js-importer-2.0.9.tgz#822680cd6c217eaeb01fdb4b3433454f92932482"
+  integrity sha512-Xq3TMny9nXjX/BmNhnzdumcuGNMsrLHW+caq9XGE2mC+iB6N8f4C84sux4fNyM4s2IpHdMZ7ccoxZ09ycIBJ4Q==
   dependencies:
     jsontosass "^0.2.0"
     resolve-from "^5.0.0"
