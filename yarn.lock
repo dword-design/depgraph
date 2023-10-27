@@ -1492,9 +1492,9 @@
     express "^4.17.1"
 
 "@dword-design/nuxt-sass-importer@^2.0.0":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@dword-design/nuxt-sass-importer/-/nuxt-sass-importer-2.0.6.tgz#21e048d18726605421b481604dfda1cb8fae284f"
-  integrity sha512-BxUVA3vfT3CP0L9f21VWRv5GQ22QItLkrZDE3lvyR49GGvTgkRqckJgFKdg1unqONQX85ZgVEYmCHBWe1encxg==
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/@dword-design/nuxt-sass-importer/-/nuxt-sass-importer-2.0.8.tgz#9df75490e8687c8bb8cd7df8d8dd812adf48ebd4"
+  integrity sha512-xYnM045IibAJkOK5FPTIa059d/CDleDZB2KOB373IMWdt9bJAC8yH1BakxDKmnQSyKUG3RCHHuQq+UEwpXTWZg==
 
 "@dword-design/personal-data@^1.0.1":
   version "1.0.1"
